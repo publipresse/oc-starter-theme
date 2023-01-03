@@ -1,0 +1,8 @@
+name: 'Starter theme'
+description: 'Starter theme with some default markup and libraries'
+author: Publipresse
+homepage: 'https://www.publipresse.fr'
+authorCode: publipresse
+code: oc-starter-theme
+parent: ''
+database: '0'

@@ -1,0 +1,43 @@
+[contenteditor editor]
+
+[GtmHead]
+
+[GtmBody]
+
+[seo]
+
+[popups]
+category = 0
+type = "fancybox"
+mode = "slider"
+swiper = 0
+fancybox = 0
+==
+<!DOCTYPE html>
+<html lang="fr" prefix="og: http://ogp.me/ns#">
+<head>
+    {% component 'GtmHead' %}
+    {% component 'seo' %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="{{ ['@framework.extras', 'assets/vendor/hamburgers/hamburgers.css']|theme }}" rel="stylesheet" />
+    {% styles %}
+    <link href="{{ ['assets/scss/core.scss', 'assets/scss/styles.scss', 'assets/scss/responsive.scss']|theme }}" rel="stylesheet" />
+</head>
+
+<body id="{{ this.page.id }}">
+    {% component 'GtmBody' %}
+    <div id="page">
+        {% partial 'header' %}
+        <main id="main">
+            {% page %}
+        </main>
+        {% partial 'footer' %}
+        {% component 'popups' %}
+    </div>
+    <script src="{{ ['assets/vendor/jquery/jquery-3.6.3.js', '@framework', '@framework.extras', '@framework.turbo']|theme }}"></script>
+    <script defer src="{{ ['assets/vendor/lazysizes/lazysizes.js', 'assets/vendor/headroom/headroom.js']|theme }}"></script>
+    <script defer src="{{ ['assets/js/core.js', 'assets/js/custom.js']|theme }}"></script>
+    {% scripts %}
+</body>
+  
+</html>

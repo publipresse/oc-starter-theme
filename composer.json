@@ -1,0 +1,8 @@
+{
+    "name": "publipresse/oc-starter-theme-theme",
+    "type": "october-theme",
+    "description": "Starter theme with some default markup and libraries",
+    "require": {
+        "composer/installers": "~1.0"
+    }
+}
