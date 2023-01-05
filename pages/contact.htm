@@ -14,13 +14,14 @@ rules[Nom] = "required"
 rules[Prénom] = "required"
 rules[Email] = "required|email"
 rules[Message] = "required"
-rules[g-recaptcha-response] = "required"
 messages_success = "Votre formulaire a été envoyé avec succès"
 messages_errors = "Il y a eu des erreurs dans votre formulaire"
 mail_enabled = 1
 mail_subject = "[{{ record.date }}] - {{ form.Prénom }} {{ form.Nom }} - Formulaire de contact"
 mail_replyto = "Email"
+mail_uploads = 1
 reset_form = 1
+redirect = "/merci"
 inline_errors = "display"
 sanitize_data = "disabled"
 anonymize_ip = "disabled"
@@ -29,7 +30,6 @@ recaptcha_theme = "light"
 recaptcha_type = "image"
 recaptcha_size = "normal"
 emails_date_format = "d/m/Y"
-mail_uploads = 1
 uploader_enable = 0
 uploader_multi = 1
 placeholderText = "Cliquez pour choisir ou faites glisser les fichiers à télécharger"
@@ -80,51 +80,67 @@ fileTypes[] = "zip"
 ==
 {{ form_ajax('contact::onFormSubmit', { validate: true }) }}
 
-    <div class="field">
-        <input type="text" id="contact-nom" name="Nom" placeholder="Nom" autocomplete="family-name" />
+    <div class="field field-text">
         <label for="contact-nom">Nom</label>
+        <input type="text" id="contact-nom" name="Nom" placeholder="Nom" autocomplete="family-name" />
         <div data-validate-for="Nom"></div>
     </div>
 
-    <div class="field">
-        <input type="text" id="contact-prenom" name="Prénom" placeholder="Prénom" autocomplete="given-name" />
+    <div class="field field-text">
         <label for="contact-prenom">Prénom</label>
+        <input type="text" id="contact-prenom" name="Prénom" placeholder="Prénom" autocomplete="given-name" />
         <div data-validate-for="Prénom"></div>
     </div>
 
-    <div class="field">
-        <input type="text" id="contact-address" name="Adresse" placeholder="Adresse" autocomplete="address-line1"/>
+    <div class="field field-checkboxes">
+        <div class="checkbox">
+            <input type="checkbox" name="cb[]" />
+            <label>toto</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="cb[]" />
+            <label>toto</label>
+        </div>
+        <div class="checkbox">
+            <input type="checkbox" name="cb[]" />
+            <label>toto</label>
+        </div>
+        <div data-validate-for="cb"></div>
+    </div>
+
+    <div class="field field-text">
         <label for="contact-address">Adresse</label>
+        <input type="text" id="contact-address" name="Adresse" placeholder="Adresse" autocomplete="address-line1"/>
         <div data-validate-for="Adresse"></div>
     </div>
 
-    <div class="field">
-        <input type="text" id="contact-cp" name="Code postal" placeholder="Code postal" autocomplete="postal-code"/>
+    <div class="field field-text">
         <label for="contact-cp">Code postal</label>
+        <input type="text" id="contact-cp" name="Code postal" placeholder="Code postal" autocomplete="postal-code"/>
         <div data-validate-for="Code postal"></div>
     </div>
 
-    <div class="field">
-        <input type="text" id="contact-city" name="Ville" placeholder="Ville" autocomplete="city"/>
+    <div class="field field-text">
         <label for="contact-city">Ville</label>
+        <input type="text" id="contact-city" name="Ville" placeholder="Ville" autocomplete="city"/>
         <div data-validate-for="Ville"></div>
     </div>
 
-    <div class="field">
-        <input type="email" id="contact-email" name="Email" placeholder="Email" />
+    <div class="field field-text">
         <label for="contact-email">Email</label>
+        <input type="email" id="contact-email" name="Email" placeholder="Email" />
         <div data-validate-for="Email"></div>
     </div>
 
-    <div class="field">
-        <input type="tel" id="contact-telephone" name="Téléphone" placeholder="Téléphone" autocomplete="phone" />
+    <div class="field field-text">
         <label for="contact-telephone">Téléphone</label>
+        <input type="tel" id="contact-telephone" name="Téléphone" placeholder="Téléphone" autocomplete="phone" />
         <div data-validate-for="Téléphone"></div>
     </div>
 
-    <div class="field">
-      <textarea name="Message" placeholder="Message" id="contact-message"></textarea>
+    <div class="field field-textarea">
       <label for="contact-message">Message</label>
+      <textarea name="Message" placeholder="Message" id="contact-message"></textarea>
       <div data-validate-for="Message"></div>
     </div>
 
@@ -144,7 +160,7 @@ fileTypes[] = "zip"
         {% endif %}
     </div>
 
-    <button type="submit">{{ 'Envoyez un message'|_ }}</button>
+    <button type="submit" data-attach-loading>{{ 'Envoyez un message'|_ }}</button>
 
     <div id="{{ contact.alias }}_forms_flash"></div>
 

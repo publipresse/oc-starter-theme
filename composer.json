@@ -1,5 +1,5 @@
 {
-    "name": "publipresse/oc-starter-theme-theme",
+    "name": "publipresse/oc-starter-theme",
     "type": "october-theme",
     "description": "Starter theme with some default markup and libraries",
     "require": {

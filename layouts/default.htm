@@ -12,19 +12,28 @@ type = "fancybox"
 mode = "slider"
 swiper = 0
 fancybox = 0
+
+[matomojs]
 ==
 <!DOCTYPE html>
-<html lang="fr" prefix="og: http://ogp.me/ns#">
+<html lang="{{ this.site.hard_locale }}" prefix="og: http://ogp.me/ns#">
 <head>
+    {# Metas #}
     {% component 'GtmHead' %}
     {% component 'seo' %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {# Css #}
     <link href="{{ ['@framework.extras', 'assets/vendor/hamburgers/hamburgers.css']|theme }}" rel="stylesheet" />
-    {% styles %}
     <link href="{{ ['assets/scss/core.scss', 'assets/scss/styles.scss', 'assets/scss/responsive.scss']|theme }}" rel="stylesheet" />
+    {% styles %}
+    {# Js #}
+    <script defer src="{{ ['@framework', '@framework.extras', '@framework.turbo']|theme }}"></script>
+    <script defer src="{{ ['assets/vendor/lazysizes/lazysizes.js', 'assets/vendor/headroom/headroom.js']|theme }}"></script>
+    <script defer src="{{ ['assets/js/core.js', 'assets/js/custom.js']|theme }}"></script>
+    {% scripts %}
 </head>
 
-<body id="{{ this.page.id }}">
+<body id="{{ this.page.id }}" style="height:100vh;">
     {% component 'GtmBody' %}
     <div id="page">
         {% partial 'header' %}
@@ -34,10 +43,6 @@ fancybox = 0
         {% partial 'footer' %}
         {% component 'popups' %}
     </div>
-    <script src="{{ ['assets/vendor/jquery/jquery-3.6.3.js', '@framework', '@framework.extras', '@framework.turbo']|theme }}"></script>
-    <script defer src="{{ ['assets/vendor/lazysizes/lazysizes.js', 'assets/vendor/headroom/headroom.js']|theme }}"></script>
-    <script defer src="{{ ['assets/js/core.js', 'assets/js/custom.js']|theme }}"></script>
-    {% scripts %}
 </body>
   
 </html>

@@ -1,15 +1,15 @@
-$(document).ready(function() {
+document.addEventListener('DOMContentLoaded', function() {
     headroom();
     hamburger();
     anchors();
-    backToTop();
+    //backToTop();
     formClasses();
 });
 
 // Gestion de l'entête sticky.
 function headroom() {
     if (typeof Headroom !== "undefined") {
-        var headroom  = new Headroom($('#header')[0], {
+        const headroom  = new Headroom(document.getElementById('header'), {
             offset : 0,
             tolerance : {
                 up : 5,
@@ -31,46 +31,78 @@ function headroom() {
 
 // Attributions des classes pour le responsive
 function hamburger() {
-    $('.hamburger').on('click', function(e) {
-        $('.hamburger').toggleClass('is-active');
-        $('body').toggleClass('open');
-    })
+    const hamburgers = document.querySelectorAll('.hamburger');
+    const body = document.querySelector('body');
+    hamburgers.forEach(function(el) {
+        el.addEventListener('click', function() {
+            hamburgers.forEach(function (el) {
+                el.classList.toggle('is-active');
+            });
+            body.classList.toggle('open');
+        });
+    });
 }
 
 // Gestion des ancres
 function anchors() {
-    $('a.anchor').on('click', function(e) {
-        e.preventDefault();
-        var target = $(this).attr('href');
-        $('html, body').animate({
-            scrollTop: ($(target).offset().top - $('#header').outerHeight(true))
-        }, 500);
+    const anchors = document.querySelectorAll('.anchor');
+    const header = document.getElementById('header');
+    anchors.forEach(function(el) {
+        el.addEventListener('click', function(e) {
+            e.preventDefault();
+            const href = el.getAttribute('href');
+            const offsetTop = document.querySelector(href).offsetTop - header.offsetHeight;
+            scroll({
+                top: offsetTop,
+                behavior: "smooth",
+            });
+        });
     });
 }
 
 // Affichage d'un lien vers le haut de page
 function backToTop() {
     var offset = 1000;
-    var selector = $('#backtotop');
-    $(window).scroll(function() {
-        scrollTop = $(window).scrollTop();
-        if(scrollTop > offset) {
-            selector.addClass('visible');
+    var selector = document.getElementById('backtotop');
+    window.addEventListener('scroll', function() {
+        scrollTop = window.scrollY;
+        if (scrollTop > offset) {
+            selector.classList.add('visible');
         } else {
-            selector.removeClass('visible');
+            selector.classList.remove('visible');
         }
     });
 }
 
-// Add or remove "active" class depending on element focus
+// Gestion des classes sur un formulaire
 function formClasses() {
-    $(window).on('ajaxInvalidField', function(event, fieldElement, fieldName, errorMsg, isFirst) {
-        var target = $(fieldElement).attr('name');
-        $('[name="'+target+'"]').addClass('is-invalid');
+
+    // Ajout / suppression d'une classe active lors du focus d'un élément
+    document.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]), select, textarea').forEach(function(el) {
+        
+        el.addEventListener('focus', function(e) {
+            const field = e.target.closest('.field');
+            field.classList.add('field-focus');
+        });
+        el.addEventListener('focusout', function(e) {
+            const field = e.target.closest('.field');
+            field.classList.remove('field-focus');
+            if(e.target.value) {
+                field.classList.add('field-filled');
+            }
+        });
     });
-    $(document).on('ajaxPromise', '[data-request]', function() {
-        var form = $(this).closest('form');
-        form.find('.is-invalid').removeClass('is-invalid');
-        form.find('.invalid-feedback').removeClass('visible');
+
+    // Champs invalides après soumission
+    addEventListener('ajax:invalid-field', function(e) {
+        const { element, fieldName, fieldMessages, isFirst } = e.detail;
+        element.closest('.field').classList.add('field-error');
+    });
+
+    // Nettoyage des champs au moment de la validation
+    addEventListener('ajax:promise', function(e) {
+        e.target.closest('form').querySelectorAll('.field-error').forEach(function(el) {
+            el.classList.remove('field-error');
+        });
     });
 }

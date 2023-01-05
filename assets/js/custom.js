@@ -3,10 +3,11 @@
  **/
  
 // Lorsque le DOM est prêt 
-$(document).ready(function() {
-  
+document.addEventListener('DOMContentLoaded', function() {
+    
 });
 
 /**
  * Fonctions
  **/
+

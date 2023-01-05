@@ -1,4 +1,5 @@
 [contenteditor editor]
+file = ".frlegal/mentions-legales.htm"
 
 [GtmHead]
 
@@ -9,11 +10,15 @@
 <!DOCTYPE html>
 <html lang="fr" prefix="og: http://ogp.me/ns#">
 <head>
+    {# Metas #}
     {% component 'GtmHead' %}
     {% component 'seo' %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {# Css #}
     {% styles %}
     <link href="{{ ['assets/scss/maintenance.scss']|theme }}" rel="stylesheet" />
+    {# Js #}
+    {% scripts %}
 </head>
 
 <body id="maintenance" class="{{ this.page.id }}">
@@ -21,7 +26,6 @@
     <main id="main">
         {% page %}
     </main>
-    {% scripts %}
 </body>
   
 </html>

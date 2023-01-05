@@ -1,11 +1,4 @@
-#maintenance { display:flex; align-items:center; justify-content:center; min-height:100vh; background:#004759; color:#fff; }
-#maintenance .main { width:100%; }
-#maintenance .content { text-align:center; }
-#maintenance .content h1 { font-weight:500; @include font-size(2.5rem); text-transform:uppercase; display:flex; flex-direction:column; justify-content:center; align-items:center; }
-#maintenance .content hr { margin:30px auto; max-width:50px; height:3px; background:#fff; border:none; }
-#maintenance .content .code { @include font-size(7.5rem); font-weight:300; }
-#maintenance .content .btn { color:#fff; background:transparent; border:2px solid #fff; border-radius:99px; padding:10px 15px; text-transform:uppercase; margin:20px 10px 0 10px; display:inline-block; @include font-size(0.813rem); transition:all 0.5s ease 0s; }
-#maintenance .content .btn:hover { text-decoration:none; background:#fff; color:#333; }
+#maintenance { }
 
 /**
  * XXL
