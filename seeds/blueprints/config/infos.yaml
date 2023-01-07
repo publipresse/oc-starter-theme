@@ -8,7 +8,7 @@ navigation:
     parent: settings
     category: Général
     description: Informations générales sur l'entreprise
-    icon: icon-legal
+    icon: icon-info-circle
     order: 10
 
 fields:
@@ -20,32 +20,38 @@ fields:
         label: Nom
         span: auto
         tab: Informations
+        validation: required
     company_status:
         label: Statut
         span: auto
         tab: Informations
         translatable: true
+        validation: required
     company_url:
         label: Url (sans https://)
         span: full
         tab: Informations
         placeholder: www.domain.tld
         translatable: true
+        validation: required
     company_address:
         label: Adresse postale
         type: textarea
         size: tiny
         span: full
         tab: Informations
+        validation: required
     company_email:
         label: Email
         span: left
         tab: Informations
+        validation: required
     company_tel:
         label: Téléphone
         span: auto
         tab: Informations
         translatable: true
+        validation: required
     publisher_section:
         label: Responsable de publication
         type: section
@@ -54,24 +60,27 @@ fields:
         label: Nom
         span: auto
         tab: Informations
+        validation: required
     publisher_email:
         label: Email
         span: auto
         tab: Informations
+        validation: required
     host_section:
         label: Hébergeur
         type: section
         tab: Informations
+        validation: required
     host_name:
         label: Nom
         span: auto
         tab: Informations
         placeholder: Altinea
+        validation: required
     host_address:
         label: Adresse postale
         type: text
         span: auto
         tab: Informations
         placeholder: 9 Rue du Faubourg, 39570 Nogna
-        validation:
-            required: true
+        validation: required

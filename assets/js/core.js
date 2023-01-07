@@ -2,8 +2,9 @@ document.addEventListener('DOMContentLoaded', function() {
     headroom();
     hamburger();
     anchors();
-    //backToTop();
     formClasses();
+    //backToTop();
+    //lenis();
 });
 
 // Gestion de l'entête sticky.
@@ -79,7 +80,6 @@ function formClasses() {
 
     // Ajout / suppression d'une classe active lors du focus d'un élément
     document.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]), select, textarea').forEach(function(el) {
-        
         el.addEventListener('focus', function(e) {
             const field = e.target.closest('.field');
             field.classList.add('field-focus');
@@ -105,4 +105,30 @@ function formClasses() {
             el.classList.remove('field-error');
         });
     });
+}
+
+function lenis() {
+    const lenis = new Lenis({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
+        direction: 'vertical', // vertical, horizontal
+        gestureDirection: 'vertical', // vertical, horizontal, both
+        smooth: true,
+        mouseMultiplier: 1,
+        smoothTouch: false,
+        touchMultiplier: 2,
+        infinite: false,
+    })
+
+    //get scroll value
+    lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
+        //console.log({ scroll, limit, velocity, direction, progress })
+    })
+
+    function raf(time) {
+        lenis.raf(time)
+        requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
 }
