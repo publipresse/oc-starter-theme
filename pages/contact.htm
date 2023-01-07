@@ -78,6 +78,12 @@ fileTypes[] = "mkv"
 fileTypes[] = "rar"
 fileTypes[] = "zip"
 ==
+<?php
+function onStart() {
+    $this->addJs('assets/vendor/jquery/jquery-3.6.3.js');
+}
+?>
+==
 {{ form_ajax('contact::onFormSubmit', { validate: true }) }}
 
     <div class="field field-text">
