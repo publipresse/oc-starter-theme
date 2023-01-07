@@ -107,6 +107,7 @@ function formClasses() {
     });
 }
 
+// Gestion du smooth scroll
 function lenis() {
     const lenis = new Lenis({
         duration: 1.5,

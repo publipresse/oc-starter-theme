@@ -24,11 +24,11 @@ fancybox = 0
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {# Css #}
     <link href="{{ ['@framework.extras', 'assets/vendor/hamburgers/hamburgers.css']|theme }}" rel="stylesheet" />
-    <link href="{{ ['assets/scss/core.scss', 'assets/scss/styles.scss', 'assets/scss/responsive.scss', 'assets/vendor/lenis/lenis.css']|theme }}" rel="stylesheet" />
+    <link href="{{ ['assets/scss/core.scss', 'assets/scss/styles.scss', 'assets/scss/responsive.scss']|theme }}" rel="stylesheet" />
     {% styles %}
     {# Js #}
     <script defer src="{{ ['@framework', '@framework.extras', '@framework.turbo']|theme }}"></script>
-    <script defer src="{{ ['assets/vendor/lazysizes/lazysizes.js', 'assets/vendor/headroom/headroom.js', 'assets/vendor/lenis/lenis.js']|theme }}"></script>
+    <script defer src="{{ ['assets/vendor/lazysizes/lazysizes.js', 'assets/vendor/headroom/headroom.js']|theme }}"></script>
     <script defer src="{{ ['assets/js/core.js', 'assets/js/custom.js']|theme }}"></script>
     {% scripts %}
 </head>
