@@ -1,14 +1,11 @@
-title = 403
 url = "/403"
 layout = "maintenance"
+title = 403
 is_hidden = 0
 ==
-<section class="content">
-    <div class="container">
-        <div class="code">403</div>
-        <h1>Accès refusé</h1>
-        <hr />
-        <p>Vous essayez d'accéder à une page à accès restreint. Merci de vous identifier pour continuer</p>
-        <a class="btn" href="{{ 'accueil'|page }}">Retourner à l'accueil</a>
-    </div>
-</section>
+<lottie-player id="lottie" src="https://assets2.lottiefiles.com/private_files/lf30_tonsVH.json" speed="1" loop autoplay></lottie-player>
+<h1>{{ "Accès refusé"|_ }}</h1>
+<p>{{ "Vous essayez d'accéder à une page à accès restreint. Merci de vous identifier pour continuer"|_ }}</p>
+<div id="buttons">
+    <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
+</div>

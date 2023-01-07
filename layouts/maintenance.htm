@@ -16,8 +16,9 @@ file = ".frlegal/mentions-legales.htm"
     <meta name="viewport" content="width=device-width, initial-scale=1">
     {# Css #}
     {% styles %}
-    <link href="{{ ['assets/scss/maintenance.scss']|theme }}" rel="stylesheet" />
+    <link href="{{ ['assets/scss/core.scss', 'assets/scss/maintenance.scss']|theme }}" rel="stylesheet" />
     {# Js #}
+    <script defer src="{{ ['assets/vendor/lottie/lottie-player.min.js']|theme }}"></script>
     {% scripts %}
 </head>
 

@@ -1,0 +1,27 @@
+url = "/mentions-legales"
+layout = "default"
+title = "Mentions légales"
+is_hidden = 0
+seoOptionsEnabledInSitemap = 1
+seoOptionsUseUpdatedAt = "true"
+seoOptionsRobotIndex = "index"
+seoOptionsRobotFollow = "follow"
+seoOptionsOgCard = "summary-large-image"
+
+[global infos]
+handle = "Config\Infos"
+==
+<section class="infos">
+    <div class="container">
+        {% content (this.site.hard_locale~'/core/mentions-legales')
+            company_name = infos.company_name
+            company_status = infos.company_status
+            company_address = infos.company_address
+            company_website = infos.company_website
+            publisher_name = infos.publisher_name
+            publisher_email = infos.publisher_email
+            host_name = infos.host_name
+            host_address = infos.host_address
+        %}
+    </div>
+</section>

@@ -1,13 +1,11 @@
-title = "Maintenance"
 url = "/maintenance"
 layout = "maintenance"
+title = "Maintenance"
 is_hidden = 0
 ==
-<section class="content">
-    <div class="container">
-        <h1>Site en maintenance</h1>
-        <hr />
-        <p>Veuillez nous excuser pour le désagrément, nous faisons tout notre possible pour écourter ce délai.</p>
-        <a class="btn" href="#" onclick="javascript:location.reload()">Rafraichir la page</a>
-    </div>
-</section>
+<lottie-player id="lottie" src="https://assets1.lottiefiles.com/private_files/lf30_vnbcd4ev.json" speed="1" loop autoplay></lottie-player>
+<h1>{{ "Site en maintenance"|_ }}</h1>
+<p>{{ "Veuillez nous excuser pour le désagrément, nous faisons tout notre possible pour écourter ce délai."|_ }}</p>
+<div id="buttons">
+    <a class="btn" href="#" onclick="javascript:location.reload()">{{ "Rafraichir la page"|_ }}</a>
+</div>

@@ -1,0 +1,33 @@
+uuid: 670f59d4-0416-474c-ad62-5cdaace70922
+handle: Config\Socials
+type: global
+name: Réseaux sociaux
+multisite: false
+
+navigation:
+    parent: settings
+    category: Général
+    description: Liste des réseaux sociaux
+    icon: icon-share-alt
+    order: 20
+
+fields:
+    items:
+        label: Réseaux sociaux
+        type: repeater
+        span: full
+        prompt: Ajouter un réseau social
+        form:
+            fields:
+                icon:
+                    label: Icone
+                    type: mediafinder
+                    mode: image
+                    maxItems: 1
+                    span: full
+                text: 
+                    label: Nom
+                    span: auto
+                url:
+                    label: url
+                    span: auto

@@ -3,12 +3,10 @@ layout = "maintenance"
 title = 404
 is_hidden = 0
 ==
-<section class="content">
-    <div class="container">
-        <div class="code">404</div>
-        <h1>Page non trouvée</h1>
-        <hr />
-        <p>Oups ! Il semble que la page que vous cherchez à consulter n'existe plus.</p>
-        <a class="btn" href="{{ 'accueil'|page }}">Retourner à l'accueil</a> <a class="btn" href="{{ 'contact'|page }}">Nous contacter</a>
-    </div>
-</section>
+<lottie-player id="lottie" src="https://assets2.lottiefiles.com/private_files/lf30_tonsVH.json" speed="1" loop autoplay></lottie-player>
+<h1>{{ "Page non trouvée"|_ }}</h1>
+<p>{{ "Oups ! Il semble que la page que vous cherchez à consulter n'existe plus."|_ }}</p>
+<div id="buttons">
+    <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
+    <a class="btn" href="{{ 'contact'|page }}">{{ "Nous contacter"|_ }}</a>
+</div>

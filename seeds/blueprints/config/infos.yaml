@@ -1,0 +1,77 @@
+uuid: f093b594-7d69-4992-8399-5fb2b5f8a572
+handle: Config\Infos
+type: global
+name: Informations générales
+multisite: true
+
+navigation:
+    parent: settings
+    category: Général
+    description: Informations générales sur l'entreprise
+    icon: icon-legal
+    order: 10
+
+fields:
+    company_section:
+        label: Informations sur l'entreprise
+        type: section
+        tab: Informations
+    company_name:
+        label: Nom
+        span: auto
+        tab: Informations
+    company_status:
+        label: Statut
+        span: auto
+        tab: Informations
+        translatable: true
+    company_url:
+        label: Url (sans https://)
+        span: full
+        tab: Informations
+        placeholder: www.domain.tld
+        translatable: true
+    company_address:
+        label: Adresse postale
+        type: textarea
+        size: tiny
+        span: full
+        tab: Informations
+    company_email:
+        label: Email
+        span: left
+        tab: Informations
+    company_tel:
+        label: Téléphone
+        span: auto
+        tab: Informations
+        translatable: true
+    publisher_section:
+        label: Responsable de publication
+        type: section
+        tab: Informations
+    publisher_name:
+        label: Nom
+        span: auto
+        tab: Informations
+    publisher_email:
+        label: Email
+        span: auto
+        tab: Informations
+    host_section:
+        label: Hébergeur
+        type: section
+        tab: Informations
+    host_name:
+        label: Nom
+        span: auto
+        tab: Informations
+        placeholder: Altinea
+    host_address:
+        label: Adresse postale
+        type: text
+        span: auto
+        tab: Informations
+        placeholder: 9 Rue du Faubourg, 39570 Nogna
+        validation:
+            required: true
