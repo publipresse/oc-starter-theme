@@ -101,9 +101,11 @@ function formClasses() {
 
     // Nettoyage des champs au moment de la validation
     addEventListener('ajax:promise', function(e) {
-        e.target.closest('form').querySelectorAll('.field-error').forEach(function(el) {
-            el.classList.remove('field-error');
-        });
+        if(e.target.tagName == 'FORM'){ // à préciser sinon ça se lance sur n'importe quel ajax. Ex: fancybox close, et ça met une erreur.
+            e.target.closest('form').querySelectorAll('.field-error').forEach(function(el) {
+                el.classList.remove('field-error');
+            });
+        }
     });
 }
 

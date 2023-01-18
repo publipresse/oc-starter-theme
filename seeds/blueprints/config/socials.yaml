@@ -21,10 +21,11 @@ fields:
             fields:
                 icon:
                     label: Icone
-                    type: mediafinder
+                    type: fileupload
                     mode: image
-                    maxItems: 1
+                    maxFiles: 1
                     span: full
+                    fileTypes: jpg,png,svg,gif
                 text: 
                     label: Nom
                     span: auto
