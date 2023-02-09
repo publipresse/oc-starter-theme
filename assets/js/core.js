@@ -1,4 +1,6 @@
-document.addEventListener('DOMContentLoaded', function() {
+// document.addEventListener('DOMContentLoaded', function() {
+// ajax page loaded with turbo
+document.addEventListener('page:loaded', function() {
     headroom();
     hamburger();
     anchors();
