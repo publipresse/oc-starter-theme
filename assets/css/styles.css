@@ -4,6 +4,7 @@
 
 /* Global */
 #page { position:relative; width:100%; overflow:hidden; }
+.oc-progress-bar { background: #######; } // attention, ça ne marche pas avec une variable. Il faut une valeur hexa.
 
 /* Header */
 

@@ -1,8 +1,7 @@
-addEventListener('page:loaded', function() {
-    initHeadroom();
-    initHamburger();
-    initAnchors();
-    initLoconative();
+document.addEventListener('DOMContentLoaded', function() {
+    headroom();
+    hamburger();
+    anchors();
     formClasses();
     //backToTop();
 });
