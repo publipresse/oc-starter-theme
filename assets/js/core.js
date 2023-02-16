@@ -1,14 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
-    headroom();
-    hamburger();
-    anchors();
+addEventListener('page:loaded', function() {
+    initHeadroom();
+    initHamburger();
+    initAnchors();
+    initLoconative();
     formClasses();
     //backToTop();
-    //lenis();
 });
 
 // Gestion de l'entête sticky.
-function headroom() {
+function initHeadroom() {
     if (typeof Headroom !== "undefined") {
         const headroom  = new Headroom(document.getElementById('header'), {
             offset : 0,
@@ -31,7 +31,7 @@ function headroom() {
 }
 
 // Attributions des classes pour le responsive
-function hamburger() {
+function initHamburger() {
     const hamburgers = document.querySelectorAll('.hamburger');
     const body = document.querySelector('body');
     hamburgers.forEach(function(el) {
@@ -45,7 +45,7 @@ function hamburger() {
 }
 
 // Gestion des ancres
-function anchors() {
+function initAnchors() {
     const anchors = document.querySelectorAll('.anchor');
     const header = document.getElementById('header');
     anchors.forEach(function(el) {
@@ -58,20 +58,6 @@ function anchors() {
                 behavior: "smooth",
             });
         });
-    });
-}
-
-// Affichage d'un lien vers le haut de page
-function backToTop() {
-    var offset = 1000;
-    var selector = document.getElementById('backtotop');
-    window.addEventListener('scroll', function() {
-        scrollTop = window.scrollY;
-        if (scrollTop > offset) {
-            selector.classList.add('visible');
-        } else {
-            selector.classList.remove('visible');
-        }
     });
 }
 
@@ -109,29 +95,22 @@ function formClasses() {
     });
 }
 
-// Gestion du smooth scroll
-function lenis() {
-    const lenis = new Lenis({
-        duration: 1.5,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // https://www.desmos.com/calculator/brs54l4xou
-        direction: 'vertical', // vertical, horizontal
-        gestureDirection: 'vertical', // vertical, horizontal, both
-        smooth: true,
-        mouseMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-    })
+function initLoconative() {
+    window.scroll = new LoconativeScroll({
+        smooth: true
+    });
+}
 
-    //get scroll value
-    lenis.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-        //console.log({ scroll, limit, velocity, direction, progress })
-    })
-
-    function raf(time) {
-        lenis.raf(time)
-        requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
+// Affichage d'un lien vers le haut de page
+function backToTop() {
+    var offset = 1000;
+    var selector = document.getElementById('backtotop');
+    window.addEventListener('scroll', function() {
+        scrollTop = window.scrollY;
+        if (scrollTop > offset) {
+            selector.classList.add('visible');
+        } else {
+            selector.classList.remove('visible');
+        }
+    });
 }

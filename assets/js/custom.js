@@ -3,8 +3,8 @@
  **/
  
 // Lorsque le DOM est prêt 
-document.addEventListener('DOMContentLoaded', function() {
-    
+addEventListener('page:loaded', function() {
+
 });
 
 /**

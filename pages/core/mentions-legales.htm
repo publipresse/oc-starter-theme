@@ -13,15 +13,22 @@ seoOptionsMetaDescription = "Découvrez les mentions légales de notre site web,
 [global infos]
 handle = "Config\Infos"
 ==
-<section class="infos">
+<section class="legal">
     <div class="container">
-        {% content (this.site.hard_locale~'/core/mentions-legales')
+        {% content (this.site.hard_locale~'/core/mentions-legales.html')
             company_name = infos.company_name
             company_status = infos.company_status
             company_address = infos.company_address
+            company_tel = infos.company_tel
+            company_vat = infos.company_vat
             company_website = infos.company_website
+            company_capital = infos.company_capital
+            company_rcs_city = infos.company_rcs_city
+            company_rcs_number = infos.company_rcs_number
             publisher_name = infos.publisher_name
             publisher_email = infos.publisher_email
+            dpo_name = infos.dpo_name
+            dpo_email = infos.dpo_email
             host_name = infos.host_name
             host_address = infos.host_address
         %}

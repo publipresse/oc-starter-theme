@@ -11,14 +11,13 @@ seoOptionsMetaTitle = "Contactez-nous"
 seoOptionsMetaDescription = "N'hésitez pas à nous contacter pour toute question ou demande d'informations supplémentaires. Nous vous répondrons dans les plus brefs délais."
 
 [uploadForm contact]
-group = "Demande de devis"
+group = "Formulaire de contact"
 rules[Nom] = "required"
 messages_success = "Votre formulaire a été envoyé avec succès"
 messages_errors = "Il y a eu des erreurs dans votre formulaire"
 mail_enabled = 1
 mail_subject = "[{{ record.date }}] - {{ form.Prénom }} {{ form.Nom }} - Formulaire de contact"
 mail_replyto = "Email"
-mail_uploads = 1
 reset_form = 1
 feedback_mode = "inline"
 sanitize_data = "disabled"
@@ -28,6 +27,7 @@ recaptcha_theme = "light"
 recaptcha_type = "image"
 recaptcha_size = "invisible"
 emails_date_format = "d/m/Y"
+mail_uploads = 1
 uploader_enable = 1
 maxFiles = 5
 maxFileSize = "2MB"
