@@ -100,6 +100,17 @@ function formClasses() {
             });
         }
     });
+
+    // Autoheight sur les textarea    
+    document.querySelectorAll('textarea').forEach(function(textarea) {
+        textareaStyles = textarea.currentStyle || window.getComputedStyle(textarea);
+        padding = parseInt(textareaStyles.paddingTop) + parseInt(textareaStyles.paddingBottom);
+        var offset = textarea.offsetHeight - textarea.clientHeight;
+        textarea.addEventListener('input', function (event) {
+            event.target.style.height = 'auto';
+            event.target.style.height = event.target.scrollHeight + offset - padding+ 'px';
+        });
+    });
 }
 
 
