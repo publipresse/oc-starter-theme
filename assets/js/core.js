@@ -105,6 +105,11 @@ function formClasses() {
         }
     });
 
+    // On réinitialise la fonction en cas de refresh ajax
+    addEventListener('ajax:update-complete', function(e) {
+        formClasses();
+    });
+
     // Autoheight sur les textarea    
     document.querySelectorAll('textarea').forEach(function(textarea) {
         textareaStyles = textarea.currentStyle || window.getComputedStyle(textarea);
