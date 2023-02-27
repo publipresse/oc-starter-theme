@@ -1,7 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    headroom();
-    hamburger();
-    anchors();
+    initHeadroom();
+    initHamburger();
+    initAnchors();
+    initLoconative();
     formClasses();
     //backToTop();
 });
@@ -60,6 +61,13 @@ function initAnchors() {
     });
 }
 
+// Initialisation de loconative scroll
+function initLoconative() {
+    window.scroll = new LoconativeScroll({
+        smooth: true
+    });
+}
+
 // Gestion des classes sur un formulaire
 function formClasses() {
 
@@ -94,11 +102,7 @@ function formClasses() {
     });
 }
 
-function initLoconative() {
-    window.scroll = new LoconativeScroll({
-        smooth: true
-    });
-}
+
 
 // Affichage d'un lien vers le haut de page
 function backToTop() {
