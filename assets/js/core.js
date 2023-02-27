@@ -75,21 +75,25 @@ function formClasses() {
     document.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]), select, textarea').forEach(function(el) {
         el.addEventListener('focus', function(e) {
             const field = e.target.closest('.field');
+            if(!field) return;
             field.classList.add('field-focus');
         });
         el.addEventListener('focusout', function(e) {
             const field = e.target.closest('.field');
+            if(!field) return;
             field.classList.remove('field-focus');
             if(e.target.value) {
                 field.classList.add('field-filled');
             }
         });
     });
-
+    
     // Champs invalides après soumission
     addEventListener('ajax:invalid-field', function(e) {
         const { element, fieldName, fieldMessages, isFirst } = e.detail;
-        element.closest('.field').classList.add('field-error');
+        const field = element.closest('.field');
+        if(!field) return;
+        field.classList.add('field-error');
     });
 
     // Nettoyage des champs au moment de la validation
