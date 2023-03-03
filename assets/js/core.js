@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+addEventListener('page:loaded', function() {
     initHeadroom();
     initHamburger();
     initAnchors();
