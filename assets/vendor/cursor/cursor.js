@@ -8,6 +8,7 @@ class Cursor {
             duration: 500,
             easing: 'cubic-bezier(1, 0.01, 1, 1)',
             debug: true,
+            customAnimation: false,
         }, options);
 
         this.parent = document.querySelector(this.settings.parent);
@@ -62,18 +63,20 @@ class Cursor {
             }
         });
 
-        document.addEventListener('mousemove', (e) => {
-            var pos = {
-                left: e.clientX + "px",
-                top: e.clientY + "px"
-            };
+        if(this.settings.customAnimation == false) {
+            document.addEventListener('mousemove', (e) => {
+                var pos = {
+                    left: e.clientX + "px",
+                    top: e.clientY + "px"
+                };
 
-            this.cursor.animate(pos, {
-                duration: this.settings.duration,
-                easing: this.settings.easing,
-                iterations: 1,
-                fill: "both"
+                this.cursor.animate(pos, {
+                    duration: this.settings.duration,
+                    easing: this.settings.easing,
+                    iterations: 1,
+                    fill: "both"
+                });
             });
-        });
+        }
     }
 }
