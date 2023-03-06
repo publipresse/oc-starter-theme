@@ -28,7 +28,7 @@ p:last-child { margin-bottom:0; }
 
 /* Medias */
 img, svg, video, iframe { max-width:100%; height:auto; }
-[data-sizes] { display:block; }
+.lazy { display:block; }
 [data-bg] { background-size:cover; background-repeat:no-repeat; background-position:center center; }
 
 /* Links */

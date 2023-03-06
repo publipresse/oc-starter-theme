@@ -1,8 +1,9 @@
-document.addEventListener('DOMContentLoaded', function() {
+addEventListener('page:loaded', function() {
     initHeadroom();
     initHamburger();
     initAnchors();
-    initLoconative();
+    initLenis();
+    initGsap();
     formClasses();
     //backToTop();
 });
@@ -61,11 +62,34 @@ function initAnchors() {
     });
 }
 
-// Initialisation de loconative scroll
-function initLoconative() {
-    window.scroll = new LoconativeScroll({
-        smooth: true
-    });
+function initLenis() {
+    window.scroll = new Lenis({
+        duration: 1.5,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: 'vertical',
+        gestureOrientation: 'vertical',
+        smoothWheel: true,
+        wheelMultiplier: 1,
+        smoothTouch: false,
+        touchMultiplier: 2,
+        infinite: false,
+    })
+
+    //get scroll value
+    window.scroll.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
+        //console.log({ scroll, limit, velocity, direction, progress })
+    })
+
+    function raf(time) {
+        window.scroll.raf(time)
+        requestAnimationFrame(raf)
+    }
+
+    requestAnimationFrame(raf)
+}
+
+function initGsap() {
+    gsap.registerPlugin(ScrollTrigger);
 }
 
 // Gestion des classes sur un formulaire
