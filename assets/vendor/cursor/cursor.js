@@ -5,8 +5,8 @@ class Cursor {
             parent: 'body',
             cursor: '<div id="cursor"></div>',
             hover: 'data-cursor',
-            duration: 500,
-            easing: 'cubic-bezier(1, 0.01, 1, 1)',
+            duration: 0.5,
+            easing: 'power1.out',
             debug: true,
             customAnimation: false,
         }, options);
@@ -67,7 +67,12 @@ class Cursor {
             document.addEventListener('mousemove', (e) => {
                 const left = e.clientX;
                 const top = e.clientY;
-                gsap.to(this.cursor, 0.3, { left: left, top: top });
+                gsap.to(this.cursor, { 
+                    left: left, 
+                    top: top,
+                    duration: this.settings.duration,
+                    ease: this.settings.easing,
+                });
             });
         }
     }
