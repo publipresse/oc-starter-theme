@@ -65,17 +65,9 @@ class Cursor {
 
         if(this.settings.customAnimation == false) {
             document.addEventListener('mousemove', (e) => {
-                var pos = {
-                    left: e.clientX + "px",
-                    top: e.clientY + "px"
-                };
-
-                this.cursor.animate(pos, {
-                    duration: this.settings.duration,
-                    easing: this.settings.easing,
-                    iterations: 1,
-                    fill: "both"
-                });
+                const left = e.clientX;
+                const top = e.clientY;
+                gsap.to(this.cursor, 0.3, { left: left, top: top });
             });
         }
     }
