@@ -1,4 +1,5 @@
 addEventListener('page:loaded', function() {
+    initLazyload();
     initHeadroom();
     initHamburger();
     initAnchors();
@@ -7,6 +8,13 @@ addEventListener('page:loaded', function() {
     formClasses();
     //backToTop();
 });
+
+// Initialisation du lazyload
+function initLazyload() {
+    var lazyLoadInstance = new LazyLoad({
+        // Your custom settings go here
+    });
+}
 
 // Gestion de l'entête sticky.
 function initHeadroom() {
