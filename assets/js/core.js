@@ -11,7 +11,7 @@ addEventListener('page:loaded', function() {
 
 // Initialisation du lazyload
 function initLazyload() {
-    var lazyLoadInstance = new LazyLoad({
+    window.lazyLoadInstance = new LazyLoad({
         // Your custom settings go here
     });
 }
@@ -140,6 +140,7 @@ function formClasses() {
     // On réinitialise la fonction en cas de refresh ajax
     addEventListener('ajax:update-complete', function(e) {
         formClasses();
+        window.lazyLoadInstance.update();
     });
 
     // Autoheight sur les textarea    
