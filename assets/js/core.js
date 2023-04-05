@@ -116,6 +116,8 @@ function formClasses() {
             field.classList.remove('field-focus');
             if(e.target.value) {
                 field.classList.add('field-filled');
+            } else {
+                field.classList.remove('field-filled');
             }
         });
     });
