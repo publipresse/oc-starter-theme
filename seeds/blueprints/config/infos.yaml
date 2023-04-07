@@ -24,8 +24,8 @@ fields:
         label: Statut
         span: auto
         tab: Informations
-    company_url:
-        label: Url
+    company_website:
+        label: Url du site web
         span: full
         tab: Informations
         placeholder: www.domain.tld
@@ -61,6 +61,10 @@ fields:
         tab: Informations
     company_rcs_number:
         label: Numéro RCS
+        span: auto
+        tab: Informations
+    company_siren:
+        label: Siren
         span: auto
         tab: Informations
     publisher_section:
