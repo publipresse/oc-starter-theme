@@ -48,7 +48,7 @@ a:hover { text-decoration:none; }
 [data-validate-for] { display:none; }
 [data-validate-for].oc-visible { display:block; }
 
-button { cursor:pointer; }
+button { cursor:pointer; -webkit-tap-highlight-color: transparent; outline: none;  }
 
 /* Alerts */
 .alert { position:relative; padding:1rem 4rem 1rem 1rem; background-color: #f44336; margin:1rem 0; background:#cfe2ff; border:1px solid #b6d4fe; color:#084298; }
