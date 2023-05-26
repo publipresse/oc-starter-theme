@@ -1,17 +1,15 @@
 addEventListener('page:loaded', function() {
     initLazyload();
-    initHeadroom();
-    initHamburger();
-    initAnchors();
     initLenis();
+    initHeadroom();
     initGsap();
-    formClasses();
+    initForm();
     //backToTop();
 });
 
 // Initialisation du lazyload
 function initLazyload() {
-    window.lazyLoadInstance = new LazyLoad({
+    window.lazyload = new LazyLoad({
         // Your custom settings go here
     });
 }
@@ -37,37 +35,6 @@ function initHeadroom() {
         });
         headroom.init();
     }
-}
-
-// Attributions des classes pour le responsive
-function initHamburger() {
-    const hamburgers = document.querySelectorAll('.hamburger');
-    const body = document.querySelector('body');
-    hamburgers.forEach(function(el) {
-        el.addEventListener('click', function() {
-            hamburgers.forEach(function (el) {
-                el.classList.toggle('is-active');
-            });
-            body.classList.toggle('open');
-        });
-    });
-}
-
-// Gestion des ancres
-function initAnchors() {
-    const anchors = document.querySelectorAll('.anchor');
-    const header = document.getElementById('header');
-    anchors.forEach(function(el) {
-        el.addEventListener('click', function(e) {
-            e.preventDefault();
-            const href = el.getAttribute('href');
-            const offsetTop = document.querySelector(href).offsetTop - header.offsetHeight;
-            scroll({
-                top: offsetTop,
-                behavior: "smooth",
-            });
-        });
-    });
 }
 
 function initLenis() {
@@ -98,10 +65,11 @@ function initLenis() {
 
 function initGsap() {
     gsap.registerPlugin(ScrollTrigger);
+    //gsap.registerPlugin(SplitText);
 }
 
 // Gestion des classes sur un formulaire
-function formClasses() {
+function initForm() {
 
     // Ajout / suppression d'une classe active lors du focus d'un élément
     document.querySelectorAll('input:not([type="checkbox"]):not([type="radio"]):not([type="hidden"]), select, textarea').forEach(function(el) {
@@ -141,8 +109,8 @@ function formClasses() {
 
     // On réinitialise la fonction en cas de refresh ajax
     addEventListener('ajax:update-complete', function(e) {
-        formClasses();
-        window.lazyLoadInstance.update();
+        initForm();
+        window.lazyload.update();
     });
 
     // Autoheight sur les textarea    

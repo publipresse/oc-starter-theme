@@ -6,8 +6,8 @@
 category = 0
 type = "fancybox"
 mode = "separate"
-swiper = 1
-fancybox = 1
+swiper = 0
+fancybox = 0
 
 [matomojs]
 ==
@@ -18,19 +18,20 @@ fancybox = 1
     {% component 'seo' %}
     {% component 'matomojs' %}
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    {# <meta name="turbo-visit-control" content="disable" /> #}
+    <meta name="turbo-visit-control" content="disable" />
     {# Css #}
     <link href="{{ ['@framework.bundle', 'assets/vendor/hamburgers/hamburgers.css']|theme }}.css" rel="stylesheet" />
     <link href="{{ ['assets/css/core.css', 'assets/css/styles.css', 'assets/css/responsive.css']|theme }}.css" rel="stylesheet" />
     {% styles %}
     {# Js #}
     <script defer src="{{ ['@framework.bundle']|theme }}.js"></script>
-    <script defer src="{{ ['assets/vendor/lazyload/lazyload.js', 'assets/vendor/headroom/headroom.js', 'assets/vendor/lenis/lenis.js', 'assets/vendor/gsap/dist/gsap.js', 'assets/vendor/gsap/dist/ScrollTrigger.js', 'assets/vendor/alpine/collapse.js', 'assets/vendor/alpine/alpine.js']|theme }}.js"></script>
+    <script defer src="{{ ['assets/vendor/lazyload/lazyload.js', 'assets/vendor/headroom/headroom.js', 'assets/vendor/lenis/lenis.js', 'assets/vendor/alpine/collapse.js', 'assets/vendor/alpine/alpine.js']|theme }}.js"></script>
+    <script defer src="{{ ['assets/vendor/gsap/dist/gsap.js', 'assets/vendor/gsap/dist/ScrollTrigger.js']|theme }}.js"></script>
     <script defer src="{{ ['assets/js/core.js', 'assets/js/custom.js']|theme }}.js"></script>
     {% scripts %}
 </head>
 
-<body id="{{ this.page.id }}">
+<body id="page-{{ this.page.id }}" x-data="{ menuOpen: false }" :class="menuOpen ? 'menu-open' : ''">
     <div id="page">
         {% partial 'header' %}
         <main id="main">
