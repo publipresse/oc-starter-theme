@@ -1,69 +1,53 @@
 addEventListener('page:loaded', function() {
-    //initSplit();
-    //destroySplit();
+    initSplit();
     initTextEffects();
 })
 
 function initSplit() {
-    Splitting({
-        target: ".split",
-        by: "chars",
-        key: null
+    const split =  new SplitText('.split-text', {
+        linesClass: 'line',
+        wordsClass: 'word',
+        charsClass: 'char',
+    });
+    
+    const button = document.querySelector('.ct-ignition__button--edit');
+    button.addEventListener('mousedown', function(e) {
+        document.querySelectorAll('.split-text').forEach(function(item, key) {
+            split.revert();
+        });
     });
 }
 
-function destroySplit() {
-    const button = document.querySelector('.ct-ignition__button--edit');
-    if(button) {
-        button.addEventListener('click', function() {
-            document.querySelectorAll('.split').forEach(function(item, key) {
-                let strippedString = item.innerHTML.replace(/<(?!br\s*\/?)[^>]+>/g, '');
-                item.innerHTML = strippedString;
-                item.classList.remove('words', 'chars', 'splitting');
-                item.style = null;
-            });
-        });
-
-        editor.addEventListener('saved', function (ev) {
-            // initSplit();
-            // initTextEffect();
-            setTimeout(function() {
-            location.reload()
-            }, 1000);
-        });
-    }
-}
-
 function initTextEffects() {
-    const fx1Titles = document.querySelectorAll('.split.split-1');
-    const fx2Titles = document.querySelectorAll('.split.split-2');
-    const fx3Titles = document.querySelectorAll('.split.split-3');
-    const fx4Titles = document.querySelectorAll('.split.split-4');
-    const fx5Titles = document.querySelectorAll('.split.split-5');
-    const fx6Titles = document.querySelectorAll('.split.split-6');
-    const fx7Titles = document.querySelectorAll('.split.split-7');
-    const fx8Titles = document.querySelectorAll('.split.split-8');
-    const fx9Titles = document.querySelectorAll('.split.split-9');
-    const fx10Titles = document.querySelectorAll('.split.split-10');
-    const fx11Titles = document.querySelectorAll('.split.split-11');
-    const fx12Titles = document.querySelectorAll('.split.split-12');
-    const fx13Titles = document.querySelectorAll('.split.split-13');
-    const fx14Titles = document.querySelectorAll('.split.split-14');
-    const fx15Titles = document.querySelectorAll('.split.split-15');
-    const fx16Titles = document.querySelectorAll('.split.split-16');
-    const fx17Titles = document.querySelectorAll('.split.split-17');
-    const fx18Titles = document.querySelectorAll('.split.split-18');
-    const fx19Titles = document.querySelectorAll('.split.split-19');
-    const fx20Titles = document.querySelectorAll('.split.split-20');
-    const fx21Titles = document.querySelectorAll('.split.split-21');
-    const fx22Titles = document.querySelectorAll('.split.split-22');
-    const fx23Titles = document.querySelectorAll('.split.split-23');
-    const fx24Titles = document.querySelectorAll('.split.split-24');
-    const fx25Titles = document.querySelectorAll('.split.split-25');
-    const fx26Titles = document.querySelectorAll('.split.split-26');
-    const fx27Titles = document.querySelectorAll('.split.split-27');
-    const fx28Titles = document.querySelectorAll('.split.split-28');
-    const fx29Titles = document.querySelectorAll('.split.split-29');
+    const fx1Titles = document.querySelectorAll('.split-text.split-1');
+    const fx2Titles = document.querySelectorAll('.split-text.split-2');
+    const fx3Titles = document.querySelectorAll('.split-text.split-3');
+    const fx4Titles = document.querySelectorAll('.split-text.split-4');
+    const fx5Titles = document.querySelectorAll('.split-text.split-5');
+    const fx6Titles = document.querySelectorAll('.split-text.split-6');
+    const fx7Titles = document.querySelectorAll('.split-text.split-7');
+    const fx8Titles = document.querySelectorAll('.split-text.split-8');
+    const fx9Titles = document.querySelectorAll('.split-text.split-9');
+    const fx10Titles = document.querySelectorAll('.split-text.split-10');
+    const fx11Titles = document.querySelectorAll('.split-text.split-11');
+    const fx12Titles = document.querySelectorAll('.split-text.split-12');
+    const fx13Titles = document.querySelectorAll('.split-text.split-13');
+    const fx14Titles = document.querySelectorAll('.split-text.split-14');
+    const fx15Titles = document.querySelectorAll('.split-text.split-15');
+    const fx16Titles = document.querySelectorAll('.split-text.split-16');
+    const fx17Titles = document.querySelectorAll('.split-text.split-17');
+    const fx18Titles = document.querySelectorAll('.split-text.split-18');
+    const fx19Titles = document.querySelectorAll('.split-text.split-19');
+    const fx20Titles = document.querySelectorAll('.split-text.split-20');
+    const fx21Titles = document.querySelectorAll('.split-text.split-21');
+    const fx22Titles = document.querySelectorAll('.split-text.split-22');
+    const fx23Titles = document.querySelectorAll('.split-text.split-23');
+    const fx24Titles = document.querySelectorAll('.split-text.split-24');
+    const fx25Titles = document.querySelectorAll('.split-text.split-25');
+    const fx26Titles = document.querySelectorAll('.split-text.split-26');
+    const fx27Titles = document.querySelectorAll('.split-text.split-27');
+    const fx28Titles = document.querySelectorAll('.split-text.split-28');
+    const fx29Titles = document.querySelectorAll('.split-text.split-29');
 
     
     fx1Titles.forEach(title => {

@@ -65,7 +65,7 @@ function initLenis() {
 
 function initGsap() {
     gsap.registerPlugin(ScrollTrigger);
-    //gsap.registerPlugin(SplitText);
+    gsap.registerPlugin(SplitText);
 }
 
 // Gestion des classes sur un formulaire
