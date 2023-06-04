@@ -11,11 +11,13 @@ function initSplit() {
     });
     
     const button = document.querySelector('.ct-ignition__button--edit');
-    button.addEventListener('mousedown', function(e) {
-        document.querySelectorAll('.split-text').forEach(function(item, key) {
-            split.revert();
+    if(button) {
+        button.addEventListener('mousedown', function(e) {
+            document.querySelectorAll('.split-text').forEach(function(item, key) {
+                split.revert();
+            });
         });
-    });
+    }
 }
 
 function initTextEffects() {

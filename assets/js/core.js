@@ -10,7 +10,17 @@ addEventListener('page:loaded', function() {
 // Initialisation du lazyload
 function initLazyload() {
     window.lazyload = new LazyLoad({
-        // Your custom settings go here
+        callback_enter: function(el) {
+            const width = el.clientWidth;
+            el.sizes = width+'px';
+        }
+    });
+    
+    addEventListener('resize', function(e) {
+        const images = document.querySelectorAll('img[sizes]').forEach(function(el) {
+            const width = el.clientWidth;
+            el.sizes = width+'px';
+        })
     });
 }
 
@@ -64,8 +74,8 @@ function initLenis() {
 }
 
 function initGsap() {
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.registerPlugin(SplitText);
+    if(typeof ScrollTrigger !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
+    if(typeof SplitText !== 'undefined') { gsap.registerPlugin(SplitText); }
 }
 
 // Gestion des classes sur un formulaire
