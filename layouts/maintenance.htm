@@ -1,22 +1,18 @@
-[contenteditor editor]
-file = ".frlegal/mentions-legales.htm"
-
-[seo]
-
 [matomojs]
 ==
 <!DOCTYPE html>
-<html lang="fr" prefix="og: http://ogp.me/ns#">
+<html lang="{{ this.site.hard_locale }}" prefix="og: http://ogp.me/ns#">
 <head>
     {# Metas #}
-    {% component 'seo' %}
+    {% partial 'seo' %}
+    {# Analytics #}
     {% component 'matomojs' %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     {# Css #}
-    {% styles %}
     <link href="{{ ['assets/css/core.css', 'assets/css/maintenance.css']|theme }}.css" rel="stylesheet" />
+    {% styles %}
     {# Js #}
     <script defer src="{{ ['assets/vendor/lottie/lottie-player.min.js']|theme }}.js"></script>
+    {% scripts %}
 </head>
 
 <body id="maintenance" class="{{ this.page.id }}">
@@ -25,5 +21,4 @@ file = ".frlegal/mentions-legales.htm"
     </main>
     {% scripts %}
 </body>
-  
 </html>

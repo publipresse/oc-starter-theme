@@ -1,6 +1,5 @@
 [contenteditor editor]
-
-[seo]
+file = "en/core/mentions-legales.html"
 
 [matomojs]
 ==
@@ -8,10 +7,9 @@
 <html lang="{{ this.site.hard_locale }}" prefix="og: http://ogp.me/ns#">
 <head>
     {# Metas #}
-    {% component 'seo' %}
+    {% partial 'seo' %}
+    {# Analytics #}
     {% component 'matomojs' %}
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="turbo-visit-control" content="disable" />
     {# Css #}
     <link href="{{ ['@framework.bundle', 'assets/vendor/hamburgers/hamburgers.css']|theme }}.css" rel="stylesheet" />
     <link href="{{ ['assets/css/core.css', 'assets/css/styles.css', 'assets/css/responsive.css']|theme }}.css" rel="stylesheet" />
@@ -33,5 +31,4 @@
         {% partial 'footer' %}
     </div>
 </body>
-  
 </html>

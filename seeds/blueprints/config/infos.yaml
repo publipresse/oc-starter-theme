@@ -12,97 +12,77 @@ navigation:
     order: 10
 
 fields:
-    company_section:
-        label: Informations sur l'entreprise
-        type: section
-        tab: Informations
     company_name:
         label: Nom
         span: auto
-        tab: Informations
+        tab: Coordonnées
     company_status:
         label: Statut
         span: auto
-        tab: Informations
+        tab: Coordonnées
     company_website:
         label: Url du site web
         span: full
-        tab: Informations
+        tab: Coordonnées
         placeholder: www.domain.tld
     company_address:
         label: Adresse postale
         type: textarea
         size: tiny
         span: full
-        tab: Informations
+        tab: Coordonnées
     company_email:
         label: Email
         span: left
-        tab: Informations
+        tab: Coordonnées
     company_tel:
         label: Téléphone
         span: auto
-        tab: Informations
-    legal_section:
-        label: Informations légales
-        type: section
-        tab: Informations
-    company_vat:
-        label: Numéro de TVA
-        span: auto
-        tab: Informations
-    company_capital:
-        label: Capital
-        span: auto
-        tab: Informations
-    company_rcs_city:
-        label: Ville RCS
-        span: auto
-        tab: Informations
-    company_rcs_number:
-        label: Numéro RCS
-        span: auto
-        tab: Informations
+        tab: Coordonnées
     company_siren:
         label: Siren
         span: auto
-        tab: Informations
+        tab: Informations légales
+    company_vat:
+        label: Numéro de TVA
+        span: auto
+        tab: Informations légales
+    company_capital:
+        label: Capital
+        span: auto
+        tab: Informations légales
     publisher_section:
         label: Responsable de publication
         type: section
-        tab: Informations
+        tab: Publication
     publisher_name:
         label: Nom
         span: auto
-        tab: Informations
+        tab: Publication
     publisher_email:
         label: Email
         span: auto
-        tab: Informations
+        tab: Publication
     dpo_section:
         label: DPO
         type: section
-        tab: Informations
+        tab: Publication
     dpo_name:
         label: Nom du DPO
         span: auto
-        tab: Informations
+        tab: Publication
     dpo_email:
         label: Adresse email
         span: auto
-        tab: Informations
-    host_section:
-        label: Hébergeur
-        type: section
-        tab: Informations
+        tab: Publication
     host_name:
         label: Nom
         span: auto
-        tab: Informations
+        tab: Hébergement
         default: Altinea
     host_address:
         label: Adresse postale
         type: text
         span: auto
-        tab: Informations
+        tab: Hébergement
         default: 9 Rue du Faubourg, 39570 Nogna

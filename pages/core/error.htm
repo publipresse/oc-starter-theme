@@ -2,6 +2,8 @@ url = "/erreur"
 layout = "maintenance"
 title = "Error"
 is_hidden = 0
+meta_title = "Erreur - Quelque chose s'est mal passé"
+meta_description = "Une erreur est survenue lors de l'accès à cette page. Veuillez réessayer plus tard ou contacter l'administrateur si le problème persiste."
 seoOptionsMetaTitle = "Erreur - Quelque chose s'est mal passé"
 seoOptionsMetaDescription = "Une erreur est survenue lors de l'accès à cette page. Veuillez réessayer plus tard ou contacter l'administrateur si le problème persiste."
 seoOptionsEnabledInSitemap = 1
@@ -10,12 +12,10 @@ seoOptionsRobotIndex = "index"
 seoOptionsRobotFollow = "follow"
 seoOptionsOgCard = "summary_large_image"
 ==
-<section class="content">
-    <div class="container">
-        <div class="code">502</div>
-        <h1>Erreur</h1>
-        <hr />
-        <p>La page que vous essayez de consulter retourne une erreur, essayez de rafraichir votre navigateur. Si le problème persiste, merci de nous contacter</p>
-        <a class="btn" href="{{ 'accueil'|page }}">Retour à l'accueil</a> <a class="btn" href="{{ 'contact'|page }}">Nous contacter</a>
-    </div>
-</section>
+<lottie-player id="lottie" src="https://assets4.lottiefiles.com/packages/lf20_e1pmabgl.json" speed="1" loop autoplay></lottie-player>
+<h1>{{ "Erreur"|_ }}</h1>
+<p>{{ "La page que vous essayez de consulter retourne une erreur, essayez de rafraichir votre navigateur. Si le problème persiste, merci de nous contacter"|_ }}</p>
+<div id="buttons">
+    <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
+    <a class="btn" href="{{ 'contact'|page }}">{{ "Nous contacter"|_ }}</a>
+</div>

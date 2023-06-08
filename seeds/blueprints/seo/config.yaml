@@ -1,0 +1,66 @@
+uuid: 17b38cad-19e5-4bf9-b171-d14991c38c68
+handle: Seo\Config
+type: global
+name: Configuration
+multisite: true
+
+navigation:
+    parent: settings
+    icon: icon-cog
+    category: Seo
+    description: Paramètres Seo de base
+    order: 10
+
+fields:
+    meta_suffix:
+        label: Ajouter un prefixe ou un suffixe
+        type: balloon-selector
+        default: 0
+        options:
+            0: Désactivé
+            prefix: Préfixe
+            suffix: Suffixe
+        tab: Métas
+    meta_title:
+        label: Nom du site
+        required: true
+        trigger:
+            action: show
+            field: meta_suffix
+            condition: value[prefix], value[suffix]
+        validation: 'required_if:suffix,prefix,suffix'
+        tab: Métas
+        translatable: true
+    meta_description:
+        label: Meta description
+        comment: Meta description qui sera utilisée par défaut pour les pages qui n'en possèdent pas
+        type: textarea
+        size: tiny
+        tab: Métas
+        translatable: true
+    head_code:
+        label: Code additionnel
+        type: codeeditor
+        language: html
+        comment: Code additionnel qui sera ajouté dans la balise <head>
+        size: huge
+        tab: Métas
+    favicon:
+        label: Favicon
+        type: fileupload
+        tab: Favicon
+        mode: image
+        maxFiles: 1
+        fileTypes: png, svg
+        useCaption: false
+    theme_color:
+        label: Couleur du navigateur
+        type: colorpicker
+        tab: Favicon
+    og_image:
+        label: OG Image
+        type: fileupload
+        maxFiles: 1
+        comment: 1200px x 630px
+        tab: Open Graph
+        useCaption: false

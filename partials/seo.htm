@@ -1,0 +1,25 @@
+[global seo]
+handle = "Seo\Config"
+
+[Agent]
+==
+<title>
+    {% if seo.meta_suffix == 'prefix' %}
+        {{ this.page.meta_prefix|default(seo.meta_title) }}
+    {% endif %}
+    {{ this.page.meta_title|default(this.page.title) }}
+    {% if seo.meta_suffix == 'suffix' %}
+        {{ this.page.meta_suffix|default(seo.meta_title) }}
+    {% endif %}
+</title>
+<link rel="icon" href="{{ this.page.favicon|default(seo.favicon.path) }}" {% if Agent.isSafari() %}rel="mask-icon" color="{{ seo.theme_color|default('#ffffff') }}"{% endif %}>
+<link rel="canonical" href="{{ this.page.canonical_url|default(''|page) }}">
+<meta name="description" content="{{ this.page.meta_description|default(seo.meta_description) }}" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="turbo-visit-control" content="disable" />
+<meta name="theme-color" content="{{ seo.theme_color|default('#ffffff') }}">
+<meta property="og:locale" content="{{ this.page.og_locale|default('fr_FR') }}" />
+<meta property="og:url" content="{{ this.page.canonical_url|default(''|page) }}" />
+<meta property="og:type" content="{{ this.page.og_type|default('website') }}" />
+<meta property="og:image" content="{{ this.page.og_image|default(seo.og_image.path)|resize(1200,630,{mode:'crop'}) }}" />
+{{ seo.head_code }}

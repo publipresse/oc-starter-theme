@@ -19,14 +19,14 @@ fields:
         prompt: Ajouter un réseau social
         form:
             fields:
-                image:
+                icon:
                     label: Icone
                     type: fileupload
                     mode: image
                     maxFiles: 1
                     span: full
                     fileTypes: jpg,png,svg,gif
-                title: 
+                text: 
                     label: Nom
                     span: auto
                 url:
