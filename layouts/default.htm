@@ -1,5 +1,5 @@
 [contenteditor editor]
-file = "en/core/mentions-legales.html"
+file = ""
 
 [matomojs]
 ==
@@ -11,12 +11,14 @@ file = "en/core/mentions-legales.html"
     {# Analytics #}
     {% component 'matomojs' %}
     {# Css #}
-    <link href="{{ ['@framework.bundle', 'assets/vendor/hamburgers/hamburgers.css']|theme }}.css" rel="stylesheet" />
+    <link href="{{ ['@framework.bundle']|theme }}.css" rel="stylesheet" />
+    <link href="{{ ['assets/vendor/hamburgers/hamburgers.css']|theme }}.css" rel="stylesheet" />
     <link href="{{ ['assets/css/core.css', 'assets/css/styles.css', 'assets/css/responsive.css']|theme }}.css" rel="stylesheet" />
     {% styles %}
     {# Js #}
     <script defer src="{{ ['@framework.bundle']|theme }}.js"></script>
-    <script defer src="{{ ['assets/vendor/lazyload/lazyload.js', 'assets/vendor/headroom/headroom.js', 'assets/vendor/lenis/lenis.js', 'assets/vendor/alpine/collapse.js', 'assets/vendor/alpine/alpine.js']|theme }}.js"></script>
+    <script defer src="{{ ['assets/vendor/lazyload/lazyload.js', 'assets/vendor/headroom/headroom.js', 'assets/vendor/lenis/lenis.js']|theme }}.js"></script>
+    <script defer src="{{ ['assets/vendor/alpine/collapse.js', 'assets/vendor/alpine/mask.js', 'assets/vendor/alpine/alpine.js']|theme }}.js"></script>
     <script defer src="{{ ['assets/vendor/gsap/gsap.js', 'assets/vendor/gsap/ScrollTrigger.js']|theme }}.js"></script>
     <script defer src="{{ ['assets/js/core.js', 'assets/js/custom.js']|theme }}.js"></script>
     {% scripts %}
