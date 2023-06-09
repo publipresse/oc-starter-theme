@@ -3,23 +3,37 @@ handle = "Seo\Config"
 
 [Agent]
 ==
-<title>
-    {% if seo.meta_suffix == 'prefix' %}
-        {{ this.page.meta_prefix|default(seo.meta_title) }}
-    {% endif %}
-    {{ this.page.meta_title|default(this.page.title) }}
-    {% if seo.meta_suffix == 'suffix' %}
-        {{ this.page.meta_suffix|default(seo.meta_title) }}
-    {% endif %}
-</title>
-<link rel="icon" href="{{ this.page.favicon|default(seo.favicon.path) }}" {% if Agent.isSafari() %}rel="mask-icon" color="{{ seo.theme_color|default('#ffffff') }}"{% endif %}>
-<link rel="canonical" href="{{ this.page.canonical_url|default(''|page) }}">
-<meta name="description" content="{{ this.page.meta_description|default(seo.meta_description) }}" />
+{% set meta_title = this.page.meta_title|default(this.page.title) %}
+{% if seo.meta_suffix == 'prefix' %}
+    {% set meta_title = seo.meta_title ~ ' ' ~ meta_title %}
+{% elseif seo.meta_suffix == 'suffix' %}
+    {% set meta_title = meta_title ~ ' ' ~ seo.meta_title  %}
+{% endif %}
+
+{% set meta_description = this.page.meta_description|default(seo.meta_description) %}
+{% set canonical_url = this.page.canonical_url|default(boxesPage.real_canonical_url)|default(''|page) %}
+{% set meta_robots = this.page.meta_robots|default(boxesPage.meta_robots|join(', ')|default('index, follow')) %}
+{% set theme_color = this.page.theme_color|default(seo.theme_color)|default('#ffffff') %}
+{% set og_title = this.page.og_title|default(meta_title) %}
+{% set og_description = this.page.og_description|default(meta_description) %}
+{% set og_url = this.page.og_url|default(canonical_url) %}
+{% set og_locale = this.page.og_locale|default('fr_FR') %}
+{% set og_type = this.page.og_type|default(boxesPage.og_type)|default('website') %}
+{% set og_image = this.page.og_image|default(boxesPage.og_image)|default(seo.og_image)|resize(1200,630,{mode:'crop'}) %}
+{% set favicon = this.page.favicon|default(seo.favicon.path) %}
+{% set turbo = this.page.turbo|default('disable') %}
+
+<title>{{ meta_title }}</title>
+<link rel="icon" href="{{ favicon }}" {% if Agent.isSafari() %}rel="mask-icon" color="{{ theme_color }}"{% endif %}>
+<link rel="canonical" href="{{ canonical_url }}">
+<meta name="description" content="{{ meta_description }}" />
+<meta name="robots" content="{{ meta_robots }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="turbo-visit-control" content="disable" />
-<meta name="theme-color" content="{{ seo.theme_color|default('#ffffff') }}">
-<meta property="og:locale" content="{{ this.page.og_locale|default('fr_FR') }}" />
-<meta property="og:url" content="{{ this.page.canonical_url|default(''|page) }}" />
-<meta property="og:type" content="{{ this.page.og_type|default('website') }}" />
-<meta property="og:image" content="{{ this.page.og_image|default(seo.og_image.path)|resize(1200,630,{mode:'crop'}) }}" />
+<meta name="turbo-visit-control" content="{{ turbo }}" />
+<meta name="theme-color" content="{{ theme_color }}">
+<meta property="og:title" content="{{ og_title }}" />
+<meta property="og:description" content="{{ og_description }}" />
+<meta property="og:url" content="{{ og_url }}" />
+<meta property="og:type" content="{{ og_type }}" />
+<meta property="og:image" content="{{ og_image }}" />
 {{ seo.head_code }}
