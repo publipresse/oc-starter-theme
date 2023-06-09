@@ -1,7 +1,10 @@
 [contenteditor editor]
-file = ""
 
 [matomojs]
+
+[messages]
+handle = "Messages\Popup"
+cookie = 24
 ==
 <!DOCTYPE html>
 <html lang="{{ this.site.hard_locale }}" prefix="og: http://ogp.me/ns#">
@@ -31,6 +34,7 @@ file = ""
             {% page %}
         </main>
         {% partial 'footer' %}
+        {% component 'messages' %}
     </div>
 </body>
 </html>
