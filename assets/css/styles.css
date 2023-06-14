@@ -113,7 +113,7 @@ body {
 .marquee-item { display:inline-block; padding:0 var(--gap); }
 
 /* Fancybox */
-.fancybox__content[data-fancybox-popup] { max-width:1000px; }
+[data-fancybox-popup] .grid { max-width:1000px; max-height:80vh; overflow-y:auto; }
 
 /* Buttons */
 .btn { display:inline-flex; width:max-content; white-space:nowrap; padding:0.5rem 1rem; cursor:pointer; border:1px solid transparent; transition:all 0.4 ease 0s; }

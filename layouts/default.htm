@@ -5,13 +5,6 @@
 [fancybox popup]
 handle = "Messages\Popup"
 cookie = 24
-
-[banner]
-handle = "Messages\Banner"
-cookie = 24
-speed = 0.5
-reverse = 0
-pause = 0
 ==
 <!DOCTYPE html>
 <html lang="{{ this.site.hard_locale }}" prefix="og: http://ogp.me/ns#">
@@ -38,7 +31,6 @@ pause = 0
     <div id="page">
         {% partial 'header' %}
         <main id="main">
-            {% component 'banner' %}
             {% page %}
         </main>
         {% partial 'footer' %}
