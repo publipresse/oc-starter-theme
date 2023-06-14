@@ -20,8 +20,6 @@
  */
 
 * { margin:0; padding:0; box-sizing:border-box; }
-html { scroll-behavior: auto; }
-body { line-height: 1.5; }
 
 /* Tables */
 table { width:100%; margin:1rem 0; border-collapse:collapse; }
@@ -43,7 +41,7 @@ img, svg, video, iframe { display:block; max-width:100%; height:auto; }
 [data-src] { width:100%; }
 
 /* Links */
-a { color:inherit; }
+a { text-decoration:none; color:inherit; }
 a:hover { text-decoration:none; }
 
 /* Forms */
@@ -58,3 +56,10 @@ button { cursor:pointer; outline:none; padding:0; background:none; border:none; 
 .alert-success { background:#d1e7dd; border-color:#badbcc; color:#0f5132; }
 .alert-warning { background:#fff3cd; border-color:#ffecb5; color:#664d03; }
 .alert-danger { background:#f8d7da; border-color:#f5c2c7; color:#842029; }
+
+/* Lenis */
+.lenis { height: auto; }
+.lenis.lenis-smooth { scroll-behavior: auto; }
+.lenis.lenis-smooth [data-lenis-prevent] { overscroll-behavior: contain; }
+.lenis.lenis-stopped { overflow: hidden; }
+.lenis.lenis-scrolling iframe { pointer-events: none; }

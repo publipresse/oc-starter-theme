@@ -1,0 +1,42 @@
+uuid: 14f54055-b6e0-4801-b4a5-8ccc2474cb3d
+handle: Messages\Popup
+type: structure
+name: Popup
+drafts: false
+
+structure:
+    maxDepth: 1
+
+primaryNavigation:
+    label: Messages
+    icon: icon-bullhorn
+    order: 16000
+
+navigation:
+    label: Popups
+    icon: icon-desktop
+    parent: Messages\Popup
+    order: 10
+
+fields:
+    media:
+        label: Image ou vidéo
+        type: fileupload
+        mode: image
+        span: right
+        focuspoint: true
+        maxFiles: 1
+        fileTypes: jpg,png,mp4,webp,svg
+    date:
+        label: Date
+        type: datepicker
+        default: now
+        span: left
+        mode: date
+    content:
+        label: Contenu
+        type: richeditor
+        span: left
+        size: large
+        toolbarButtons: paragraphFormat,-,bold,italic,insertPageLink,emoticons,-,formatUL,formatOL,insertFile,-,html
+        column: false

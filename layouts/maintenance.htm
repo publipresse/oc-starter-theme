@@ -1,5 +1,11 @@
 [matomojs]
 ==
+<?php
+function onInit() {
+    $this->page->meta_robots = 'noindex, nofollow';
+}
+?>
+==
 <!DOCTYPE html>
 <html lang="{{ this.site.hard_locale }}" prefix="og: http://ogp.me/ns#">
 <head>

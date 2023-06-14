@@ -3,19 +3,120 @@
  **/
 
 /* Wrappers */
+body {
+    --headerHeight: 80px;
+    --containerWidth: 1400px;
+
+    --spacingSm: 5vmin;
+    --spacing: 10vmin;
+    --spacingLg: 15vmin;
+    --gap: 1.5rem;
+}
+
 #page { position:relative; width:100%; overflow:hidden; }
+#main { margin-top:var(--headerHeight); }
 
 /* Header */
+#header { position:fixed; left:0; top:0; width:100%; height:var(--headerHeight); z-index:10; }
 
 /* Footer */
+#footer {}
 
-/* HTML Elements */
+/**
+ * Classes
+ **/
+
+/* Text Sizing */
+.h1, h1 { font-size: clamp(2.99rem, 3.25vw + 2.17rem, 6.03rem); line-height:1.25; }
+.h2, h2 { font-size: clamp(2.49rem, 2.3vw + 1.91rem, 4.64rem); line-height:1.25; }
+.h3, h3 { font-size: clamp(2.07rem, 1.6vw + 1.67rem, 3.57rem); line-height:1.33; }
+.h4, h4 { font-size: clamp(1.73rem, 1.09vw + 1.46rem, 2.75rem); line-height:1.33; }
+.h5, h5 { font-size: clamp(1.44rem, 0.72vw + 1.26rem, 2.11rem); line-height:1.5; }
+.h6, h6 { font-size: clamp(1.2rem, 0.45vw + 1.09rem, 1.63rem); line-height:1.5; }
+.p { font-size: clamp(1rem, 0.27vw + 0.93rem, 1.25rem);  }
+.small { font-size: clamp(0.83rem, 0.14vw + 0.8rem, 0.96rem); }
+
+/* Containers */
+.container { width:100%; max-width:var(--containerWidth); padding-left:var(--gap); padding-right:var(--gap); }
+.container-fluid { padding-left:var(--gap); padding-right:var(--gap); }
+.container-left { max-width:none; margin-right:calc((100% - var(--containerWidth)) / 2); padding-right:var(--gap); }
+.container-right { max-width:none; margin-left:calc((100% - var(--containerWidth)) / 2); padding-left:var(--gap); }
+
+/* Spacings */
+.margin { margin-top:var(--spacing); margin-bottom:var(--spacing); }
+.margin-sm { margin-top:var(--spacingSm); margin-bottom:var(--spacingSm); }
+.margin-lg { margin-top:var(--spacingLg); margin-bottom:var(--spacingLg); }
+
+.padding { padding-top:var(--spacing); padding-bottom:var(--spacing); }
+.padding-sm { padding-top:var(--spacingSm); padding-bottom:var(--spacingSm); }
+.padding-lg { padding-top:var(--spacingLg); padding-bottom:var(--spacingLg); }
+
+.mt0 { margin-top:0; }
+.mt1 { margin-top:1.5rem; }
+.mt2 { margin-top:3rem; }
+.mt3 { margin-top:4.5rem; }
+.mt4 { margin-top:6rem; }
+.mb0 { margin-bottom:0; }
+.mb1 { margin-bottom:1.5rem; }
+.mb2 { margin-bottom:3rem; }
+.mb3 { margin-bottom:4.5rem; }
+.mb4 { margin-bottom:6rem; }
+.g0 { gap:0; }
+
+/* Utility */
+.relative { position:relative; }
+.h100 { height:100%; }
+.hide { display:none; }
+
+/* Text */
+.text-left { text-align:left; }
+.text-center {  text-align:center; }
+.text-right { text-align:right; }
+
+/* Grid */
+.row { display:flex; flex-direction:row; align-items:center; justify-content:space-between; gap:var(--gap); }
+.col { display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:var(--gap); }
+
+.grid { display:grid; grid-template-rows:auto; gap:var(--gap); align-items:center; }
+.g1 { grid-template-columns:1fr; }
+.g2 { grid-template-columns:repeat(2, 1fr); }
+.g3 { grid-template-columns:repeat(3, 1fr); }
+.g4 { grid-template-columns:repeat(4, 1fr); }
+.g5 { grid-template-columns:repeat(5, 1fr); }
+.g6 { grid-template-columns:repeat(6, 1fr); }
+.g7 { grid-template-columns:repeat(7, 1fr); }
+.g8 { grid-template-columns:repeat(8, 1fr); }
+.g9 { grid-template-columns:repeat(9, 1fr); }
+.g10 { grid-template-columns:repeat(10, 1fr); }
+.g11 { grid-template-columns:repeat(11, 1fr); }
+.g12 { grid-template-columns:repeat(12, 1fr); }
+
+.s1 { grid-column: span 1; }
+.s2 { grid-column: span 2; }
+.s3 { grid-column: span 3; }
+.s4 { grid-column: span 4; }
+.s5 { grid-column: span 5; }
+.s6 { grid-column: span 6; }
+.s7 { grid-column: span 7; }
+.s8 { grid-column: span 8; }
+.s9 { grid-column: span 9; }
+.s10 { grid-column: span 10; }
+.s11 { grid-column: span 11; }
+.s12 { grid-column: span 12; }
 
 /**
  * Components
  **/
 
+/* Marquees */
+.marquee-btn { position:absolute; top:0; right:0; height:100%; background:red; padding:0 1rem; z-index:2; }
+.marquee-item { display:inline-block; padding:0 var(--gap); }
+
+/* Fancybox */
+.fancybox__content[data-fancybox-popup] { max-width:1000px; }
+
 /* Buttons */
+.btn { display:inline-flex; width:max-content; white-space:nowrap; padding:0.5rem 1rem; cursor:pointer; border:1px solid transparent; transition:all 0.4 ease 0s; }
 
 /**
  * Pages

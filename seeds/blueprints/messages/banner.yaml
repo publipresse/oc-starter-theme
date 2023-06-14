@@ -1,0 +1,14 @@
+uuid: ef9caaf6-6959-47dd-a563-9b337fb4bc94
+handle: Messages\Banner
+type: structure
+name: Bannière
+drafts: false
+
+structure:
+    maxDepth: 1
+
+navigation:
+    label: Bannière
+    icon: icon-arrows-h
+    parent: Messages\Popup
+    order: 20
