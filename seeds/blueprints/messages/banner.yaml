@@ -12,3 +12,10 @@ navigation:
     icon: icon-arrows-h
     parent: Messages\Popup
     order: 20
+
+fields:
+    message:
+        label: Message
+        type: richeditor
+        size: small
+        toolbarButtons: bold,underline,italic,insertPageLink
