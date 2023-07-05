@@ -126,6 +126,7 @@ body {
 .g11 { grid-template-columns:repeat(11, 1fr); }
 .g12 { grid-template-columns:repeat(12, 1fr); }
 
+/* Align */
 .align-start { align-items:flex-start; align-self:flex-start; }
 .align-center { align-items:center; align-self:center; }
 .align-end { align-items:flex-end; align-self:flex-end; }
