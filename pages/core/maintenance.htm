@@ -1,5 +1,5 @@
 url = "/maintenance"
-layout = "maintenance"
+layout = "default"
 title = "Maintenance"
 is_hidden = 0
 seoOptionsMetaTitle = "Site en maintenance"
@@ -9,10 +9,19 @@ seoOptionsRobotIndex = "index"
 seoOptionsRobotFollow = "follow"
 seoOptionsOgCard = "summary_large_image"
 seoOptionsMetaDescription = "Veuillez nous excuser pour le désagrément, nous faisons tout notre possible pour écourter ce délai."
+
+[global seo]
+handle = "Seo\Config"
 ==
-<lottie-player id="lottie" src="https://assets1.lottiefiles.com/private_files/lf30_vnbcd4ev.json" speed="1" loop autoplay></lottie-player>
-<h1>{{ "Site en maintenance"|_ }}</h1>
-<p>{{ "Veuillez nous excuser pour le désagrément, nous faisons tout notre possible pour écourter ce délai."|_ }}</p>
-<div id="buttons">
-    <a class="btn" href="#" onclick="javascript:location.reload()">{{ "Rafraichir la page"|_ }}</a>
-</div>
+<section id="core" class="grid g2 g-0 vh100 align-stretch">
+    <div class="text col text-center">
+        <h1>{{ "Site en maintenance"|_ }}</h1>
+        <p>{{ "Veuillez nous excuser pour le désagrément, nous faisons tout notre possible pour écourter ce délai."|_ }}</p>
+        <div id="row">
+            <a class="btn" href="#" onclick="javascript:location.reload()">{{ "Rafraichir la page"|_ }}</a>
+        </div>
+    </div>
+    <div class="image">
+        <img class="lazyload h100" data-src="{{ seo.core_image.focus(1000,1000,'crop')|default('assets/img/dummy.jpg'|theme|resize(1000,1000,{mode:'crop'})) }}" alt="" />
+    </div>
+</section>

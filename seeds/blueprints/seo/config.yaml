@@ -64,3 +64,10 @@ fields:
         comment: 1200px x 630px
         tab: Open Graph
         useCaption: false
+    core_image:
+        label: Image de fond
+        comment: Image qui sera utilisée sur les pages 403, 404, Maintenance...
+        type: fileupload
+        focuspoint: true
+        maxFiles: 1
+        tab: 'Pages spéciales'

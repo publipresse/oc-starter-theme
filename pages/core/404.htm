@@ -1,5 +1,5 @@
 url = "/404"
-layout = "maintenance"
+layout = "default"
 title = 404
 is_hidden = 0
 meta_title = "Page non trouvée - Erreur 404"
@@ -11,11 +11,20 @@ seoOptionsUseUpdatedAt = 1
 seoOptionsRobotIndex = "index"
 seoOptionsRobotFollow = "follow"
 seoOptionsOgCard = "summary_large_image"
+
+[global seo]
+handle = "Seo\Config"
 ==
-<lottie-player id="lottie" src="https://assets2.lottiefiles.com/private_files/lf30_tonsVH.json" speed="1" loop autoplay></lottie-player>
-<h1>{{ "Page non trouvée"|_ }}</h1>
-<p>{{ "Oups ! Il semble que la page que vous cherchez à consulter n'existe plus."|_ }}</p>
-<div id="buttons">
-    <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
-    <a class="btn" href="{{ 'contact'|page }}">{{ "Nous contacter"|_ }}</a>
-</div>
+<section id="core" class="grid g2 g-0 vh100 align-stretch">
+    <div class="text col text-center">
+        <h1>{{ "Page non trouvée"|_ }}</h1>
+        <p>{{ "Oups ! Il semble que la page que vous cherchez à consulter n'existe plus."|_ }}</p>
+        <div id="row">
+            <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
+            <a class="btn" href="{{ 'contact'|page }}">{{ "Nous contacter"|_ }}</a>
+        </div>
+    </div>
+    <div class="image">
+        <img class="lazyload h100" data-src="{{ seo.core_image.focus(1000,1000,'crop')|default('assets/img/dummy.jpg'|theme|resize(1000,1000,{mode:'crop'})) }}" alt="" />
+    </div>
+</section>

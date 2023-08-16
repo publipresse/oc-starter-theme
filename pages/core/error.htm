@@ -1,5 +1,5 @@
 url = "/erreur"
-layout = "maintenance"
+layout = "default"
 title = "Error"
 is_hidden = 0
 meta_title = "Erreur - Quelque chose s'est mal passé"
@@ -11,11 +11,20 @@ seoOptionsUseUpdatedAt = 1
 seoOptionsRobotIndex = "index"
 seoOptionsRobotFollow = "follow"
 seoOptionsOgCard = "summary_large_image"
+
+[global seo]
+handle = "Seo\Config"
 ==
-<lottie-player id="lottie" src="https://assets4.lottiefiles.com/packages/lf20_e1pmabgl.json" speed="1" loop autoplay></lottie-player>
-<h1>{{ "Erreur"|_ }}</h1>
-<p>{{ "La page que vous essayez de consulter retourne une erreur, essayez de rafraichir votre navigateur. Si le problème persiste, merci de nous contacter"|_ }}</p>
-<div id="buttons">
-    <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
-    <a class="btn" href="{{ 'contact'|page }}">{{ "Nous contacter"|_ }}</a>
-</div>
+<section id="core" class="grid g2 g-0 vh100 align-stretch">
+    <div class="text col text-center">
+        <h1>{{ "Erreur"|_ }}</h1>
+        <p>{{ "La page que vous essayez de consulter retourne une erreur, essayez de rafraichir votre navigateur. Si le problème persiste, merci de nous contacter"|_ }}</p>
+        <div id="row">
+            <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
+            <a class="btn" href="{{ 'contact'|page }}">{{ "Nous contacter"|_ }}</a>
+        </div>
+    </div>
+    <div class="image">
+        <img class="lazyload h100" data-src="{{ seo.core_image.focus(1000,1000,'crop')|default('assets/img/dummy.jpg'|theme|resize(1000,1000,{mode:'crop'})) }}" alt="" />
+    </div>
+</section>
