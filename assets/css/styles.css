@@ -1,8 +1,8 @@
-/**
- * Layout
- **/
+/**************
+ * Utility
+ **************/
 
-/* Wrappers */
+/* Variables */
 body {
     --header-h: 80px;
     --container-w: 1400px;
@@ -33,19 +33,6 @@ body {
     font-size: var(--fs-md);
     line-height: 1.5;
 }
-
-#page { position:relative; width:100%; overflow:hidden; }
-#main { margin-top:var(--header-h); }
-
-/* Header */
-#header { position:fixed; left:0; top:0; width:100%; height:var(--header-h); z-index:10; }
-
-/* Footer */
-#footer {}
-
-/**
- * Utility classes
- **/
 
 /* Text Sizing */
 .h1, h1 { font-size:var(--fs-h1); line-height:1.25; }
@@ -136,13 +123,26 @@ body {
 .justify-end { justify-content:flex-end; justify-self:flex-end; }
 .justify-stretch { justify-content:stretch; justify-self:stretch; }
 
-/**
+/**************
+ * Layout
+ **************/
+
+/* Wrappers */
+#page { position:relative; width:100%; overflow:hidden; }
+#main { margin-top:var(--header-h); }
+
+/* Header */
+#header { position:fixed; left:0; top:0; width:100%; height:var(--header-h); z-index:10; }
+
+/* Footer */
+#footer { }
+
+/**************
  * Components
- **/
+ **************/
 
 /* Marquees */
 .marquee-btn { position:absolute; top:0; right:0; height:100%; background:red; padding:0 1rem; z-index:2; }
-.marquee-item { display:inline-block; padding:0 var(--gap-md); }
 
 /* Popups */
 [data-fancybox-popup] .grid { max-width:1000px; max-height:80vh; overflow-y:auto; }
@@ -153,8 +153,8 @@ body {
 /* Forms */
 .field { flex-grow:1; }
 
-/*********
+/**************
  * Pages
- *********/
+ **************/
 
 /* Accueil */
