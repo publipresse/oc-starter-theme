@@ -15,7 +15,7 @@ seoOptionsOgCard = "summary_large_image"
 [global seo]
 handle = "Seo\Config"
 ==
-<section id="core" class="grid g2 g-0 vh100 align-stretch">
+<section id="core" class="grid grid-2 gap-0 align-stretch">
     <div class="text col text-center">
         <h1>{{ "Page non trouvée"|_ }}</h1>
         <p>{{ "Oups ! Il semble que la page que vous cherchez à consulter n'existe plus."|_ }}</p>
@@ -24,7 +24,7 @@ handle = "Seo\Config"
             <a class="btn" href="{{ 'contact'|page }}">{{ "Nous contacter"|_ }}</a>
         </div>
     </div>
-    <div class="image">
+    <div class="image overflow">
         <img class="lazyload h100" data-src="{{ seo.core_image.focus(1000,1000,'crop')|default('assets/img/dummy.jpg'|theme|resize(1000,1000,{mode:'crop'})) }}" alt="" />
     </div>
 </section>

@@ -30,7 +30,9 @@
  * SM
  **/
 @media (max-width: 767px) {
-    
+    #core { grid-template-rows:1fr 2fr; grid-template-columns:1fr; }
+    #core .text { order:2; }
+    #core .image { order:1; }
 }
 
 /**
