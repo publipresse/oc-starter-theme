@@ -1,7 +1,5 @@
 [contenteditor editor]
 
-[matomojs]
-
 [fancybox popup]
 handle = "Messages\Popup"
 cookie = 24
@@ -9,10 +7,8 @@ cookie = 24
 <!DOCTYPE html>
 <html lang="{{ this.site.hard_locale }}" prefix="og: http://ogp.me/ns#">
 <head>
-    {# Metas #}
+    {# Seo #}
     {% partial 'seo' %}
-    {# Analytics #}
-    {% component 'matomojs' %}
     {# Css #}
     <link href="{{ ['@framework.bundle']|theme }}.css" rel="stylesheet" />
     <link href="{{ ['assets/vendor/hamburgers/hamburgers.css']|theme }}.css" rel="stylesheet" />
