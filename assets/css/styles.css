@@ -41,9 +41,9 @@ body {
 .h4, h4 { font-size:var(--fs-h4); line-height:1.33; }
 .h5, h5 { font-size:var(--fs-h5); line-height:1.5; }
 .h6, h6 { font-size:var(--fs-h6); line-height:1.5; }
-.p { font-size: var(--fs-md); }
-.small { font-size: var(--fs-sm); }
-.small-xs { font-size:var(--fs-xs); }
+.fs-md { font-size: var(--fs-md); }
+.fs-sm { font-size: var(--fs-sm); }
+.fs-xs { font-size:var(--fs-xs); }
 
 /* Containers */
 .container { width:100%; max-width:var(--container-w); margin-left:auto; margin-right:auto; padding-left:var(--gap-md); padding-right:var(--gap-md); }
@@ -54,6 +54,7 @@ body {
 /* Utility */
 .relative { position:relative; }
 .overflow { overflow:hidden; }
+.w100 { width:100%; }
 .h100 { height:100%; }
 .hide { display:none; }
 
