@@ -1,7 +1,7 @@
 (() => {
   // packages/mask/src/index.js
   function src_default(Alpine) {
-    Alpine.directive("mask", (el, {value, expression}, {effect, evaluateLater}) => {
+    Alpine.directive("mask", (el, { value, expression }, { effect, evaluateLater }) => {
       let templateFn = () => expression;
       let lastInputValue = "";
       queueMicrotask(() => {
@@ -13,10 +13,11 @@
               Alpine.dontAutoEvaluateFunctions(() => {
                 evaluator((value2) => {
                   result = typeof value2 === "function" ? value2(input) : value2;
-                }, {scope: {
-                  $input: input,
-                  $money: formatMoney.bind({el})
-                }});
+                }, { scope: {
+                  // These are "magics" we'll make available to the x-mask:function:
+                  "$input": input,
+                  "$money": formatMoney.bind({ el })
+                } });
               });
               return result;
             };
@@ -63,7 +64,13 @@
     let unformattedValue = el.value;
     callback();
     let beforeLeftOfCursorBeforeFormatting = unformattedValue.slice(0, cursorPosition);
-    let newPosition = buildUp(template, stripDown(template, beforeLeftOfCursorBeforeFormatting)).length;
+    let newPosition = buildUp(
+      template,
+      stripDown(
+        template,
+        beforeLeftOfCursorBeforeFormatting
+      )
+    ).length;
     el.setSelectionRange(newPosition, newPosition);
   }
   function stripDown(template, input) {
@@ -71,7 +78,7 @@
     let output = "";
     let regexes = {
       "9": /[0-9]/,
-      a: /[a-zA-Z]/,
+      "a": /[a-zA-Z]/,
       "*": /[a-zA-Z0-9]/
     };
     let wildcardTemplate = "";
@@ -140,7 +147,7 @@
     };
     let minus = input.startsWith("-") ? "-" : "";
     let strippedInput = input.replaceAll(new RegExp(`[^0-9\\${delimiter}]`, "g"), "");
-    let template = Array.from({length: strippedInput.split(delimiter)[0].length}).fill("9").join("");
+    let template = Array.from({ length: strippedInput.split(delimiter)[0].length }).fill("9").join("");
     template = `${minus}${addThousands(template, thousands)}`;
     if (precision > 0 && input.includes(delimiter))
       template += `${delimiter}` + "9".repeat(precision);

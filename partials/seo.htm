@@ -4,6 +4,7 @@ handle = "Seo\Config"
 [global matomo]
 handle = "Seo\Matomo"
 ==
+{# Metas #}
 {% set meta_title = this.page.meta_title|default(this.page.title) %}
 {% if seo.meta_suffix == 'prefix' %}
     {% set meta_title = seo.meta_title ~ ' ' ~ meta_title %}
@@ -28,7 +29,7 @@ handle = "Seo\Matomo"
 <link rel="icon" href="{{ favicon }}" {% if Agent.isSafari() %}rel="mask-icon" color="{{ theme_color }}"{% endif %}>
 <link rel="canonical" href="{{ canonical_url }}">
 <meta name="description" content="{{ meta_description }}" />
-<meta name="robots" content="{{ meta_robots }}">
+<meta name="robots" content="{{ meta_robots|default('all') }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="turbo-visit-control" content="{{ turbo }}" />
 <meta name="theme-color" content="{{ theme_color }}">
@@ -39,11 +40,17 @@ handle = "Seo\Matomo"
 <meta property="og:image" content="{{ og_image }}" />
 {{ seo.head_code }}
 
+{# Multisite #}
+{% if sitePicker.sites|length > 1 %}
+    {% for site in sitePicker.sites %}
+        <link rel="alternate" hreflang="{{ site.locale }}" href="{{ site.url }}" />
+    {% endfor %}
+{% endif %}
+
 {# Matomo #}
 {% if matomo.url is not empty and matomo.website_id is not empty %}
     <script>
         var _paq = window._paq = window._paq || [];
-
         _paq.push(['trackPageView']);
         _paq.push(['enableLinkTracking']);
         (function() {
