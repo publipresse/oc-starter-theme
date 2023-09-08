@@ -3,6 +3,12 @@ handle = "Seo\Config"
 
 [global matomo]
 handle = "Seo\Matomo"
+
+[schemaName]
+name = "Github"
+
+[schemaLogo]
+logo = "assets/img/logo.svg"
 ==
 {# Metas #}
 {% set meta_title = this.page.meta_title|default(this.page.title) %}
@@ -63,3 +69,7 @@ handle = "Seo\Matomo"
     </script>
     <noscript><p><img src="{{ matomo.url }}matomo.php?idsite={{ matomo.website_id }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
 {% endif %}
+
+{# Schema #}
+{% component 'schemaName' %}
+{% component 'schemaLogo' %}
