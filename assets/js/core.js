@@ -1,5 +1,6 @@
 addEventListener('page:loaded', function() {
     initLazyload();
+    initFancybox();
     initLenis();
     initHeadroom();
     initGsap();
@@ -22,6 +23,15 @@ function initLazyload() {
             el.sizes = width+'px';
         })
     });
+}
+
+// Initialisation du fancybox
+function initFancybox() {
+    if (typeof Fancybox !== "undefined") {
+        Fancybox.bind("[data-fancybox]", {
+
+        });
+    }
 }
 
 // Gestion de l'entête sticky.
