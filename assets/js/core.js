@@ -1,6 +1,7 @@
 addEventListener('page:loaded', function() {
     initLazyload();
     initFancybox();
+    initMarquee();
     initLenis();
     initHeadroom();
     initGsap();
@@ -31,6 +32,13 @@ function initFancybox() {
         Fancybox.bind("[data-fancybox]", {
 
         });
+    }
+}
+
+// Initialisation d'un marquee
+function initMarquee() {
+    if (typeof Marquee3k !== "undefined") {
+        Marquee3k.init();
     }
 }
 
