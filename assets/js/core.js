@@ -1,6 +1,6 @@
 addEventListener('page:load', function() {
     initScrollReveal();
-}
+});
 
 addEventListener('page:loaded', function() {
     initLazyload();
