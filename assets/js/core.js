@@ -46,7 +46,7 @@ function initMarquee() {
 // Initialisation du scroll reveal
 function initScrollReveal() {
     if (typeof ScrollReveal !== "undefined") {
-        ScrollReveal({ duration: 1000, distance: 50, origin: 'bottom', cleanup: true });
+        ScrollReveal({ duration: 1000, distance: '50px', origin: 'bottom', cleanup: true });
     }
 }
 
