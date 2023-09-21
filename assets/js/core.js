@@ -1,8 +1,11 @@
+addEventListener('page:load', function() {
+    initScrollReveal();
+}
+
 addEventListener('page:loaded', function() {
     initLazyload();
     initFancybox();
     initMarquee();
-    initScrollReveal();
     initLenis();
     initHeadroom();
     initGsap();
