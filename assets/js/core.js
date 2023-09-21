@@ -2,6 +2,7 @@ addEventListener('page:loaded', function() {
     initLazyload();
     initFancybox();
     initMarquee();
+    initScrollReveal();
     initLenis();
     initHeadroom();
     initGsap();
@@ -39,6 +40,13 @@ function initFancybox() {
 function initMarquee() {
     if (typeof Marquee3k !== "undefined") {
         Marquee3k.init();
+    }
+}
+
+// Initialisation du scroll reveal
+function initScrollReveal() {
+    if (typeof ScrollReveal !== "undefined") {
+        ScrollReveal({ duration: 1000, distance: '50px', origin: 'bottom', cleanup: true });
     }
 }
 
