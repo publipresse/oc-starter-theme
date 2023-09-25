@@ -29,7 +29,8 @@ logo = "assets/img/logo.svg"
 {% set og_type = this.page.og_type|default(boxesPage.og_type)|default('website') %}
 {% set og_image = this.page.og_image|default(boxesPage.og_image)|default(seo.og_image)|resize(1200,630,{mode:'crop'}) %}
 {% set favicon = this.page.favicon|default(seo.favicon.path) %}
-{% set turbo = this.page.turbo|default('disable') %}
+{% set turbo_routing = this.page.turbo_routing|default(seo.turbo_routing) %}
+{% set turbo_cache = this.page.turbo_cache|default(seo.turbo_routing) %}
 
 <title>{{ meta_title }}</title>
 <link rel="icon" href="{{ favicon }}" {% if Agent.isSafari() %}rel="mask-icon" color="{{ theme_color }}"{% endif %}>
@@ -37,7 +38,8 @@ logo = "assets/img/logo.svg"
 <meta name="description" content="{{ meta_description }}" />
 <meta name="robots" content="{{ meta_robots }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="turbo-visit-control" content="{{ turbo }}" />
+<meta name="turbo-visit-control" content="{{ turbo_routing }}" />
+<meta name="turbo-cache-control" content="{{ turbo_cache }}">
 <meta name="theme-color" content="{{ theme_color }}">
 <meta property="og:title" content="{{ og_title }}" />
 <meta property="og:description" content="{{ og_description }}" />

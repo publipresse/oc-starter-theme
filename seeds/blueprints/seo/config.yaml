@@ -45,6 +45,21 @@ fields:
         comment: Code additionnel qui sera ajouté dans la balise <head>
         size: huge
         tab: Métas
+    turbo_routing:
+        label: Turbo routing
+        type: dropdown
+        default: disable
+        options:
+            disable: disable
+            reload: reload
+            enable: enable
+    turbo_cache:
+        label: Turbo cache
+        type: dropdown
+        default: no-cache
+        options:
+            enable: enable
+            no-cache: no-cache
     favicon:
         label: Favicon
         type: fileupload
