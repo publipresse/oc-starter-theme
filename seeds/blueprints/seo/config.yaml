@@ -82,8 +82,13 @@ fields:
         tab: Open Graph
         useCaption: false
     core_image:
-        label: Image de fond
-        comment: Image qui sera utilisée sur les pages 403, 404, Maintenance...
+        label: Image pages 404, 403, maintenance...
+        type: fileupload
+        focuspoint: true
+        maxFiles: 1
+        tab: 'Pages spéciales'
+    merci_image:
+        label: Image page merci du formulaire de contact
         type: fileupload
         focuspoint: true
         maxFiles: 1
