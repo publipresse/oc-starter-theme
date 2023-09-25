@@ -49,6 +49,7 @@ fields:
         label: Turbo routing
         type: dropdown
         default: disable
+        tab: Turbo routing
         options:
             disable: disable
             reload: reload
@@ -57,6 +58,7 @@ fields:
         label: Turbo cache
         type: dropdown
         default: no-cache
+        tab: Turbo routing
         options:
             enable: enable
             no-cache: no-cache
