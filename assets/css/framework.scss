@@ -1,3 +1,7 @@
+/**
+ * Global
+ **/
+
 // Variables
 $cols: 12;
 $gaps: (
@@ -28,15 +32,6 @@ $gaps: (
 html { scroll-padding-top:var(--header-h); }
 body { font: var(--font-md); }
 
-// Text sizing
-.h1, h1 { font: var(--font-h1); }
-.h2, h2 { font: var(--font-h2); }
-.h3, h3 { font: var(--font-h3); }
-.h4, h4 { font: var(--font-h4); }
-.font-sm { font: var(--font-sm); }
-.font-md { font: var(--font-md); }
-.font-lg { font: var(--font-lg); }
-
 // Containers
 .container { width:100%; max-width:var(--container-w); margin-left:auto; margin-right:auto; padding-left:var(--gap-md); padding-right:var(--gap-md); }
 .container-fluid { padding-left:var(--gap-md); padding-right:var(--gap-md); }
@@ -52,12 +47,50 @@ body { font: var(--font-md); }
 .hidden { visibility:hidden; }
 
 /**
+ * Texts
+ **/
+
+// Text sizing
+.h1, h1 { font: var(--font-h1); }
+.h2, h2 { font: var(--font-h2); }
+.h3, h3 { font: var(--font-h3); }
+.h4, h4 { font: var(--font-h4); }
+.font-sm { font: var(--font-sm); }
+.font-md { font: var(--font-md); }
+.font-lg { font: var(--font-lg); }
+
+// Text align
+.text-left { text-align:left; }
+.text-center { text-align:center; }
+.text-right { text-align:right; }
+
+// Line clamp
+.line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
+.line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
+.line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
+.line-clamp-4 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
+.line-clamp-5 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; }
+.line-clamp-6 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; }
+
+// Text case
+.uppercase { text-transform:uppercase; }
+.lowercase { text-transform:lowercase; }
+.capitalize { text-transform:capitalize; }
+.normalcase { text-transform:none; }
+
+// Text utility
+.nowrap { white-space:nowrap; }
+.break { word-break: break-word; }
+.break-all { word-break: break-all; }
+
+/**
  * Grid
  **/
 
 .row { display:flex; flex-direction:row; align-items:stretch; justify-content:flex-start; gap:var(--gap-md); }
 .col { display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:var(--gap-md); }
 .grid { display:grid; grid-template-rows:auto; grid-template-columns:auto; gap:var(--gap-md); align-items:center; }
+.wrap { flex-wrap:wrap; }
 
 // grid-x
 @for $i from 1 through $cols {
@@ -110,11 +143,6 @@ body { font: var(--font-md); }
 .justify-self-end { justify-self:flex-end; }
 .justify-self-stretch { justify-self:stretch; }
 
-// Text align
-.text-left { text-align:left; }
-.text-center { text-align:center; }
-.text-right { text-align:right; }
-
 /**
  * Spacings
  **/
@@ -164,7 +192,7 @@ body { font: var(--font-md); }
 }
 
 /**
- * Utility
+ * Components
  **/
 
 // Frontend Editor
