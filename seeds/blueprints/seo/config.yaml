@@ -74,6 +74,7 @@ fields:
         label: Couleur du navigateur
         type: colorpicker
         tab: Favicon
+        default: '#ffffff'
     og_image:
         label: OG Image
         type: fileupload

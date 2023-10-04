@@ -10,12 +10,12 @@ cookie = 24
 <html lang="{{ this.site.hard_locale }}" prefix="og: http://ogp.me/ns#">
 <head>
     {# Seo #}
-    {% partial 'seo' %}
+    {% partial 'meta' %}
     {# Css #}
     <link href="{{ ['@framework.bundle']|theme }}.css" rel="stylesheet" />
     <link href="{{ ['assets/vendor/hamburgers/hamburgers.css']|theme }}.css" rel="stylesheet" />
     {% styles %}
-    <link href="{{ ['assets/css/core.scss', 'assets/css/styles.scss', 'assets/css/responsive.scss']|theme }}.css" rel="stylesheet" />
+    <link href="{{ ['assets/css/reset.scss', 'assets/css/framework.scss', 'assets/css/styles.scss', 'assets/css/responsive.scss']|theme }}.css" rel="stylesheet" />
     {# Js #}
     <script defer src="{{ ['@framework.bundle']|theme }}.js"></script>
     <script defer src="{{ ['assets/vendor/lazyload/lazyload.js', 'assets/vendor/headroom/headroom.js', 'assets/vendor/lenis/lenis.js']|theme }}.js"></script>

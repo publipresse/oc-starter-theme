@@ -1,3 +1,5 @@
+initPageTransition();
+
 addEventListener('page:load', function() {
     initScrollReveal();
 });
@@ -10,8 +12,35 @@ addEventListener('page:loaded', function() {
     initHeadroom();
     initGsap();
     initForm();
-    //backToTop();
+    initBackToTop();
 });
+
+// Animation de transition entre les pages
+function initPageTransition() {
+    if (oc.useTurbo && oc.useTurbo()) {
+        var isAnimating = false;
+        // Transition lorsqu'on quitte une page
+        addEventListener('page:before-visit', async function(e) {
+            if (isAnimating) { isAnimating = false; return; }
+            e.preventDefault();
+            //await gsap.to("#header", {x: 100, duration: 1});
+            isAnimating = true;
+            oc.visit(e.detail.url);
+        });
+        
+        // Transition quand on arrive sur une nouvelle page
+        addEventListener('page:load', function() {
+            //gsap.to("#header", {x: 0, duration: 1});
+        });
+    }
+}
+
+// Initialisation du scroll reveal
+function initScrollReveal() {
+    if (typeof ScrollReveal !== "undefined") {
+        ScrollReveal({ duration: 1000, distance: '50px', origin: 'bottom', cleanup: true });
+    }
+}
 
 // Initialisation du lazyload
 function initLazyload() {
@@ -43,13 +72,6 @@ function initFancybox() {
 function initMarquee() {
     if (typeof Marquee3k !== "undefined") {
         Marquee3k.init();
-    }
-}
-
-// Initialisation du scroll reveal
-function initScrollReveal() {
-    if (typeof ScrollReveal !== "undefined") {
-        ScrollReveal({ duration: 1000, distance: '50px', origin: 'bottom', cleanup: true });
     }
 }
 
@@ -154,18 +176,18 @@ function initForm() {
 
 }
 
-
-
 // Affichage d'un lien vers le haut de page
-function backToTop() {
+function initBackToTop() {
     var offset = 1000;
     var selector = document.getElementById('backtotop');
-    window.addEventListener('scroll', function() {
-        scrollTop = window.scrollY;
-        if (scrollTop > offset) {
-            selector.classList.add('visible');
-        } else {
-            selector.classList.remove('visible');
-        }
-    });
+    if(selector) {
+        window.addEventListener('scroll', function() {
+            scrollTop = window.scrollY;
+            if (scrollTop > offset) {
+                selector.classList.add('visible');
+            } else {
+                selector.classList.remove('visible');
+            }
+        });
+    }
 }

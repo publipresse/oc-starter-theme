@@ -7,8 +7,8 @@ meta_description = "Nous vous remercions pour votre message, votre demande sera 
 [global seo]
 handle = "Seo\Config"
 ==
-<section id="core" class="grid grid-2 gap-0 align-stretch">
-    <div class="text col text-center">
+<section id="core" class="grid grid-2 g-0 align-stretch">
+    <div class="text col text-center p-lg">
         {% component 'editor' file=(this.page.id~'/message') tools="heading,paragraph,bold,link" fixture="" class="" %}
         <div id="row">
             <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
