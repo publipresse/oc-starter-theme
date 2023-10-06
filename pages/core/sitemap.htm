@@ -11,7 +11,7 @@ handle = "Seo\Sitemap"
     {% import _self as nav %}
     {% if reference.url %}
         <url>
-            <loc>{{ reference.url }}</loc>
+            <loc>{{ (reference.url|last == '/')? reference.url|slice(0, -1) : reference.url }}</loc>
             <lastmod>{{ reference.mtime|date('c') }}</lastmod>
             <changefreq>{{ item.changefreq }}</changefreq>
             <priority>{{ item.priority }}</priority>
