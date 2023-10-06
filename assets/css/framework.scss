@@ -1,16 +1,31 @@
 /**
- * Global
+ * Variables
  **/
 
-// Variables
+// Nombre de colonnes de la grille
 $cols: 12;
+
+// Taille des gaps
 $gaps: (
-    'sm': 0.75rem, 
-    'md': 1.5rem, 
-    'lg': 3rem, 
-    'xl': 5vmin, 
-    '2xl': 10vmin
+    'sm': 0.75rem,
+    'md': 1.5rem,
+    'lg': 3rem,
+    'xl': 5vmin,
+    '2xl': 10vmin,
 );
+
+// Breakpoints
+$breakpoints: (
+    'xl': 1400px,
+    'lg': 1200px,
+    'md': 992px,
+    'sm': 768px,
+    'xs': 576px,
+);
+
+/**
+ * Global
+ **/
 
 :root {
     --header-h: 80px;
@@ -67,12 +82,9 @@ body { font: var(--font-md); }
 .text-right { text-align:right; }
 
 // Line clamp
-.line-clamp-1 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; }
-.line-clamp-2 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; }
-.line-clamp-3 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; }
-.line-clamp-4 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; }
-.line-clamp-5 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; }
-.line-clamp-6 { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 6; }
+@for $i from 1 through 6 {
+    .line-clamp-#{$i} { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: #{$i}; }
+}
 
 // Text case
 .uppercase { text-transform:uppercase; }
@@ -89,6 +101,7 @@ body { font: var(--font-md); }
  * Grid
  **/
 
+ // Base classes
 .row { display:flex; flex-direction:row; align-items:stretch; justify-content:flex-start; gap:var(--gap-md); }
 .col { display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:var(--gap-md); }
 .grid { display:grid; grid-template-rows:auto; grid-template-columns:auto; gap:var(--gap-md); align-items:center; }
@@ -122,6 +135,11 @@ body { font: var(--font-md); }
     }
 }
 
+// order-x
+@for $i from 1 through 6 {
+    .order-#{$i} { order: #{$i}; }
+}
+
 /**
  * Align
  **/
@@ -144,6 +162,7 @@ body { font: var(--font-md); }
 .justify-self-center { justify-self:center; }
 .justify-self-end { justify-self:flex-end; }
 .justify-self-stretch { justify-self:stretch; }
+
 
 /**
  * Spacings
@@ -190,7 +209,7 @@ body { font: var(--font-md); }
 .gx-0 { row-gap:0; }
 .gy-0 { column-gap:0; }
 @each $suffix, $value in $gaps {
-    .gap-#{$suffix} { gap:var(--gap-#{$suffix}) }
+    .g-#{$suffix} { gap:var(--gap-#{$suffix}) }
 }
 
 /**
@@ -225,3 +244,6 @@ body { font: var(--font-md); }
 
 // Popups
 [data-fancybox-popup] .grid { max-width:1000px; max-height:80vh; overflow-y:auto; }
+
+// Import responsive framework
+@import 'framework-responsive';

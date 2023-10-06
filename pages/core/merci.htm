@@ -7,14 +7,14 @@ meta_description = "Nous vous remercions pour votre message, votre demande sera 
 [global seo]
 handle = "Seo\Config"
 ==
-<section id="core" class="grid grid-2 g-0 align-stretch">
-    <div class="text col text-center p-lg">
+<section id="core" class="grid grid-2 g-0 align-stretch" sm="grid-1">
+    <div class="text col text-center p-lg" sm="order-2">
         {% component 'editor' file=(this.page.id~'/message') tools="heading,paragraph,bold,link" fixture="" class="" %}
         <div id="row">
             <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
         </div>
     </div>
-    <div class="image overflow">
+    <div class="image overflow" sm="order-1">
         <img class="lazyload h100" data-src="{{ seo.merci_image.focus(1000,1000,'crop')|default('assets/img/dummy.jpg'|theme|resize(1000,1000,{mode:'crop'})) }}" alt="" />
     </div>
 </section>

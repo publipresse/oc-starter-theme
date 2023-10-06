@@ -10,7 +10,7 @@ handle = "Config\Infos"
 ==
 <section id="legal" class="py-lg">
     <div class="container">
-        {% content (this.site.hard_locale~'/core/mentions-legales.html')
+        {% content ('.'~this.site.hard_locale~'mentions-legales/text.html')
             company_name = infos.company_name
             company_status = infos.company_status
             company_address = infos.company_address

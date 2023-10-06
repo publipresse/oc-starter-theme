@@ -1,0 +1,175 @@
+/**
+ * Texts
+ **/
+
+// Text align
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        [#{$attribute}~="text-left"] { text-align:left; }
+        [#{$attribute}~="text-center"] { text-align:center; }
+        [#{$attribute}~="text-right"] { text-align:right; }
+    }
+}
+
+// Line clamp
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @for $i from 1 through 6 {
+            [#{$attribute}~="line-clamp-#{$i}"] { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: #{$i}; }
+        }
+    }
+}
+
+/**
+ * Grid
+ **/
+
+// Base classes
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        [#{$attribute}~="row"] { display:flex; flex-direction:row; align-items:stretch; justify-content:flex-start; gap:var(--gap-md); }
+        [#{$attribute}~="col"] { display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:var(--gap-md); }
+        [#{$attribute}~="grid"] { display:grid; grid-template-rows:auto; grid-template-columns:auto; gap:var(--gap-md); align-items:center; }
+        [#{$attribute}~="wrap"] { flex-wrap:wrap; }
+    }
+}
+
+// grid-x
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @for $i from 1 through $cols {
+            [#{$attribute}~="grid-#{$i}"] { 
+                grid-template-columns: repeat($i, 1fr); 
+            }
+        }
+    }
+}
+
+// span-x
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @for $i from 1 through $cols {
+            [#{$attribute}~="span-#{$i}"] { 
+                grid-column-end: span + ' ' + $i
+            }
+        }
+    }
+}
+
+// start-x
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @for $i from 1 through $cols {
+            [#{$attribute}~="start-#{$i}"] { 
+                grid-column-start: $i
+            }
+        }
+    }
+}
+
+// end-x
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @for $i from 1 through $cols {
+            [#{$attribute}~="start-#{$i}"] { 
+                grid-column-end: ($i + 1)
+            }
+        }
+    }
+}
+
+// Order
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @for $i from 1 through 6 {
+            [#{$attribute}~="order-#{$i}"] { order: #{$i}; }
+        }
+    }
+}
+
+/**
+ * Align
+ **/
+
+// Block align
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        [#{$attribute}~="align-start"] { align-items:flex-start; }
+        [#{$attribute}~="align-center"] { align-items:center; }
+        [#{$attribute}~="align-end"] { align-items:flex-end; }
+        [#{$attribute}~="align-stretch"] { align-items:stretch; }
+        [#{$attribute}~="align-self-start"] { align-self:flex-start; }
+        [#{$attribute}~="align-self-center"] { align-self:center; }
+        [#{$attribute}~="align-self-end"] { align-self:flex-end; }
+        [#{$attribute}~="align-self-stretch"] { align-self:stretch; }
+        [#{$attribute}~="justify-start"] { justify-content:flex-start; }
+        [#{$attribute}~="justify-center"] { justify-content:center; }
+        [#{$attribute}~="justify-end"] { justify-content:flex-end; }
+        [#{$attribute}~="justify-stretch"] { justify-content:stretch; }
+        [#{$attribute}~="justify-between"] { justify-content:space-between; }
+        [#{$attribute}~="justify-self-start"] { justify-self:flex-start; }
+        [#{$attribute}~="justify-self-center"] { justify-self:center; }
+        [#{$attribute}~="justify-self-end"] { justify-self:flex-end; }
+        [#{$attribute}~="justify-self-stretch"] { justify-self:stretch; }
+    }
+}
+
+/**
+ * Spacings
+ **/
+
+// Margin
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        [#{$attribute}~="m-0"] { margin:0; }
+        [#{$attribute}~="mt-0"] { margin-top:0; }
+        [#{$attribute}~="mr-0"] { margin-right:0; }
+        [#{$attribute}~="mb-0"] { margin-bottom:0; }
+        [#{$attribute}~="ml-0"] { margin-left:0; }
+        [#{$attribute}~="mx-0"] { margin-left:0; margin-right:0; }
+        [#{$attribute}~="my-0"] { margin-top:0; margin-bottom:0; }
+        @each $suffix, $value in $gaps {
+            [#{$attribute}~="m-#{$suffix}"] { margin:var(--gap-#{$suffix}); }
+            [#{$attribute}~="mt-#{$suffix}"] { margin-top:var(--gap-#{$suffix}); }
+            [#{$attribute}~="mr-#{$suffix}"] { margin-right:var(--gap-#{$suffix}); }
+            [#{$attribute}~="mb-#{$suffix}"] { margin-bottom:var(--gap-#{$suffix}); }
+            [#{$attribute}~="ml-#{$suffix}"] { margin-left:var(--gap-#{$suffix}); }
+            [#{$attribute}~="mx-#{$suffix}"] { margin-left:var(--gap-#{$suffix}); margin-right:var(--gap-#{$suffix}); }
+            [#{$attribute}~="my-#{$suffix}"] { margin-top:var(--gap-#{$suffix}); margin-bottom:var(--gap-#{$suffix}); }
+        }
+    }
+}
+
+// Padding
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        [#{$attribute}~="p-0"] { padding:0; }
+        [#{$attribute}~="pt-0"] { padding-top:0; }
+        [#{$attribute}~="pr-0"] { padding-right:0; }
+        [#{$attribute}~="pb-0"] { padding-bottom:0; }
+        [#{$attribute}~="pl-0"] { padding-left:0; }
+        [#{$attribute}~="px-0"] { padding-left:0; padding-right:0; }
+        [#{$attribute}~="py-0"] { padding-top:0; padding-bottom:0; }
+        @each $suffix, $value in $gaps {
+            [#{$attribute}~="p-#{$suffix}"] { padding:var(--gap-#{$suffix}); }
+            [#{$attribute}~="pt-#{$suffix}"] { padding-top:var(--gap-#{$suffix}); }
+            [#{$attribute}~="pr-#{$suffix}"] { padding-right:var(--gap-#{$suffix}); }
+            [#{$attribute}~="pb-#{$suffix}"] { padding-bottom:var(--gap-#{$suffix}); }
+            [#{$attribute}~="pl-#{$suffix}"] { padding-left:var(--gap-#{$suffix}); }
+            [#{$attribute}~="px-#{$suffix}"] { padding-left:var(--gap-#{$suffix}); padding-right:var(--gap-#{$suffix}); }
+            [#{$attribute}~="py-#{$suffix}"] { padding-top:var(--gap-#{$suffix}); padding-bottom:var(--gap-#{$suffix}); }
+        }
+    }
+}
+
+// Gap
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        [#{$attribute}~="g-0"] { gap:0; }
+        [#{$attribute}~="gx-0"] { row-gap:0; }
+        [#{$attribute}~="gy-0"] { column-gap:0; }
+        @each $suffix, $value in $gaps {
+            [#{$attribute}~="g-#{$suffix}"] { gap:var(--gap-#{$suffix}) }
+        }
+    }
+}

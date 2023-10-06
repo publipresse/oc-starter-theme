@@ -6,3 +6,7 @@ is_hidden = 0
 [viewBag]
 localeUrl[fr] = "/"
 ==
+<div class="container">
+    {% partial 'image' image = ('assets/img/dummy.jpg'|theme) width = 500 height = 100 %}
+</div>
+{% component 'editor' file="toto/totohibi" tools="paragraph" fixture="" class="" %}

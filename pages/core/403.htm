@@ -8,15 +8,15 @@ meta_description = "Vous n'avez pas les autorisations nécessaires pour accéder
 [global seo]
 handle = "Seo\Config"
 ==
-<section id="core" class="grid grid-2 g-0 align-stretch">
-    <div class="text col text-center p-lg">
+<section id="core" class="grid grid-2 g-0 align-stretch" sm="grid-1">
+    <div class="text col text-center p-lg" sm="order-2">
         <h1>{{ "Accès refusé"|_ }}</h1>
         <p>{{ "Vous essayez d'accéder à une page à accès restreint. Merci de vous identifier pour continuer"|_ }}</p>
         <div id="row">
             <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
         </div>
     </div>
-    <div class="image overflow">
+    <div class="image overflow" sm="order-1">
         <img class="lazyload h100" data-src="{{ seo.core_image.focus(1000,1000,'crop')|default('assets/img/dummy.jpg'|theme|resize(1000,1000,{mode:'crop'})) }}" alt="" />
     </div>
 </section>
