@@ -46,13 +46,13 @@ logo = "assets/img/logo.svg"
 {{ seo.head_code }}
 
 {# Multisite #}
-{% if not boxesPage %}
-    {% if sitePicker.sites|length > 1 %}
-        {% for site in sitePicker.sites %}
-            <link rel="alternate" hreflang="{{ site.locale }}" href="{{ site.url }}" />
-        {% endfor %}
-    {% endif %}
+{% if sitePicker.sites|length > 1 %}
+    {% for site in sitePicker.sites %}
+        <link rel="alternate" hreflang="{{ site.locale }}" href="{{ site.url }}" />
+    {% endfor %}
+    <link rel="alternate" hreflang="x-default" href="{{ sitePicker.sites.first.url }}" />
 {% endif %}
+
 
 {# Matomo #}
 {% if matomo.url is not empty and matomo.website_id is not empty %}
