@@ -1,9 +1,16 @@
 /**************
- * Layout
+ * Layout, guideline
  **************/
+
 // Variables
 :root {
-
+    --font-h1: normal 700 clamp(1.875rem, 1.375rem + 2vw, 3.75rem) / 1.25 Arial, sans-serif;
+    --font-h2: normal 700 clamp(1.5625rem, 1.2292rem + 1.3333vw, 2.8125rem) / 1.25 Arial, sans-serif;
+    --font-h3: normal 700 clamp(1.25rem, 1.0833rem + 0.6667vw, 1.875rem) / 1.25 Arial, sans-serif;
+    --font-h4: normal 700 clamp(1.125rem, 1.0083rem + 0.4667vw, 1.5625rem) / 1.25 Arial, sans-serif;
+    --font-sm: normal 400 clamp(0.875rem, 0.8417rem + 0.1333vw, 1rem) / 1.5 Arial, sans-serif;
+    --font-md: normal 400 clamp(1rem, 0.9667rem + 0.1333vw, 1.125rem) / 1.5 Arial, sans-serif;
+    --font-lg: normal 400 clamp(1.125rem, 1.0917rem + 0.1333vw, 1.25rem) / 1.5 Arial, sans-serif;
 }
 
 // Wrappers
@@ -16,21 +23,36 @@
 // Footer
 #footer { }
 
+// Text sizing
+.h1, h1 { font: var(--font-h1); }
+.h2, h2 { font: var(--font-h2); }
+.h3, h3 { font: var(--font-h3); }
+.h4, h4 { font: var(--font-h4); }
+.font-sm { font: var(--font-sm); }
+.font-md { font: var(--font-md); }
+.font-lg { font: var(--font-lg); }
+
 // Buttons
 .btn { }
 
 // Forms
 .field { }
 
+/**
+ * Utility, Common classes
+ **/
+
+
+
 /**************
- * Blocks
+ * Blocks, general partials
  **************/
 
 
 
 
 /**************
- * Pages
+ * Pages, specific blocks
  **************/
 
 // Accueil

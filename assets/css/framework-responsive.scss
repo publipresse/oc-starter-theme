@@ -1,4 +1,19 @@
 /**
+ * Global
+ **/
+
+// Containers
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        [#{$attribute}~="container"] { width:100%; max-width:var(--container-w); margin-left:auto; margin-right:auto; padding-left:var(--gap-md); padding-right:var(--gap-md); }
+        [#{$attribute}~="container-sm"] { width:100%; max-width:var(--container-sm-w); margin-left:auto; margin-right:auto; padding-left:var(--gap-md); padding-right:var(--gap-md); }
+        [#{$attribute}~="container-fluid"] { padding-left:var(--gap-md); padding-right:var(--gap-md); margin-left:auto; margin-right:auto; }
+        [#{$attribute}~="container-left"] { margin-left:calc(100% / #{$cols}); margin-right:auto; padding-right:var(--gap-md); }
+        [#{$attribute}~="container-right"] { margin-right:calc(100% / #{$cols}); margin-left:auto; padding-left:var(--gap-md); }
+    }
+}
+
+/**
  * Texts
  **/
 
