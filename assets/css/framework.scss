@@ -188,7 +188,7 @@ body { font: var(--font-md); }
     .pt-#{$suffix} { padding-top:var(--gap-#{$suffix}); }
     .pr-#{$suffix} { padding-right:var(--gap-#{$suffix}); }
     .pb-#{$suffix} { padding-bottom:var(--gap-#{$suffix}); }
-    .pl-#{$suffix} { margin-left:var(--gap-#{$suffix}); }
+    .pl-#{$suffix} { padding-left:var(--gap-#{$suffix}); }
     .px-#{$suffix} { padding-left:var(--gap-#{$suffix}); padding-right:var(--gap-#{$suffix}); }
     .py-#{$suffix} { padding-top:var(--gap-#{$suffix}); padding-bottom:var(--gap-#{$suffix}); }
 }

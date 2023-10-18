@@ -8,24 +8,18 @@ meta_description = "Découvrez les mentions légales de notre site web, incluant
 [global infos]
 handle = "Config\Infos"
 ==
-<section id="legal" class="py-lg">
+<?php
+function onStart() {
+    $user = BackendAuth::getUser();
+    if($user && $user->hasAccess('publipresse.fronteditor.editor')) return;
+    foreach($this->infos->attributes as $key => $info) {
+        View::share($key, $info);
+    }
+}
+?>
+==
+<section id="legal" class="py-md">
     <div class="container">
-        {% content ('.'~this.site.hard_locale~'mentions-legales/text.html')
-            company_name = infos.company_name
-            company_status = infos.company_status
-            company_address = infos.company_address
-            company_tel = infos.company_tel
-            company_email = infos.company_email
-            company_vat = infos.company_vat
-            company_website = infos.company_website
-            company_capital = infos.company_capital
-            company_siren = infos.company_siren
-            publisher_name = infos.publisher_name
-            publisher_email = infos.publisher_email
-            dpo_name = infos.dpo_name
-            dpo_email = infos.dpo_email
-            host_name = infos.host_name
-            host_address = infos.host_address
-        %}
+        {% component 'editor' file="mentions-legales.html" %}
     </div>
 </section>

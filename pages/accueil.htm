@@ -5,4 +5,13 @@ is_hidden = 0
 
 [viewBag]
 localeUrl[fr] = "/"
+
+[TinyMCE editor]
 ==
+<div class="container py-lg">
+    
+    {% component 'editor' file="accueil/oui" tag="div" class="toto" %}
+    {% component 'editor' file="accueil/test" tag="div" toolbar="image media" class="" %}
+
+    <div class="vh-100"></div>
+</div>

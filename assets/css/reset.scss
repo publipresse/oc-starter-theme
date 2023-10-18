@@ -16,7 +16,7 @@ p:last-child { margin-bottom:0; }
 address { font-style:normal; }
 
 // Medias
-img, svg, video { display:block; max-width:100%; height:auto; }
+img, svg, video { display:block; max-width:100%; height:auto; object-fit: cover; }
 [data-bg] { background-size:cover; background-repeat:no-repeat; background-position:center center; }
 [data-src] { width:100%; }
 

@@ -48,12 +48,13 @@ function initLazyload() {
         callback_enter: function(el) {
             const width = el.clientWidth;
             el.sizes = width+'px';
-        }
+        },
     });
     
     addEventListener('resize', function(e) {
         const images = document.querySelectorAll('img[sizes]').forEach(function(el) {
             const width = el.clientWidth;
+            //const width = el.parentNode.clientWidth;
             el.sizes = width+'px';
         })
     });
