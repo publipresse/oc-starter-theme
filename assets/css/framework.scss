@@ -44,8 +44,8 @@ body { font: var(--font-md); }
 .container { width:100%; max-width:var(--container-w); margin-left:auto; margin-right:auto; padding-left:var(--gap-md); padding-right:var(--gap-md); }
 .container-sm { width:100%; max-width:var(--container-sm-w); margin-left:auto; margin-right:auto; padding-left:var(--gap-md); padding-right:var(--gap-md); }
 .container-fluid { padding-left:var(--gap-md); padding-right:var(--gap-md); margin-left:auto; margin-right:auto; }
-.container-left { margin-left:calc(100% / #{$cols}); margin-right:auto; padding-right:var(--gap-md); }
-.container-right { margin-right:calc(100% / #{$cols}); margin-left:auto; padding-left:var(--gap-md); }
+.container-left { margin-right:calc(100% / #{$cols}); margin-left:auto; padding-left:var(--gap-md); }
+.container-right { margin-left:calc(100% / #{$cols}); margin-right:auto; padding-right:var(--gap-md); }
 
 // Utility
 .relative { position:relative; }
