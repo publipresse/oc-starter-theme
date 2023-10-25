@@ -5,7 +5,7 @@ addEventListener('page:load', function() {
 });
 
 addEventListener('page:loaded', function() {
-    initLazyload();
+    initImages();
     initFancybox();
     initMarquee();
     initLenis();
@@ -43,20 +43,23 @@ function initScrollReveal() {
 }
 
 // Initialisation du lazyload
-function initLazyload() {
-    window.lazyload = new LazyLoad({
-        callback_enter: function(el) {
-            const width = el.clientWidth;
-            el.sizes = width+'px';
-        },
-    });
-    
+function initImages() {
+
+    const imagesToResize = document.querySelectorAll('img[sizes]');
     addEventListener('resize', function(e) {
-        const images = document.querySelectorAll('img[sizes]').forEach(function(el) {
+        imagesToResize.forEach(function(el) {
             const width = el.clientWidth;
             //const width = el.parentNode.clientWidth;
             el.sizes = width+'px';
         })
+    });
+
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    lazyImages.forEach(function(el) {
+        el.addEventListener('load', function(e) {
+            // Refresh scrollTrigger
+            if(typeof ScrollTrigger !== 'undefined') { ScrollTrigger.refresh(); }
+        });
     });
 }
 
@@ -171,8 +174,10 @@ function initForm() {
 
     // On réinitialise la fonction en cas de refresh ajax
     addEventListener('ajax:update-complete', function(e) {
+        // Refresh form
         initForm();
-        window.lazyload.update();
+        // Refresh scroll trigger
+        if(typeof ScrollTrigger !== 'undefined') { ScrollTrigger.refresh() }
     });
 
 }
