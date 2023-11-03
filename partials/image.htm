@@ -1,2 +1,0 @@
-{% set mode = mode|default('crop') %}
-<img class="lazy" src="{{ image|resize(width / 10, height / 10, mode) }}" data-src="{{ image|resize(width, height, mode) }}" alt="{{ image.title }}" />

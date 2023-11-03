@@ -178,6 +178,8 @@ function initForm() {
         initForm();
         // Refresh scroll trigger
         if(typeof ScrollTrigger !== 'undefined') { ScrollTrigger.refresh() }
+        // Refresh scroll reveal
+        if(typeof ScrollReveal !== 'undefined') { ScrollReveal.sync() }
     });
 
 }
