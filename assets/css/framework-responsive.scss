@@ -86,7 +86,7 @@
 @each $attribute, $size in $breakpoints {
     @media (max-width: #{$size}) {
         @for $i from 1 through $cols {
-            [#{$attribute}~="start-#{$i}"] { 
+            [#{$attribute}~="end-#{$i}"] { 
                 grid-column-end: ($i + 1)
             }
         }

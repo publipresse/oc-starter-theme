@@ -1,0 +1,13 @@
+<div class="field field-text {{ class }}">
+    <label class="field-label" for="field-{{ name }}">{{ label|default(name)|_ }}</label>
+    <input 
+        type="{{ type|default('text') }}"
+        id="{{ id|default('field-'~name|slug) }}"
+        class="field-input"
+        name="{{ name }}"
+        autocomplete="{{ autocomplete }}"
+        placeholder="{{ placeholder }}"
+        x-mask="{{ mask }}"
+    />
+    <div data-validate-for="{{ name }}"></div>
+</div>

@@ -1,0 +1,12 @@
+<fieldset class="field-checkboxes {{ class }}">
+    <legend>{{ label|default(name)|_ }}</legend>
+    <div class="{{ flex }}">
+        {% for key, item in items %}
+            <div class="field field-checkbox {{ subclass }}">
+                <input class="field-input" type="checkbox" id="{{ id|default(name|slug) }}-{{ loop.index }}" name="{{ name }}[]" value="{{ key matches '/^\\d+$/' ? item : key }}" />
+                <label class="field-label" for="{{ id|default(name|slug) }}-{{ loop.index }}"><span></span>{{ item }}</label>
+            </div>
+        {% endfor %}
+    </div>
+    <div data-validate-for="{{ name }}"></div>
+</fieldset>

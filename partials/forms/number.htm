@@ -1,0 +1,16 @@
+<div class="field field-number {{ class }}">
+    <label class="field-label" for="field-{{ name }}">{{ label|default(name)|_ }}</label>
+    <input 
+        type="{{ type|default('text') }}"
+        id="{{ id|default('field-'~name|slug) }}"
+        {% if type == 'number' %}class="field-input"{% endif %}
+        name="{{ name }}"
+        min="{{ min }}"
+        max="{{ max }}"
+        step="{{ step }}"
+        autocomplete="{{ autocomplete }}"
+        placeholder="{{ placeholder }}"
+        x-mask="{{ mask }}"
+    />
+    <div data-validate-for="{{ name }}"></div>
+</div>

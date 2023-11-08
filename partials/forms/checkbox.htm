@@ -1,0 +1,12 @@
+<div class="field field-checkbox {{ class }}">
+    <input 
+        type="checkbox" 
+        id="{{ id|default('field-'~name|slug) }}" 
+        class="field-input"
+        name="{{ name }}" 
+        value="{{ value }}" 
+        {% if checked %}checked{% endif %} 
+    />
+    <label class="field-label" for="field-{{ name|slug }}"><span></span>{{ body|default(label)|default(name)|_ }}</label>
+    <div data-validate-for="{{ name }}"></div>
+</div>

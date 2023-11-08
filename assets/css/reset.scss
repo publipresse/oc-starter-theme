@@ -26,10 +26,11 @@ a:hover { text-decoration:none; }
 // Forms
 [data-validate-for] { display:none; }
 [data-validate-for].oc-visible { display:block; }
-.field { flex:1; }
+fieldset{ border:none; }
+input, textarea, select { font-family:inherit; outline:none; }
 
 // Buttons
-button { cursor:pointer; outline:none; padding:0; background:none; border:none; -webkit-tap-highlight-color: transparent; font-family: inherit; font-size: inherit; }
+button { cursor:pointer; outline:none; padding:0; background:none; border:none; -webkit-tap-highlight-color: transparent; font-family: inherit; font-size: inherit; width:max-content; }
 .btn { display:inline-flex; width:max-content; white-space:nowrap; padding:0.5rem 1rem; cursor:pointer; border:1px solid transparent; transition:all 0.4s ease 0s; outline:none; }
 
 // Lenis

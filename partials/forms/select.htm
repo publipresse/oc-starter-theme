@@ -1,0 +1,23 @@
+{% set placeholder = placeholder|default('- Choisissez -') %}
+<div class="field field-select {{ class }}" x-data="{ open: false, selected: false, placeholder: '{{ placeholder }}' }" :class="open ? 'field-focus' : ''">
+    <label for="field-{{ name|slug }}" class="field-label">{{ label|default(name)|_ }}</label>
+    {# Standard select #}
+    <select name="{{ name }}" id="{{ id|default('field-'~name|slug) }}" class="field-input" style="display:none">
+        <option value="" :selected="selected == 0 ? true : false">{{ placeholder ? placeholder : '- Choisissez -' }}</option>
+        {% for key, item in items %}
+            <option value="{{ key matches '/^\\d+$/' ? item : key }}" :selected="selected == {{ loop.index }} ? true : false">{{ item }}</option>
+        {% endfor %}
+    </select>
+    {# Replacement select #}
+    <div class="select-wrapper" data-name="{{ label }}" data-id="{{ id|default('field-'~name|slug) }}">
+        <div class="select-placeholder field-input" @click="open = !open" @click.outside="open = false" x-text="placeholder"></div>
+        <div class="select-options field-input">
+            <div class="select-option" data-value="" @click="[placeholder = '{{ placeholder }}', selected = 0]">{{ placeholder }}</div>
+            {% for key, item in items %}
+                <div class="select-option" data-value="{{ key matches '/^\\d+$/' ? item : key }}" @click="[placeholder = '{{ item }}', selected = {{ loop.index }}]">{{ item }}</div>
+            {% endfor %}
+        </div>
+    </div>
+    
+    <div data-validate-for="{{ name }}"></div>
+</div>

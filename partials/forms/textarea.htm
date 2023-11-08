@@ -1,0 +1,12 @@
+<div class="field field-textarea {{ class }}">
+    <label class="field-label" for="field-{{ name }}">{{ label|default(name)|_ }}</label>
+    <textarea
+        id="{{ id|default('field-'~name|slug) }}"
+        class="field-input"
+        name="{{ name }}"
+        rows="{{ rows|default(5) }}"
+        placeholder="{{ placeholder }}"
+        x-mask="{{ mask }}"
+    ></textarea>
+    <div data-validate-for="{{ name }}"></div>
+</div>
