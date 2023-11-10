@@ -1,6 +1,6 @@
-title = "Merci"
-layout = "default"
 url = "/merci"
+layout = "default"
+title = "Merci"
 meta_title = "Merci pour votre message"
 meta_description = "Nous vous remercions pour votre message, votre demande sera traitée dans les plus brefs délais."
 
@@ -9,7 +9,7 @@ handle = "Seo\Config"
 ==
 <section id="core" class="grid grid-2 g-0 align-stretch" sm="grid-1">
     <div class="text col text-center p-lg" sm="order-2">
-        {% component 'editor' file=(this.page.id~'/message') tools="heading,paragraph,bold,link" fixture="" class="" %}
+        {% component 'editor' file=(this.page.id~'/message') toolbar="h1 h2 p | bold italic link" %}
         <div id="row">
             <a class="btn" href="{{ 'accueil'|page }}">{{ "Retourner à l'accueil"|_ }}</a>
         </div>
