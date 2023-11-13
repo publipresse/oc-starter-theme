@@ -1,9 +1,7 @@
 <div class="container py-lg">
 {{ form_ajax('contact::onFormSubmit', { validate: true, files: true, class: 'form col' }) }}
-    <div class="row">
     {% partial 'forms/text' name="Nom" %}
     {% partial 'forms/select' name="Select" items={opt1:'Option 1', opt2:'Option 2 !', opt3:'Kikoo <3'} %}
-    </div>
     {% partial 'forms/number' type="number" name="Number" %}
     {% partial 'forms/number' type="range" name="Range" %}
     {% partial 'forms/textarea' name="Message" %}
@@ -13,6 +11,8 @@
     {% partial 'forms/checkbox' name="Switch" class="switch" %}
     {% partial "forms/checkboxes" name="Coche mes checkboxes !" flex="row" items={opt1:'Option 1', opt2:'Option 2 !', opt3:'Option 3'} %}
     {% partial "forms/radios" name="Coche mes radios !" flex="row" items=['Option 1', 'Option 2', 'Option 3'] %}
+    {% partial 'forms/filepond' %}
+    {% partial 'forms/recaptcha' %}
     <button type="submit" data-attach-loading>{{ "Envoyez un message"|_ }}</button>
     <div id="{{ contact.alias }}_forms_flash"></div>
 {{ form_close() }}
