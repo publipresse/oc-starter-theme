@@ -60,7 +60,7 @@
     }
 }
 
-// span-x
+// column span-x
 @each $attribute, $size in $breakpoints {
     @media (max-width: #{$size}) {
         @for $i from 1 through $cols {
@@ -71,7 +71,7 @@
     }
 }
 
-// start-x
+// column start-x
 @each $attribute, $size in $breakpoints {
     @media (max-width: #{$size}) {
         @for $i from 1 through $cols {
@@ -82,7 +82,7 @@
     }
 }
 
-// end-x
+// column end-x
 @each $attribute, $size in $breakpoints {
     @media (max-width: #{$size}) {
         @for $i from 1 through $cols {
@@ -93,10 +93,54 @@
     }
 }
 
+// row grid-x
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @for $i from 1 through $cols {
+            [#{$attribute}~="row-grid-#{$i}"] { 
+                grid-template-rows: repeat($i, 'auto'); 
+            }
+        }
+    }
+}
+
+// row span-x
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @for $i from 1 through $cols {
+            [#{$attribute}~="row-span-#{$i}"] { 
+                grid-row-end: span + ' ' + $i
+            }
+        }
+    }
+}
+
+// row start-x
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @for $i from 1 through $cols {
+            [#{$attribute}~="row-start-#{$i}"] { 
+                grid-row-start: $i
+            }
+        }
+    }
+}
+
+// row end-x
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @for $i from 1 through $cols {
+            [#{$attribute}~="row-end-#{$i}"] { 
+                grid-row-end: ($i + 1)
+            }
+        }
+    }
+}
+
 // Order
 @each $attribute, $size in $breakpoints {
     @media (max-width: #{$size}) {
-        @for $i from 1 through 6 {
+        @for $i from 1 through $cols {
             [#{$attribute}~="order-#{$i}"] { order: #{$i}; }
         }
     }

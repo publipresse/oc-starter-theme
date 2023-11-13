@@ -106,29 +106,57 @@ body { font: var(--font-md); }
     }
 }
 
-// span-x
+// columns span-x
 @for $i from 1 through $cols {
     .span-#{$i} {
         grid-column-end: span + ' ' + $i
     }
 }
 
-// start-x
+// columns start-x
 @for $i from 1 through $cols {
     .start-#{$i} {
         grid-column-start: $i
     }
 }
 
-// end-x
+// columns end-x
 @for $i from 1 through $cols {
     .end-#{$i} {
         grid-column-end: ($i + 1)
     }
 }
 
+// rows grid
+@for $i from 1 through $cols {
+    .row-grid-#{$i} {
+        grid-template-rows: repeat($i, 'auto');
+    }
+}
+
+// row span-x
+@for $i from 1 through $cols {
+    .row-span-#{$i} {
+        grid-row-end: span + ' ' + $i
+    }
+}
+
+// rows start-x
+@for $i from 1 through $cols {
+    .row-start-#{$i} {
+        grid-row-start: $i
+    }
+}
+
+// rows end-x
+@for $i from 1 through $cols {
+    .row-end-#{$i} {
+        grid-row-end: ($i + 1)
+    }
+}
+
 // order-x
-@for $i from 1 through 6 {
+@for $i from 1 through $cols {
     .order-#{$i} { order: #{$i}; }
 }
 
