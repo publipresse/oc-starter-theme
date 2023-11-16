@@ -53,14 +53,6 @@ function initImages() {
             el.sizes = width+'px';
         })
     });
-
-    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
-    lazyImages.forEach(function(el) {
-        el.addEventListener('load', function(e) {
-            // Refresh scrollTrigger
-            if(typeof ScrollTrigger !== 'undefined') { ScrollTrigger.refresh(); }
-        });
-    });
 }
 
 // Initialisation du fancybox
