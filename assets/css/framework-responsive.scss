@@ -202,6 +202,15 @@
 // Margin
 @each $attribute, $size in $breakpoints {
     @media (max-width: #{$size}) {
+        @each $suffix, $value in $gaps {
+            [#{$attribute}~="m-#{$suffix}"] { margin:var(--gap-#{$suffix}); }
+            [#{$attribute}~="mt-#{$suffix}"] { margin-top:var(--gap-#{$suffix}); }
+            [#{$attribute}~="mr-#{$suffix}"] { margin-right:var(--gap-#{$suffix}); }
+            [#{$attribute}~="mb-#{$suffix}"] { margin-bottom:var(--gap-#{$suffix}); }
+            [#{$attribute}~="ml-#{$suffix}"] { margin-left:var(--gap-#{$suffix}); }
+            [#{$attribute}~="mx-#{$suffix}"] { margin-left:var(--gap-#{$suffix}); margin-right:var(--gap-#{$suffix}); }
+            [#{$attribute}~="my-#{$suffix}"] { margin-top:var(--gap-#{$suffix}); margin-bottom:var(--gap-#{$suffix}); }
+        }
         [#{$attribute}~="m-0"] { margin:0; }
         [#{$attribute}~="mt-0"] { margin-top:0; }
         [#{$attribute}~="mr-0"] { margin-right:0; }
@@ -216,28 +225,12 @@
         [#{$attribute}~="ml-auto"] { margin-left:auto; }
         [#{$attribute}~="mx-auto"] { margin-left:auto; margin-right:auto; }
         [#{$attribute}~="my-auto"] { margin-top:auto; margin-bottom:auto; }
-        @each $suffix, $value in $gaps {
-            [#{$attribute}~="m-#{$suffix}"] { margin:var(--gap-#{$suffix}); }
-            [#{$attribute}~="mt-#{$suffix}"] { margin-top:var(--gap-#{$suffix}); }
-            [#{$attribute}~="mr-#{$suffix}"] { margin-right:var(--gap-#{$suffix}); }
-            [#{$attribute}~="mb-#{$suffix}"] { margin-bottom:var(--gap-#{$suffix}); }
-            [#{$attribute}~="ml-#{$suffix}"] { margin-left:var(--gap-#{$suffix}); }
-            [#{$attribute}~="mx-#{$suffix}"] { margin-left:var(--gap-#{$suffix}); margin-right:var(--gap-#{$suffix}); }
-            [#{$attribute}~="my-#{$suffix}"] { margin-top:var(--gap-#{$suffix}); margin-bottom:var(--gap-#{$suffix}); }
-        }
     }
 }
 
 // Padding
 @each $attribute, $size in $breakpoints {
     @media (max-width: #{$size}) {
-        [#{$attribute}~="p-0"] { padding:0; }
-        [#{$attribute}~="pt-0"] { padding-top:0; }
-        [#{$attribute}~="pr-0"] { padding-right:0; }
-        [#{$attribute}~="pb-0"] { padding-bottom:0; }
-        [#{$attribute}~="pl-0"] { padding-left:0; }
-        [#{$attribute}~="px-0"] { padding-left:0; padding-right:0; }
-        [#{$attribute}~="py-0"] { padding-top:0; padding-bottom:0; }
         @each $suffix, $value in $gaps {
             [#{$attribute}~="p-#{$suffix}"] { padding:var(--gap-#{$suffix}); }
             [#{$attribute}~="pt-#{$suffix}"] { padding-top:var(--gap-#{$suffix}); }
@@ -247,6 +240,13 @@
             [#{$attribute}~="px-#{$suffix}"] { padding-left:var(--gap-#{$suffix}); padding-right:var(--gap-#{$suffix}); }
             [#{$attribute}~="py-#{$suffix}"] { padding-top:var(--gap-#{$suffix}); padding-bottom:var(--gap-#{$suffix}); }
         }
+        [#{$attribute}~="p-0"] { padding:0; }
+        [#{$attribute}~="pt-0"] { padding-top:0; }
+        [#{$attribute}~="pr-0"] { padding-right:0; }
+        [#{$attribute}~="pb-0"] { padding-bottom:0; }
+        [#{$attribute}~="pl-0"] { padding-left:0; }
+        [#{$attribute}~="px-0"] { padding-left:0; padding-right:0; }
+        [#{$attribute}~="py-0"] { padding-top:0; padding-bottom:0; }
     }
 }
 

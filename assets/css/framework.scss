@@ -194,6 +194,15 @@ body { font: var(--font-md); }
  **/
 
 // Margin
+@each $suffix, $value in $gaps {
+    .m-#{$suffix} { margin:var(--gap-#{$suffix}); }
+    .mt-#{$suffix} { margin-top:var(--gap-#{$suffix}); }
+    .mr-#{$suffix} { margin-right:var(--gap-#{$suffix}); }
+    .mb-#{$suffix} { margin-bottom:var(--gap-#{$suffix}); }
+    .ml-#{$suffix} { margin-left:var(--gap-#{$suffix}); }
+    .mx-#{$suffix} { margin-left:var(--gap-#{$suffix}); margin-right:var(--gap-#{$suffix}); }
+    .my-#{$suffix} { margin-top:var(--gap-#{$suffix}); margin-bottom:var(--gap-#{$suffix}); }
+}
 .m-0 { margin:0; }
 .mt-0 { margin-top:0; }
 .mr-0 { margin-right:0; }
@@ -208,24 +217,8 @@ body { font: var(--font-md); }
 .ml-auto { margin-left:auto; }
 .mx-auto { margin-left:auto; margin-right:auto; }
 .my-auto { margin-top:auto; margin-bottom:auto; }
-@each $suffix, $value in $gaps {
-    .m-#{$suffix} { margin:var(--gap-#{$suffix}); }
-    .mt-#{$suffix} { margin-top:var(--gap-#{$suffix}); }
-    .mr-#{$suffix} { margin-right:var(--gap-#{$suffix}); }
-    .mb-#{$suffix} { margin-bottom:var(--gap-#{$suffix}); }
-    .ml-#{$suffix} { margin-left:var(--gap-#{$suffix}); }
-    .mx-#{$suffix} { margin-left:var(--gap-#{$suffix}); margin-right:var(--gap-#{$suffix}); }
-    .my-#{$suffix} { margin-top:var(--gap-#{$suffix}); margin-bottom:var(--gap-#{$suffix}); }
-}
 
 // Padding
-.p-0 { padding:0; }
-.pt-0 { padding-top:0; }
-.pr-0 { padding-right:0; }
-.pb-0 { padding-bottom:0; }
-.pl-0 { padding-left:0; }
-.px-0 { padding-left:0; padding-right:0; }
-.py-0 { padding-top:0; padding-bottom:0; }
 @each $suffix, $value in $gaps {
     .p-#{$suffix} { padding:var(--gap-#{$suffix}); }
     .pt-#{$suffix} { padding-top:var(--gap-#{$suffix}); }
@@ -235,6 +228,13 @@ body { font: var(--font-md); }
     .px-#{$suffix} { padding-left:var(--gap-#{$suffix}); padding-right:var(--gap-#{$suffix}); }
     .py-#{$suffix} { padding-top:var(--gap-#{$suffix}); padding-bottom:var(--gap-#{$suffix}); }
 }
+.p-0 { padding:0; }
+.pt-0 { padding-top:0; }
+.pr-0 { padding-right:0; }
+.pb-0 { padding-bottom:0; }
+.pl-0 { padding-left:0; }
+.px-0 { padding-left:0; padding-right:0; }
+.py-0 { padding-top:0; padding-bottom:0; }
 
 // Gap
 .g-0 { gap:0; }
