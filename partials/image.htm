@@ -1,1 +1,5 @@
-<img class="{{ class }}" src="{{ image|resize(width, height, mode|default('crop')) }}" alt="{{ alt|default(image.title) }}" {{ image|resize(width, height, mode|default('crop'))|imagedimensions }} loading="lazy" />
+{% if image.offline_responsiveimages_focus_x_axis is not null %}
+    <img class="{{ class }}" src="{{ image|resize(width, height, mode|default('crop')) }}" alt="{{ alt|default(image.title) }}" {{ image|resize(width, height, mode|default('crop'))|imagedimensions }} loading="lazy" />
+{% else %}
+    <img class="{{ class }}" src="{{ image.focus(width, height, mode|default('crop')) }}" alt="{{ alt|default(image.title) }}" {{ imagefocus(width, height, mode|default('crop'))|imagedimensions }} loading="lazy" />
+{% endif %}

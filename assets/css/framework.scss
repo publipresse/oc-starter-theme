@@ -11,7 +11,7 @@ $gaps: (
     'md': 1.5rem,
     'lg': 3rem,
     'xl': 5vmin,
-    '2xl': 10vmin,
+    'xxl': 10vmin,
 );
 
 // Breakpoints
@@ -64,6 +64,10 @@ body { font: var(--font-md); }
 .dvh-100 { height:100dvh; }
 .h-auto { height:auto; }
 .hide { display:none; }
+.block { display:block; }
+.inline-block { display:inline-block; }
+.flex { display:flex; }
+.inline-flex { display:inline-flex; }
 .hidden { visibility:hidden; }
 
 /**
@@ -197,6 +201,13 @@ body { font: var(--font-md); }
 .ml-0 { margin-left:0; }
 .mx-0 { margin-left:0; margin-right:0; }
 .my-0 { margin-top:0; margin-bottom:0; }
+.m-auto { margin:auto; }
+.mt-auto { margin-top:auto; }
+.mr-auto { margin-right:auto; }
+.mb-auto { margin-bottom:auto; }
+.ml-auto { margin-left:auto; }
+.mx-auto { margin-left:auto; margin-right:auto; }
+.my-auto { margin-top:auto; margin-bottom:auto; }
 @each $suffix, $value in $gaps {
     .m-#{$suffix} { margin:var(--gap-#{$suffix}); }
     .mt-#{$suffix} { margin-top:var(--gap-#{$suffix}); }

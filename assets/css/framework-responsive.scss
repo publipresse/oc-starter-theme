@@ -13,6 +13,28 @@
     }
 }
 
+// Utility
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        [#{$attribute}~="relative"] { position:relative; }
+        [#{$attribute}~="overflow"] { overflow:hidden; }
+        [#{$attribute}~="w-100"] { width:100%; }
+        [#{$attribute}~="vw-100"] { width:100vw; }
+        [#{$attribute}~="dvw-100"] { width:100dvw; }
+        [#{$attribute}~="w-auto"] { width:auto; }
+        [#{$attribute}~="h-100"] { height:100%; }
+        [#{$attribute}~="vh-100"] { height:100vh; }
+        [#{$attribute}~="dvh-100"] { height:100dvh; }
+        [#{$attribute}~="h-auto"] { height:auto; }
+        [#{$attribute}~="block"] { display:block; }
+        [#{$attribute}~="inline-block"] { display:inline-block; }
+        [#{$attribute}~="flex"] { display:flex; }
+        [#{$attribute}~="inline-flex"] { display:inline-flex; }
+        [#{$attribute}~="hide"] { display:none; }
+        [#{$attribute}~="hidden"] { visibility:hidden; }
+    }
+}
+
 /**
  * Texts
  **/
@@ -187,6 +209,13 @@
         [#{$attribute}~="ml-0"] { margin-left:0; }
         [#{$attribute}~="mx-0"] { margin-left:0; margin-right:0; }
         [#{$attribute}~="my-0"] { margin-top:0; margin-bottom:0; }
+        [#{$attribute}~="m-auto"] { margin:auto; }
+        [#{$attribute}~="mt-auto"] { margin-top:auto; }
+        [#{$attribute}~="mr-auto"] { margin-right:auto; }
+        [#{$attribute}~="mb-auto"] { margin-bottom:auto; }
+        [#{$attribute}~="ml-auto"] { margin-left:auto; }
+        [#{$attribute}~="mx-auto"] { margin-left:auto; margin-right:auto; }
+        [#{$attribute}~="my-auto"] { margin-top:auto; margin-bottom:auto; }
         @each $suffix, $value in $gaps {
             [#{$attribute}~="m-#{$suffix}"] { margin:var(--gap-#{$suffix}); }
             [#{$attribute}~="mt-#{$suffix}"] { margin-top:var(--gap-#{$suffix}); }
