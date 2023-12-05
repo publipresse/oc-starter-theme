@@ -8,5 +8,5 @@
             </div>
         {% endfor %}
     </div>
-    <div data-validate-for="{{ name }}"></div>
+    <div data-validate-for="{{ name|replace({' ':'_'}) }}"></div>
 </fieldset>

@@ -8,5 +8,5 @@
         {% if checked %}checked{% endif %} 
     />
     <label class="field-label" for="field-{{ name|slug }}"><span></span>{{ body|default(label)|default(name)|_ }}</label>
-    <div data-validate-for="{{ name }}"></div>
+    <div data-validate-for="{{ name|replace({' ':'_'}) }}"></div>
 </div>

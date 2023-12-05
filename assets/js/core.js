@@ -49,7 +49,6 @@ function initImages() {
     addEventListener('resize', function(e) {
         imagesToResize.forEach(function(el) {
             const width = el.clientWidth;
-            //const width = el.parentNode.clientWidth;
             el.sizes = width+'px';
         })
     });
