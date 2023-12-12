@@ -190,3 +190,8 @@ function initBackToTop() {
         });
     }
 }
+
+// Fonction utilitaire pour calculer une valeur avec Gsap
+function calculateVar(progress, x, y, start, end) {
+    return progress < start ? x : x + (y - x) * (Math.min(progress, 1) - start) / (end - start);
+}
