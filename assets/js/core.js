@@ -1,16 +1,11 @@
 initPageTransition();
 
-addEventListener('page:load', function() {
-    initScrollReveal();
-});
-
 addEventListener('page:loaded', function() {
+    initGsap();
     initImages();
+    initHeadroom();
     initFancybox();
     initMarquee();
-    initLenis();
-    initHeadroom();
-    initGsap();
     initForm();
     initBackToTop();
 });
@@ -35,16 +30,22 @@ function initPageTransition() {
     }
 }
 
-// Initialisation du scroll reveal
-function initScrollReveal() {
-    if (typeof ScrollReveal !== "undefined") {
-        ScrollReveal({ duration: 1000, distance: '50px', origin: 'bottom', cleanup: true });
-    }
+function initGsap() {
+    if(typeof ScrollSmoother !== 'undefined') { gsap.registerPlugin(ScrollSmoother); }
+    if(typeof ScrollTrigger !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
+    if(typeof SplitText !== 'undefined') { gsap.registerPlugin(SplitText); }
+    if(typeof GSDevTools !== 'undefined') { gsap.registerPlugin(GSDevTools); }
+
+    ScrollSmoother.create({
+        smooth: 1,
+        effects: true,
+    });
+
+    // GSDevTools.create();
 }
 
 // Initialisation du lazyload
 function initImages() {
-
     const imagesToResize = document.querySelectorAll('img[sizes]');
     addEventListener('resize', function(e) {
         imagesToResize.forEach(function(el) {
@@ -52,6 +53,55 @@ function initImages() {
             el.sizes = width+'px';
         })
     });
+}
+
+// Gestion de l'entête sticky.
+function initHeadroom() {
+    let offset = 0;
+
+    let el = document.body;
+    setClasses(0, 0);
+
+    ScrollTrigger.create({
+        trigger: el,
+        start: 'top+='+offset+' top',
+        end: 'bottom bottom',
+        markers: true,
+        onEnter: function(self) { 
+            setClasses(self.progress, self.direction)
+        },
+        onUpdate: function(self) {
+            setClasses(self.progress, self.direction);
+        }
+    });
+
+    function setClasses(progress, direction) {
+        switch(progress) {
+            case 0:
+                el.classList.remove('not-top');
+                el.classList.add('top');
+                break;
+            case 1:
+                el.classList.remove('top');
+                el.classList.add('bottom');
+                break;
+            default:
+                el.classList.remove('top');
+                el.classList.add('not-top');
+                break;
+        }
+
+        switch(direction) {
+            case 1:
+                el.classList.remove('pinned');
+                el.classList.add('unpinned');
+                break;
+            default:
+                el.classList.remove('unpinned');
+                el.classList.add('pinned');
+                break;
+        }
+    }
 }
 
 // Initialisation du fancybox
@@ -68,60 +118,6 @@ function initMarquee() {
     if (typeof Marquee3k !== "undefined") {
         Marquee3k.init();
     }
-}
-
-// Gestion de l'entête sticky.
-function initHeadroom() {
-    if (typeof Headroom !== "undefined") {
-        const headroom  = new Headroom(document.getElementById('header'), {
-            offset : 0,
-            tolerance : {
-                up : 5,
-                down : 0
-            },
-            classes : {
-                initial : 'headroom',
-                pinned : 'pinned',
-                unpinned : 'unpinned',
-                top : 'top',
-                notTop : 'not-top',
-                bottom : 'bottom',
-                notBottom : 'not-bottom'
-            }
-        });
-        headroom.init();
-    }
-}
-
-function initLenis() {
-    window.scroll = new Lenis({
-        duration: 1.5,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        orientation: 'vertical',
-        gestureOrientation: 'vertical',
-        smoothWheel: true,
-        wheelMultiplier: 1,
-        smoothTouch: false,
-        touchMultiplier: 2,
-        infinite: false,
-    })
-
-    //get scroll value
-    window.scroll.on('scroll', ({ scroll, limit, velocity, direction, progress }) => {
-        //console.log({ scroll, limit, velocity, direction, progress })
-    })
-
-    function raf(time) {
-        window.scroll.raf(time)
-        requestAnimationFrame(raf)
-    }
-
-    requestAnimationFrame(raf)
-}
-
-function initGsap() {
-    if(typeof ScrollTrigger !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
-    if(typeof SplitText !== 'undefined') { gsap.registerPlugin(SplitText); }
 }
 
 // Gestion des classes sur un formulaire

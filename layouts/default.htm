@@ -17,9 +17,8 @@ cookie = 24
     <link href="{{ ['assets/css/reset.scss', 'assets/css/framework.scss', 'assets/css/styles.scss', 'assets/css/responsive.scss']|theme }}.css" rel="stylesheet" />
     {# Js #}
     <script defer src="{{ ['@framework.bundle']|theme }}.js"></script>
-    <script defer src="{{ ['assets/vendor/headroom/headroom.js', 'assets/vendor/lenis/lenis.js']|theme }}.js"></script>
+    <script defer src="{{ ['assets/vendor/gsap/umd/gsap.js', 'assets/vendor/gsap/umd/ScrollSmoother.js', 'assets/vendor/gsap/umd/ScrollTrigger.js']|theme }}.js"></script>
     <script defer src="{{ ['assets/vendor/alpine/collapse.js', 'assets/vendor/alpine/mask.js', 'assets/vendor/alpine/alpine.min.js']|theme }}.js"></script>
-    <script defer src="{{ ['assets/vendor/gsap/gsap.js', 'assets/vendor/gsap/ScrollTrigger.js']|theme }}.js"></script>
     {% scripts %}
     <script defer src="{{ ['assets/js/core.js', 'assets/js/custom.js']|theme }}.js"></script>
 </head>
@@ -27,10 +26,14 @@ cookie = 24
 <body id="page-{{ this.page.id }}" x-data="{ menuOpen: false }" :class="menuOpen ? 'menu-open' : ''">
     <div id="page">
         {% partial 'header' %}
-        <main id="main">
-            {% page %}
-        </main>
-        {% partial 'footer' %}
+        <div id="smooth-wrapper">
+            <div id="smooth-content">
+                <main id="main">
+                    {% page %}
+                </main>
+                {% partial 'footer' %}
+            </div>
+        </div>
         {% component 'popup' %}
     </div>
     {% placeholder bodyEnd %}

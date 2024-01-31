@@ -15,7 +15,7 @@
 
 // Wrappers
 #page { position:relative; width:100%; overflow:hidden; }
-#main { margin-top:var(--header-h); }
+#main { padding-top:var(--header-h); }
 
 // Header
 #header { position:fixed; left:0; top:0; width:100%; height:var(--header-h); z-index:10; }

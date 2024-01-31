@@ -1,5 +1,5 @@
 {% if image.offline_responsiveimages_focus_x_axis is not empty %}
-    <img class="{{ class }}" src="{{ image.focus(width, height, mode|default('crop')) }}" alt="{{ alt|default(image.title) }}" {{ image.focus(width, height, mode|default('crop'))|imagedimensions }} loading="lazy" />
+    <img data-speed="auto" class="{{ class }}" src="{{ image.focus(width, height, mode|default('crop')) }}" alt="{{ alt|default(image.title) }}" {{ image.focus(width, height, mode|default('crop'))|imagedimensions }} loading="lazy" />
 {% else %}
-    <img class="{{ class }}" src="{{ image|resize(width, height, mode|default('crop')) }}" alt="{{ alt|default(image.title) }}" {{ image|resize(width, height, mode|default('crop'))|imagedimensions }} loading="lazy" />
+    <img data-speed="auto" class="{{ class }}" src="{{ image|resize(width, height, mode|default('crop')) }}" alt="{{ alt|default(image.title) }}" {{ image|resize(width, height, mode|default('crop'))|imagedimensions }} loading="lazy" />
 {% endif %}

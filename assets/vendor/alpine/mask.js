@@ -1,7 +1,7 @@
 (() => {
   // packages/mask/src/index.js
   function src_default(Alpine) {
-    Alpine.directive("mask", (el, { value, expression }, { effect, evaluateLater }) => {
+    Alpine.directive("mask", (el, { value, expression }, { effect, evaluateLater, cleanup }) => {
       let templateFn = () => expression;
       let lastInputValue = "";
       queueMicrotask(() => {
@@ -29,8 +29,17 @@
         if (el._x_model)
           el._x_model.set(el.value);
       });
-      el.addEventListener("input", () => processInputValue(el));
-      el.addEventListener("blur", () => processInputValue(el, false));
+      const controller = new AbortController();
+      cleanup(() => {
+        controller.abort();
+      });
+      el.addEventListener("input", () => processInputValue(el), {
+        signal: controller.signal,
+        // Setting this as a capture phase listener to ensure it runs
+        // before wire:model or x-model added as a latent binding...
+        capture: true
+      });
+      el.addEventListener("blur", () => processInputValue(el, false), { signal: controller.signal });
       function processInputValue(el2, shouldRestoreCursor = true) {
         let input = el2.value;
         let template = templateFn(input);
@@ -128,7 +137,9 @@
       return "-";
     if (/^\D+$/.test(input))
       return "9";
-    thousands = thousands ?? (delimiter === "," ? "." : ",");
+    if (thousands === null || thousands === void 0) {
+      thousands = delimiter === "," ? "." : ",";
+    }
     let addThousands = (input2, thousands2) => {
       let output = "";
       let counter = 0;

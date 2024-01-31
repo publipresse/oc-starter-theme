@@ -5,7 +5,7 @@
       let evaluate = evaluateLater(expression);
       let options = {
         rootMargin: getRootMargin(modifiers),
-        threshold: getThreshhold(modifiers)
+        threshold: getThreshold(modifiers)
       };
       let observer = new IntersectionObserver((entries) => {
         entries.forEach((entry) => {
@@ -21,7 +21,7 @@
       });
     });
   }
-  function getThreshhold(modifiers) {
+  function getThreshold(modifiers) {
     if (modifiers.includes("full"))
       return 0.99;
     if (modifiers.includes("half"))
