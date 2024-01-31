@@ -66,7 +66,6 @@ function initHeadroom() {
         trigger: el,
         start: 'top+='+offset+' top',
         end: 'bottom bottom',
-        markers: true,
         onEnter: function(self) { 
             setClasses(self.progress, self.direction)
         },
