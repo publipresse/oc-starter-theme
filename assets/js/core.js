@@ -36,10 +36,12 @@ function initGsap() {
     if(typeof SplitText !== 'undefined') { gsap.registerPlugin(SplitText); }
     if(typeof GSDevTools !== 'undefined') { gsap.registerPlugin(GSDevTools); }
 
-    ScrollSmoother.create({
-        smooth: 1,
-        effects: true,
-    });
+    if(typeof ScrollSmoother !== 'undefined')
+        ScrollSmoother.create({
+            smooth: 1,
+            effects: true,
+        });
+    }
 
     // GSDevTools.create();
 }
