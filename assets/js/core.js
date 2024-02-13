@@ -36,7 +36,7 @@ function initGsap() {
     if(typeof SplitText !== 'undefined') { gsap.registerPlugin(SplitText); }
     if(typeof GSDevTools !== 'undefined') { gsap.registerPlugin(GSDevTools); }
 
-    if(typeof ScrollSmoother !== 'undefined')
+    if(typeof ScrollSmoother !== 'undefined') {
         ScrollSmoother.create({
             smooth: 1,
             effects: true,

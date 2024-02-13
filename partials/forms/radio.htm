@@ -1,12 +1,12 @@
-<div class="field field-checkbox {% if switch %}field-switch{% endif %} {{ class }}">
+<div class="field field-radio {% if switch %}field-switch{% endif %} {{ class }}">
     <input 
-        type="checkbox" 
+        type="radio" 
         id="field-{{ name|slug }}-{{ loop.index|default(1) }}"
         class="field-input"
         name="{{ name }}" 
         value="{{ value|default(1) }}" 
         {% if xmodel %}x-model="{{ xmodel }}"{% endif %}
-        {% if default == value|default(1) %}checked{% endif %}
+        {% if default == value %}checked{% endif %}
         {% if dataRequest %}data-request="{{ dataRequest }}"{% endif %}
         {% if dataRequestUpdate %}data-request-update="{{ dataRequestUpdate }}"{% endif %}
         {% if dataRequestSuccess %}data-request-success="{{ dataRequestSuccess }}"{% endif %}

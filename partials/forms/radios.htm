@@ -1,12 +1,14 @@
-<fieldset class="field-radios {{ class }}">
-    <legend>{{ label|default(name)|_ }}</legend>
+<fieldset class="field-radios">
+    {% if label is not same as false %}
+        <legend class="field-legend">{{ label|default(name)|_ }}</legend>
+    {% endif %}
     <div class="{{ flex }}">
         {% for key, item in items %}
-            <div class="field field-radio {{ subclass }}">
-                <input class="field-input" type="radio" id="{{ id|default(name|slug) }}-{{ loop.index }}" name="{{ name }}" value="{{ key matches '/^\\d+$/' ? item : key }}" />
-                <label class="field-label" for="{{ id|default(name|slug) }}-{{ loop.index }}"><span></span>{{ item }}</label>
-            </div>
+            {% partial 'forms/radio' label=item name=name value=(key matches '/^\\d+$/' ? item : key) loop=loop %}
         {% endfor %}
     </div>
+    {% if comment %}
+        <div class="field-comment">{{ comment|raw }}</div>
+    {% endif %}
     <div data-validate-for="{{ name|replace({' ':'_'}) }}"></div>
 </fieldset>

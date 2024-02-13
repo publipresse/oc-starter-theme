@@ -1,12 +1,26 @@
 <div class="field field-textarea {{ class }}">
-    <label class="field-label" for="field-{{ name }}">{{ label|default(name)|_ }}</label>
+    {% if label is not same as false %}
+        <label class="field-label" for="{{ id|default('field-'~name|slug) }}">{{ label|default(name)|_ }}</label>
+    {% endif %}
     <textarea
         id="{{ id|default('field-'~name|slug) }}"
         class="field-input"
         name="{{ name }}"
         rows="{{ rows|default(5) }}"
         placeholder="{{ placeholder }}"
-        x-mask="{{ mask }}"
-    ></textarea>
+        x-mask="{{ xmask }}"
+        {% if xmodel %}
+            x-model="{{ xmodel }}"
+        {% endif %}
+        {% if dataRequest %}data-request="{{ dataRequest }}"{% endif %}
+        {% if dataRequestUpdate %}data-request-update="{{ dataRequestUpdate }}"{% endif %}
+        {% if dataRequestSuccess %}data-request-success="{{ dataRequestSuccess }}"{% endif %}
+        {% if dataRequestRedirect %}data-request-redirect="{{ dataRequestRedirect }}"{% endif %}
+        {% if dataRequestData %}data-request-data="{{ dataRequestData }}"{% endif %}
+        {% if dataTrackInput %}data-track-input="{{ dataTrackInput }}"{% endif %}
+    >{{ default }}</textarea>
+    {% if comment %}
+        <div class="field-comment">{{ comment|raw }}</div>
+    {% endif %}
     <div data-validate-for="{{ name|replace({' ':'_'}) }}"></div>
 </div>
