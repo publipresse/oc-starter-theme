@@ -37,10 +37,19 @@ function initGsap() {
     if(typeof GSDevTools !== 'undefined') { gsap.registerPlugin(GSDevTools); }
 
     if(typeof ScrollSmoother !== 'undefined') {
-        ScrollSmoother.create({
+        window.scroll = ScrollSmoother.create({
             smooth: 1,
             effects: true,
         });
+
+        document.querySelectorAll('*[href^="#"]').forEach(function(el) {
+            el.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = el.getAttribute('href');
+                const offset = getComputedStyle(document.documentElement).getPropertyValue('--header-h');
+                window.scroll.scrollTo(target, true, 'top '+offset);
+            });
+        })
     }
 
     // GSDevTools.create();
