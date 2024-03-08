@@ -285,8 +285,12 @@ body { font: var(--font-md); }
 .field-input { padding:1em; border:1px solid var(--field-normal); outline:none; resize: none; font-size:1rem; display:block; line-height:inherit;}
 
 .field-focus .field-input,
-.field-focus .field-group > div { border-color:var(--field-active); }
-.field-error .field-input { border-color:var(--field-error); }
+.field-focus .field-group > div,
+.field-focus .field-group .field-prefix,
+.field-focus .field-group .field-suffix { border-color:var(--field-active); }
+.field-error .field-input,
+.field-error .field-group .field-prefix,
+.field-error .field-group .field-suffix { border-color:var(--field-error); }
 
 // Field group
 .field-group { display:flex; flex-direction:row; align-items:stretch; justify-content: flex-start; }
@@ -295,6 +299,7 @@ body { font: var(--font-md); }
 .field-group .field-suffix { display:flex; flex-direction:column; align-items:center; justify-content:center; padding:0 1em; border:1px solid var(--field-normal); }
 .field-group .field-prefix { border-right:none; }
 .field-group .field-suffix { border-left:none; }
+.field-group svg { max-width:var(--checkbox-size); }
 
 // Field comments
 .field-comment { font-size:80%; }

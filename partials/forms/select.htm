@@ -10,11 +10,12 @@
         id="{{ id|default('field-'~name|slug) }}" 
         class="field-input" 
         style="display:none;"
-        {% if dataRequest %}data-request="{{ dataRequest }}"{% endif %}
-        {% if dataRequestUpdate %}data-request-update="{{ dataRequestUpdate }}"{% endif %}
-        {% if dataRequestSuccess %}data-request-success="{{ dataRequestSuccess }}"{% endif %}
-        {% if dataRequestRedirect %}data-request-redirect="{{ dataRequestRedirect }}"{% endif %}
-        {% if dataRequestData %}data-request-data="{{ dataRequestData }}"{% endif %}
+        {% for key, value in request %}
+            {{ key }}="{{ value }}"
+        {% endfor %}
+        {% for key, value in alpine %}
+            {{ key }}="{{ value }}"
+        {% endfor %}
     >
         <option value="" :selected="selected == 0 ? true : false">{{ placeholder ? placeholder : '- Choisissez -' }}</option>
         {% for key, item in items %}
@@ -26,7 +27,12 @@
         <div class="select-placeholder field-input" x-ref="button" @click="open = !open" @click.outside="open = false" x-text="placeholder"></div>
         <div class="select-options field-input" x-anchor.offset.-1="$refs.button">
             {% for key, item in items %}
-                <div class="select-option" @click="[placeholder = '{{ item }}', selected = '{{ key }}' {% if xmodel %}, {{ xmodel }} = { key: '{{ key }}', item: '{{ item }}' } {% endif %}]">{{ item }}</div>
+                <div 
+                    class="select-option" 
+                    @click="[placeholder = '{{ item }}', selected = '{{ key }}']"
+                >
+                    {{ item }}
+                </div>
             {% endfor %}
         </div>
     </div>

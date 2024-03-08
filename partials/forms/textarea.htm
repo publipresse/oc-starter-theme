@@ -8,16 +8,12 @@
         name="{{ name }}"
         rows="{{ rows|default(5) }}"
         placeholder="{{ placeholder }}"
-        x-mask="{{ xmask }}"
-        {% if xmodel %}
-            x-model="{{ xmodel }}"
-        {% endif %}
-        {% if dataRequest %}data-request="{{ dataRequest }}"{% endif %}
-        {% if dataRequestUpdate %}data-request-update="{{ dataRequestUpdate }}"{% endif %}
-        {% if dataRequestSuccess %}data-request-success="{{ dataRequestSuccess }}"{% endif %}
-        {% if dataRequestRedirect %}data-request-redirect="{{ dataRequestRedirect }}"{% endif %}
-        {% if dataRequestData %}data-request-data="{{ dataRequestData }}"{% endif %}
-        {% if dataTrackInput %}data-track-input="{{ dataTrackInput }}"{% endif %}
+        {% for key, value in request %}
+            {{ key }}="{{ value }}"
+        {% endfor %}
+        {% for key, value in alpine %}
+            {{ key }}="{{ value }}"
+        {% endfor %}
     >{{ default }}</textarea>
     {% if comment %}
         <div class="field-comment">{{ comment|raw }}</div>

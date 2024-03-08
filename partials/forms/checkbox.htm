@@ -5,13 +5,12 @@
         class="field-input"
         name="{{ name }}" 
         value="{{ value|default(1) }}" 
-        {% if xmodel %}x-model="{{ xmodel }}"{% endif %}
-        {% if default == value|default(1) %}checked{% endif %}
-        {% if dataRequest %}data-request="{{ dataRequest }}"{% endif %}
-        {% if dataRequestUpdate %}data-request-update="{{ dataRequestUpdate }}"{% endif %}
-        {% if dataRequestSuccess %}data-request-success="{{ dataRequestSuccess }}"{% endif %}
-        {% if dataRequestRedirect %}data-request-redirect="{{ dataRequestRedirect }}"{% endif %}
-        {% if dataRequestData %}data-request-data="{{ dataRequestData }}"{% endif %}
+        {% for key, value in request %}
+            {{ key }}="{{ value }}"
+        {% endfor %}
+        {% for key, value in alpine %}
+            {{ key }}="{{ value }}"
+        {% endfor %}
     />
     <label class="field-label" for="field-{{ name|slug }}-{{ loop.index|default(1) }}">
         <span></span>

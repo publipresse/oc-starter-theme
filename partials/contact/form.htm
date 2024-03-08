@@ -2,8 +2,8 @@
 {{ form_ajax('contact::onFormSubmit', { validate: true, files: true, class: 'form col' }) }}
     {% set items = {opt1:'Option 1', opt2:'Option 2', opt3:'Option 3'} %}
 
-    {% partial 'forms/text' name="Nom" suffix='€' comment="Lorem Ipsum" %}
-    {% partial 'forms/select' name="Select" items=items comment="Lorem Ipsum" %}
+    {% partial 'forms/text' name="Nom" suffix='cm' comment="Lorem Ipsum" %}
+    {% partial 'forms/select' name="Select" items=items comment="Lorem Ipsum" request={'data-request':'onAjax'} %}
     {% partial 'forms/text' type="range" name="Number" comment="Lorem Ipsum" %}
     {% partial 'forms/textarea' name="Message" comment="Lorem Ipsum" %}
     {% partial 'forms/checkbox' name="Switch" switch=true default=true comment="Lorem Ipsum" %}
