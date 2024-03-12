@@ -255,6 +255,8 @@
     @media (max-width: #{$size}) {
         @each $suffix, $value in $gaps {
             [#{$attribute}~="g-#{$suffix}"] { gap:var(--gap-#{$suffix}) }
+            [#{$attribute}~="gx-#{$suffix}"] { column-gap:var(--gap-#{$suffix}) }
+            [#{$attribute}~="gy-#{$suffix}"] { row-gap:var(--gap-#{$suffix}) }
         }
         [#{$attribute}~="g-0"] { gap:0; }
         [#{$attribute}~="gx-0"] { column-gap:0; }

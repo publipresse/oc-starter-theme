@@ -242,6 +242,8 @@ body { font: var(--font-md); }
 // Gap
 @each $suffix, $value in $gaps {
     .g-#{$suffix} { gap:var(--gap-#{$suffix}) }
+    .gx-#{$suffix} { column-gap:var(--gap-#{$suffix}) }
+    .gy-#{$suffix} { row-gap:var(--gap-#{$suffix}) }
 }
 .g-0 { gap:0; }
 .gx-0 { column-gap:0; }
