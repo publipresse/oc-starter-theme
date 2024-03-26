@@ -2,6 +2,7 @@ initPageTransition();
 
 addEventListener('page:loaded', function() {
     initGsap();
+    initLenis();
     initImages();
     initHeadroom();
     initFancybox();
@@ -31,28 +32,40 @@ function initPageTransition() {
 }
 
 function initGsap() {
-    if(typeof ScrollSmoother !== 'undefined') { gsap.registerPlugin(ScrollSmoother); }
     if(typeof ScrollTrigger !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
     if(typeof SplitText !== 'undefined') { gsap.registerPlugin(SplitText); }
     if(typeof GSDevTools !== 'undefined') { gsap.registerPlugin(GSDevTools); }
 
-    if(typeof ScrollSmoother !== 'undefined') {
-        window.scroll = ScrollSmoother.create({
-            smooth: 1,
-            effects: true,
-        });
-
-        document.querySelectorAll('*[href^="#"]').forEach(function(el) {
-            el.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = el.getAttribute('href');
-                const offset = getComputedStyle(document.documentElement).getPropertyValue('--header-h');
-                window.scroll.scrollTo(target, true, 'top '+offset);
-            });
-        })
-    }
-
     // GSDevTools.create();
+}
+
+function initLenis() {
+    // Init lenis
+    window.scroll = new Lenis()
+    window.scroll.on('scroll', (e) => {
+        //console.log(e)
+    })
+    window.scroll.on('scroll', ScrollTrigger.update)
+    gsap.ticker.add((time)=>{
+        window.scroll.raf(time * 1000)
+    })
+    gsap.ticker.lagSmoothing(0);
+
+    // Handle anchors
+    document.querySelectorAll('*[href*="#"]').forEach(function(el) {
+        el.addEventListener('click', function(e) {
+            const target = el.getAttribute('href');
+            const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'));
+            const hash = '#'+target.split('#')[1];
+            const actualPathname = window.location.pathname;
+            const targetPathname = new URL(target).pathname
+            
+            if(actualPathname == targetPathname) {
+                e.preventDefault();
+                window.scroll.scrollTo(hash, { offset: -offset });
+            }
+        });
+    })
 }
 
 // Initialisation du lazyload
