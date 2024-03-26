@@ -54,16 +54,22 @@ function initLenis() {
     // Handle anchors
     document.querySelectorAll('*[href*="#"]').forEach(function(el) {
         el.addEventListener('click', function(e) {
-            const target = el.getAttribute('href');
             const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'));
+            const target = el.getAttribute('href');
             const hash = '#'+target.split('#')[1];
-            const actualPathname = window.location.pathname;
-            const targetPathname = new URL(target).pathname
-            
-            if(actualPathname == targetPathname) {
+
+            if(target.charAt(0) == '#') {
                 e.preventDefault();
                 window.scroll.scrollTo(hash, { offset: -offset });
+            } else {
+                const actualPathname = window.location.pathname;
+                const targetPathname = new URL(target).pathname
+                if(actualPathname == targetPathname) {
+                    e.preventDefault();
+                    window.scroll.scrollTo(hash, { offset: -offset });
+                }
             }
+            
         });
     })
 }
