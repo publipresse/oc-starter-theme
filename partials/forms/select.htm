@@ -9,7 +9,7 @@
         name="{{ name }}" 
         id="{{ id|default('field-'~name|slug) }}" 
         class="field-input" 
-        {# style="display:none;" #}
+        style="display:none;"
         {% for key, value in request %}
             {{ key }}="{{ value }}"
         {% endfor %}
@@ -29,7 +29,7 @@
             {% for key, item in items %}
                 <div 
                     class="select-option" 
-                    @click="[placeholder = '{{ item }}', selected = '{{ key }}']"
+                    @click="[placeholder = '{{ item }}', selected = '{{ key }}']; {% if request['data-request'] %}oc.request('#{{ id|default('field-'~name|slug) }}');{% endif %}"
                 >
                     {{ item }}
                 </div>
