@@ -7,6 +7,25 @@ meta_description = "Nous vous remercions pour votre message, votre demande sera 
 [global seo]
 handle = "Seo\Config"
 ==
+<?php
+function onStart() {
+    if(empty(Session::get('contact-form'))) { 
+        return Cms::redirect('contact');
+    }
+    
+    $user = BackendAuth::getUser();
+    if($user && $user->hasAccess('publipresse.fronteditor.editor')) {
+        return;
+    }
+    
+    foreach(Session::get('contact-form') as $key => $info) {
+        View::share($key, $info);
+    }
+
+    Session::forget('contact-form');
+}
+?>
+==
 <section id="core" class="grid grid-2 g-0 align-stretch" sm="grid-1">
     <div class="text col text-center p-lg" sm="order-2">
         {% component 'editor' file=(this.page.id~'/message') toolbar="h1 h2 p | bold italic link" %}
