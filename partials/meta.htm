@@ -1,11 +1,14 @@
 [global seo]
 handle = "Seo\Config"
 
+[global infos]
+handle = "Config\Infos"
+
 [global matomo]
 handle = "Seo\Matomo"
 
 [schemaName]
-name = "Github"
+name = "{{ infos.company_name }}"
 
 [schemaLogo]
 logo = "assets/img/logo.svg"
