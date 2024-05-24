@@ -1,13 +1,18 @@
 {% set placeholder = placeholder|default(items[default])|default('- Choisissez -') %}
+{% set id = id|default('field-'~name|slug) %}
 
-<div class="field field-select {{ class }}" x-data="{ open: false, selected: '{{ default|default(0) }}', placeholder: '{{ placeholder }}' }" :class="[open ? 'field-focus' : '', selected != 0 ? 'field-filled' : '']">
+<div class="field field-select {{ class }}" 
+    x-data="{ open: false, selected: '{{ default|default(0) }}', placeholder: '{{ placeholder }}' }" :class="[open ? 'field-focus' : '', selected != 0 ? 'field-filled' : '']"
+    x-modelable="selected" 
+    x-model="{{ id|replace({'-':'_'}) }}"
+>
     {% if label is not same as false %}
         <label for="field-{{ name|slug }}" class="field-label">{{ label|default(name)|_ }}</label>
     {% endif %}
     {# Standard select #}
     <select 
         name="{{ name }}" 
-        id="{{ id|default('field-'~name|slug) }}" 
+        id="{{ id }}" 
         class="field-input" 
         style="display:none;"
         {% for key, value in request %}
@@ -16,6 +21,7 @@
         {% for key, value in alpine %}
             {{ key }}="{{ value }}"
         {% endfor %}
+        x-model="selected"
     >
         <option value="" :selected="selected == 0 ? true : false">{{ placeholder ? placeholder : '- Choisissez -' }}</option>
         {% for key, item in items %}
@@ -29,7 +35,10 @@
             {% for key, item in items %}
                 <div 
                     class="select-option" 
-                    @click="[placeholder = '{{ item }}', selected = '{{ key }}']; {% if request['data-request'] %}oc.request('#{{ id|default('field-'~name|slug) }}');{% endif %}"
+                    @click="[placeholder = '{{ item }}', selected = '{{ key }}']; {% if request['data-request'] %}oc.request('#{{ id }}');{% endif %}"
+                    {% for key, value in alpine %}
+                        {{ key }}="{{ value }}"
+                    {% endfor %}
                 >
                     {{ item }}
                 </div>

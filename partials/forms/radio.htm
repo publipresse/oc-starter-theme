@@ -11,6 +11,8 @@
         {% for key, value in alpine %}
             {{ key }}="{{ value }}"
         {% endfor %}
+        {% if disabled %}disabled{% endif %}
+        {% if default %}checked{% endif %}
     />
     <label class="field-label" for="{{ id|default('field-'~name|slug) }}-{{ loop.index|default(1) }}">
         <span></span>
