@@ -4,7 +4,9 @@
 <div class="field field-select {{ class }}" 
     x-data="{ open: false, selected: '{{ default|default(0) }}', placeholder: '{{ placeholder }}' }" :class="[open ? 'field-focus' : '', selected != 0 ? 'field-filled' : '']"
     x-modelable="selected" 
-    x-model="{{ id|replace({'-':'_'}) }}"
+    {% for key, value in alpine %}
+        {{ key }}="{{ value }}"
+    {% endfor %}
 >
     {% if label is not same as false %}
         <label for="field-{{ name|slug }}" class="field-label">{{ label|default(name)|_ }}</label>
@@ -36,9 +38,7 @@
                 <div 
                     class="select-option" 
                     @click="[placeholder = '{{ item }}', selected = '{{ key }}']; {% if request['data-request'] %}oc.request('#{{ id }}');{% endif %}"
-                    {% for key, value in alpine %}
-                        {{ key }}="{{ value }}"
-                    {% endfor %}
+                    :class="{ 'select-active': selected == '{{ key }}' }"
                 >
                     {{ item }}
                 </div>
