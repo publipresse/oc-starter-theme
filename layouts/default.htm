@@ -10,26 +10,26 @@ cookie = 24
 <html lang="{{ this.site.hard_locale }}" prefix="og: http://ogp.me/ns#">
 <head>
     {# Seo #}
-    {% partial 'meta' %}
+    {% partial '_layout/meta' %}
     {# Css #}
-    <link href="{{ ['assets/vendor/hamburgers/hamburgers.css']|theme }}.css" rel="stylesheet" />
+    <link href="{{ ['assets/vendor/hamburgers/hamburgers.min.css']|theme }}.css" rel="stylesheet">
     {% styles %}
-    <link href="{{ ['assets/css/reset.scss', 'assets/css/framework.scss', 'assets/css/styles.scss', 'assets/css/responsive.scss']|theme }}.css" rel="stylesheet" />
+    <link href="{{ ['assets/css/reset.scss', 'assets/css/framework.scss', 'assets/css/styles.scss', 'assets/css/responsive.scss']|theme }}.css" rel="stylesheet">
     {# Js #}
-    <script defer src="{{ ['@framework.bundle']|theme }}.js"></script>
-    <script defer src="{{ ['assets/vendor/gsap/umd/gsap.js', 'assets/vendor/lenis/lenis.js', 'assets/vendor/gsap/umd/ScrollTrigger.js']|theme }}.js"></script>
-    <script defer src="{{ ['assets/vendor/alpine/collapse.js', 'assets/vendor/alpine/mask.js', 'assets/vendor/alpine/anchor.js', 'assets/vendor/alpine/alpine.min.js']|theme }}.js"></script>
+    <script defer src="{{ ['@framework.bundle', 'assets/js/init.js']|theme }}.js"></script>
+    <script defer src="{{ ['assets/vendor/lenis/lenis.min.js', 'assets/vendor/gsap/minified/gsap.min.js', 'assets/vendor/gsap/minified/ScrollTrigger.min.js']|theme }}.js"></script>
+    <script defer src="{{ ['assets/vendor/alpine/collapse.min.js', 'assets/vendor/alpine/mask.min.js', 'assets/vendor/alpine/anchor.min.js', 'assets/vendor/alpine/alpine.min.js']|theme }}.js"></script>
     {% scripts %}
     <script defer src="{{ ['assets/js/core.js', 'assets/js/custom.js']|theme }}.js"></script>
 </head>
 
-<body id="page-{{ this.page.id }}" x-data="{ menuOpen: false }" :class="menuOpen ? 'menu-open' : ''">
+<body id="page-{{ this.page.id }}" x-data="{ menuOpen: false }" x-bind:class="menuOpen == true ? 'menu-open' : ''">
     <div id="page">
-        {% partial 'header' %}
+        {% partial '_layout/header' %}
         <main id="main">
             {% page %}
         </main>
-        {% partial 'footer' %}
+        {% partial '_layout/footer' %}
         {% component 'popup' %}
     </div>
     {% placeholder frontEditor %}

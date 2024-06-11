@@ -1,5 +1,3 @@
-initPageTransition();
-
 addEventListener('page:loaded', function() {
     initGsap();
     initLenis();
@@ -10,26 +8,6 @@ addEventListener('page:loaded', function() {
     initForm();
     initBackToTop();
 });
-
-// Animation de transition entre les pages
-function initPageTransition() {
-    if (oc.useTurbo && oc.useTurbo()) {
-        var isAnimating = false;
-        // Transition lorsqu'on quitte une page
-        addEventListener('page:before-visit', async function(e) {
-            if (isAnimating) { isAnimating = false; return; }
-            e.preventDefault();
-            //await gsap.to("#header", {x: 100, duration: 1});
-            isAnimating = true;
-            oc.visit(e.detail.url);
-        });
-        
-        // Transition quand on arrive sur une nouvelle page
-        addEventListener('page:load', function() {
-            //gsap.to("#header", {x: 0, duration: 1});
-        });
-    }
-}
 
 function initGsap() {
     if(typeof ScrollTrigger !== 'undefined') { gsap.registerPlugin(ScrollTrigger); }
@@ -69,7 +47,6 @@ function initLenis() {
                     window.scroll.scrollTo(hash, { offset: -offset });
                 }
             }
-            
         });
     })
 }
@@ -194,8 +171,6 @@ function initForm() {
         initForm();
         // Refresh scroll trigger
         if(typeof ScrollTrigger !== 'undefined') { ScrollTrigger.refresh() }
-        // Refresh scroll reveal
-        if(typeof ScrollReveal !== 'undefined') { ScrollReveal.sync() }
     });
 
 }
@@ -217,6 +192,6 @@ function initBackToTop() {
 }
 
 // Fonction utilitaire pour calculer une valeur avec Gsap
-function calculateVar(progress, x, y, start, end) {
-    return progress < start ? x : x + (y - x) * (Math.min(progress, 1) - start) / (end - start);
+function calculateVar(progress, x, y, start, end) {
+    return progress < start ? x : x + (y - x) * (Math.min(progress, 1) - start) / (end - start);
 }

@@ -4,7 +4,7 @@
     {% endif %}
     <div class="{{ flex }}">
         {% for key, item in items %}
-            {% partial 'forms/radio' label=item name=name value=(key matches '/^\\d+$/' ? item : key) loop=loop %}
+            {% partial '_forms/radio' label=item name=name value=(key matches '/^\\d+$/' ? item : key) loop=loop %}
         {% endfor %}
     </div>
     {% if comment %}

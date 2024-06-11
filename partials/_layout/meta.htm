@@ -33,27 +33,27 @@ logo = "assets/img/logo.svg"
 
 {# Metas #}
 <title>{{ meta_prefix }} {{ meta_title }} {{ meta_suffix }}</title>
-<link rel="icon" href="{{ favicon }}" {% if Agent.isSafari() %}rel="mask-icon" color="{{ theme_color }}"{% endif %}>
+<link rel="icon" href="{{ favicon|default('assets/img/logo.svg') }}" {% if Agent.isSafari() %}rel="mask-icon" color="{{ theme_color }}"{% endif %}>
 <link rel="canonical" href="{{ canonical_url }}">
-<meta name="description" content="{{ meta_description }}" />
+<meta name="description" content="{{ meta_description }}">
 <meta name="robots" content="{{ meta_robots }}">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="turbo-visit-control" content="{{ turbo_routing }}" />
+<meta name="turbo-visit-control" content="{{ turbo_routing }}">
 <meta name="turbo-cache-control" content="{{ turbo_cache }}">
 <meta name="theme-color" content="{{ theme_color }}">
-<meta property="og:title" content="{{ og_title }}" />
-<meta property="og:description" content="{{ og_description }}" />
-<meta property="og:url" content="{{ og_url }}" />
-<meta property="og:type" content="{{ og_type }}" />
-<meta property="og:image" content="{{ og_image }}" />
+<meta property="og:title" content="{{ og_title }}">
+<meta property="og:description" content="{{ og_description }}">
+<meta property="og:url" content="{{ og_url }}">
+<meta property="og:type" content="{{ og_type }}">
+<meta property="og:image" content="{{ og_image }}">
 {{ seo.head_code }}
 
 {# Multisite #}
 {% if sitePicker.sites|length > 1 %}
     {% for site in sitePicker.sites %}
-        <link rel="alternate" hreflang="{{ site.locale }}" href="{{ site.url }}" />
+        <link rel="alternate" hreflang="{{ site.locale }}" href="{{ site.url }}">
     {% endfor %}
-    <link rel="alternate" hreflang="x-default" href="{{ sitePicker.sites.first.url }}" />
+    <link rel="alternate" hreflang="x-default" href="{{ sitePicker.sites.first.url }}">
 {% endif %}
 
 {# Matomo #}
@@ -70,7 +70,7 @@ logo = "assets/img/logo.svg"
             g.async=true; g.src=u+'matomo.js'; s.parentNode.insertBefore(g,s);
         })();
     </script>
-    <noscript><p><img src="{{ matomo.url }}matomo.php?idsite={{ matomo.website_id }}&amp;rec=1" style="border:0;" alt="" /></p></noscript>
+    <noscript><p><img src="{{ matomo.url }}matomo.php?idsite={{ matomo.website_id }}&amp;rec=1" style="border:0;" alt=""></p></noscript>
 {% endif %}
 
 {# Schema #}
