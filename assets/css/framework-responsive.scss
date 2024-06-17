@@ -250,6 +250,30 @@
     }
 }
 
+// Borders
+@each $attribute, $size in $breakpoints {
+    @media (max-width: #{$size}) {
+        @each $suffix, $value in $gaps {
+            @for $i from 1 through $cols {
+                [data-#{$attribute}~="b-#{$suffix}"] { border-width: $i+'px'; border-style: solid; }
+                [data-#{$attribute}~="bt-#{$suffix}"] { border-top-width: $i+'px'; border-style: solid; }
+                [data-#{$attribute}~="br-#{$suffix}"] { border-right-width: $i+'px'; border-style: solid; }
+                [data-#{$attribute}~="bb-#{$suffix}"] { border-bottom-width: $i+'px'; border-style: solid; }
+                [data-#{$attribute}~="bl-#{$suffix}"] { border-left-width: $i+'px'; border-style: solid; }
+                [data-#{$attribute}~="bx-#{$suffix}"] { border-left-width: $i+'px'; border-right-width: $i; border-style: solid; }
+                [data-#{$attribute}~="by-#{$suffix}"] { border-top-width: $i+'px'; border-bottom-width: $i; border-style: solid; }
+            }
+        }
+        [data-#{$attribute}~="b-0"] { border-width:0; }
+        [data-#{$attribute}~="bt-0"] { border-top-width:0; }
+        [data-#{$attribute}~="br-0"] { border-right-width:0; }
+        [data-#{$attribute}~="bb-0"] { border-bottom-width:0; }
+        [data-#{$attribute}~="bl-0"] { border-left-width:0; }
+        [data-#{$attribute}~="bx-0"] { border-left-width:0; border-right-width:0; }
+        [data-#{$attribute}~="by-0"] { border-top-width:0; border-bottom-width:0; }
+    }
+}
+
 // Gap
 @each $attribute, $size in $breakpoints {
     @media (max-width: #{$size}) {
