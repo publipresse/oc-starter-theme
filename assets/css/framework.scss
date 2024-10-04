@@ -142,12 +142,12 @@ body { font: var(--font-md); }
 @each $name, $value in $colors {
     .c-#{$name} { color: var(--#{$name}); }
     .bg-#{$name} { background-color: var(--#{$name}); }
-    .b-#{$name} { border-color: var(--#{$name}); }
+    .b-#{$name} { border-color: var(--#{$name}); border-width:0; }
     
     @for $i from 1 through 9 { 
         .c-#{$name}-#{$i}0 { color: var(--#{$name}-#{$i}0); }
         .bg-#{$name}-#{$i}0 { background-color: var(--#{$name}-#{$i}0); }
-        .b-#{$name}-#{$i}0 { border-color: var(--#{$name}-#{$i}0); }
+        .b-#{$name}-#{$i}0 { border-color: var(--#{$name}-#{$i}0); border-width:0; }
     }
 }
 

@@ -5,24 +5,47 @@ name: Builder
 
 fields:
     builder:
-        tab: Contenu
         label: Contenu
         type: repeater
         prompt: Ajouter un élément
         displayMode: builder
         column: false
         groups:
+            title:
+                name: Titre
+                icon: ph ph-text-h-two
+                description: Un titre Hn
+                fields:
+                    title:
+                        label: Titre
+                        type: text
+                        span: auto
+                    tag:
+                        label: Tag
+                        type: balloon-selector
+                        span: auto
+                        default: h2
+                        options:
+                            h1: H1
+                            h2: H2
+                            h3: H3
+                            h4: H4
+                            h5: H5
+                            h6: H6
             richeditor:
-                name: Zone de texte
-                icon: icon-align-left
+                name: Texte
+                icon: ph ph-article
+                description: Une zone de texte large
                 fields:
                     content:
                         label: Zone de texte
                         type: richeditor
                         size: giant
+                        toolbarButtons: paragraphFormat, bold, italic, underline, -, insertPageLink, emoticons, -, formatOL, formatUL, insertTable, -, html, fullscreen
             textimage:
                 name: Texte + Image
-                icon: icon-indent
+                icon: ph ph-square-half
+                description: Texte et image à gauche ou à droite
                 fields:
                     image_position:
                         label: Position de l'image
@@ -37,47 +60,59 @@ fields:
                         type: richeditor
                         size: large
                         span: left
+                        toolbarButtons: paragraphFormat, bold, italic, underline, -, insertPageLink, emoticons, -, formatOL, formatUL, insertTable, -, html, fullscreen
                     image:
                         label: Image
-                        type: mediafinder
+                        type: fileupload
                         mode: image
                         tab: Infos
                         span: right
                         maxFiles: 1
             quote:
                 name: Citation
-                icon: icon-quote-left
+                icon: ph ph-quotes
+                description: Citation d'un auteur
                 fields:
                     quote:
                         label: Citation
                         type: richeditor
+                        toolbarButtons: bold, italic, underline, insertPageLink, emoticons
                     author:
                         label: Auteur
                         type: text
-            epigraph:
+                        span: auto
+                    role:
+                        label: Rôle
+                        type: text
+                        span: auto
+            featured:
                 name: Exergue
-                icon: icon-asterisk
+                icon: ph ph-megaphone
+                description: Texte mis en avant
                 fields:
                     content:
                         label: Contenu
                         type: richeditor
+                        toolbarButtons: bold, italic, underline, insertPageLink, emoticons
             image:
                 name: Image
-                icon: icon-file-image-o
+                icon: icon-image
+                description: Une grande image
                 fields:
-                    img:
+                    image:
                         label: Image
-                        type: mediafinder
+                        type: fileupload
                         mode: image
                         tab: Infos
                         maxFiles: 1
             gallery:
                 name: Galerie d'images
-                icon: icon-th
+                icon: ph ph-images
+                description: Une galerie d'images
                 fields:
                     images:
                         label: Images
-                        type: mediafinder
+                        type: fileupload
                         mode: image
                         tab: Infos
                         maxFiles: 99
@@ -108,23 +143,24 @@ fields:
                         type: switch
                         span: row
                         spanClass: col-md-4
-                        containerAttributes: 
-                            style: margin-top:32px
+                        comment: Afficher les images originales quand on clique dessus
             video:
                 name: Vidéo
-                icon: icon-youtube-play
+                icon: ph ph-youtube-logo
+                description: Ajouter une vidéo locale ou youtube
                 fields:
                     source:
                         label: Source
                         type: balloon-selector
                         span: auto
                         options:
-                            local: Local
+                            local: Uploader une vidéo
                             youtube: Youtube
                         default: local
                     video:
                         label: Vidéo
                         type: fileupload
+                        fileTypes: mp4
                         maxFiles: 1
                         trigger:
                             action: show
@@ -140,7 +176,8 @@ fields:
                             condition: value[local]
             link:
                 name: Lien
-                icon: icon-link
+                icon: ph ph-link
+                description: Ajouter un lien vers une page interne ou un site externe
                 fields:
                     mode:
                         label: Mode
@@ -164,7 +201,8 @@ fields:
                         type: switch
             files:
                 name: Fichiers
-                icon: icon-download
+                icon: ph ph-paperclip
+                description: Ajouter des fichiers à ouvrir ou télécharger
                 fields:
                     files:
                         label: Fichiers
@@ -180,7 +218,8 @@ fields:
                         default: open
             html:
                 name: HTML
-                icon: icon-code
+                icon: ph ph-code
+                description: Code HTML pour une utilisation avancée
                 fields:
                     content:
                         label: Code
