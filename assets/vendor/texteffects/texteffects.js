@@ -1,3 +1,7 @@
+// .split-text : Active split
+// .split-[number] : Choose split animation
+// .split-repeat : Repeat effect (default effect applied once)
+
 addEventListener('page:loaded', function() {
     initSplit();
     initTextEffects();
@@ -10,7 +14,7 @@ function initSplit() {
         charsClass: 'char',
     });
     
-    const button = document.querySelector('.ct-ignition__button--edit');
+    const button = document.querySelector('#fe-wrapper .fe-edit');
     if(button) {
         button.addEventListener('mousedown', function(e) {
             document.querySelectorAll('.split-text').forEach(function(item, key) {
@@ -19,6 +23,23 @@ function initSplit() {
         });
     }
 }
+
+const wrapElements = function(elems, wrapType, wrapClass) {
+    elems.forEach(char => {
+        const wrapEl = document.createElement(wrapType);
+        wrapEl.classList = wrapClass;
+        char.parentNode.appendChild(wrapEl);
+        wrapEl.appendChild(char);
+    });
+};
+
+const getOnce = function(el) {
+    if(el.classList.contains('split-repeat')) {
+        return false;
+    } else {
+        return true;
+    }
+};
 
 function initTextEffects() {
     const fx1Titles = document.querySelectorAll('.split-text.split-1');
@@ -32,6 +53,7 @@ function initTextEffects() {
     const fx9Titles = document.querySelectorAll('.split-text.split-9');
     const fx10Titles = document.querySelectorAll('.split-text.split-10');
     const fx11Titles = document.querySelectorAll('.split-text.split-11');
+
     const fx12Titles = document.querySelectorAll('.split-text.split-12');
     const fx13Titles = document.querySelectorAll('.split-text.split-13');
     const fx14Titles = document.querySelectorAll('.split-text.split-14');
@@ -41,15 +63,9 @@ function initTextEffects() {
     const fx18Titles = document.querySelectorAll('.split-text.split-18');
     const fx19Titles = document.querySelectorAll('.split-text.split-19');
     const fx20Titles = document.querySelectorAll('.split-text.split-20');
+
     const fx21Titles = document.querySelectorAll('.split-text.split-21');
     const fx22Titles = document.querySelectorAll('.split-text.split-22');
-    const fx23Titles = document.querySelectorAll('.split-text.split-23');
-    const fx24Titles = document.querySelectorAll('.split-text.split-24');
-    const fx25Titles = document.querySelectorAll('.split-text.split-25');
-    const fx26Titles = document.querySelectorAll('.split-text.split-26');
-    const fx27Titles = document.querySelectorAll('.split-text.split-27');
-    const fx28Titles = document.querySelectorAll('.split-text.split-28');
-    const fx29Titles = document.querySelectorAll('.split-text.split-29');
 
     
     fx1Titles.forEach(title => {
@@ -70,9 +86,10 @@ function initTextEffects() {
             stagger: 0.4,
             scrollTrigger: {
                 trigger: title,
-                start: 'center+=20% bottom',
-                end: '+=50%',
-                scrub: true
+                start: 'center bottom',
+                end: 'top center+=10%',
+                scrub: true,
+                once: getOnce(title),
             },
         });
 
@@ -100,9 +117,10 @@ function initTextEffects() {
             stagger: 0.03,
             scrollTrigger: {
                 trigger: title,
-                start: 'center bottom+=50%',
-                end: 'bottom top+=40%',
-                scrub: true
+                start: 'center bottom',
+                end: 'top center+=10%',
+                scrub: true,
+                once: getOnce(title),
             }
         });
 
@@ -125,9 +143,10 @@ function initTextEffects() {
             stagger: 0.03,
             scrollTrigger: {
                 trigger: title,
-                start: 'center+=20% bottom',
-                end: '+=50%',
-                scrub: true
+                start: 'center bottom',
+                end: 'top center+=10%',
+                scrub: true,
+                once: getOnce(title),
             }
         });
 
@@ -154,9 +173,10 @@ function initTextEffects() {
                 },
                 scrollTrigger: {
                     trigger: word,
-                    start: 'center bottom+=30%',
-                    end: 'top top+=15%',
+                    start: 'center bottom',
+                    end: 'top center+=10%',
                     scrub: true,
+                    once: getOnce(title),
                 }
             });
 
@@ -182,9 +202,10 @@ function initTextEffects() {
             stagger: { each: 0.05, grid: 'auto', from: 'random'},
             scrollTrigger: {
                 trigger: title,
-                start: 'center bottom+=10%',
-                end: 'bottom center',
-                scrub: 0.9
+                start: 'center bottom',
+                end: 'top center+=10%',
+                scrub: true,
+                once: getOnce(title),
             }
         });
 
@@ -217,9 +238,10 @@ function initTextEffects() {
                 },
                 scrollTrigger: {
                     trigger: word,
-                    start: 'center bottom+=40%',
-                    end: 'bottom center-=30%',
-                    scrub: 0.9
+                    start: 'center bottom',
+                    end: 'top center+=10%',
+                    scrub: true,
+                    once: getOnce(title),
                 }
             });
 
@@ -252,9 +274,10 @@ function initTextEffects() {
                 stagger: { each: 0.06, from: 'end'},
                 scrollTrigger: {
                     trigger: word,
-                    start: 'bottom bottom+=20%',
-                    end: 'bottom top',
-                    scrub: 1
+                    start: 'center bottom',
+                    end: 'top center+=10%',
+                    scrub: true,
+                    once: getOnce(title),
                 }
             });
 
@@ -262,69 +285,7 @@ function initTextEffects() {
 
     });
 
-    const lettersAndSymbols = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '!', '@', '#', '$', '%', '^', '&', '*', '-', '_', '+', '=', ';', ':', '<', '>', ','];
     fx8Titles.forEach(title => {
-        
-        const chars = title.querySelectorAll('.char');
-
-        chars.forEach((char, position) => {
-            let initialHTML = char.innerHTML;
-            
-            gsap.fromTo(char, {
-                opacity: 0
-            },
-            {
-                duration: 0.03,
-                innerHTML: () => lettersAndSymbols[Math.floor(Math.random() * lettersAndSymbols.length)],
-                repeat: 1,
-                repeatRefresh: true,
-                opacity: 1,
-                repeatDelay: 0.03,
-                delay: (position+1)*0.18,
-                onComplete: () => gsap.set(char, {innerHTML: initialHTML, delay: 0.03}),
-                scrollTrigger: {
-                    trigger: title,
-                    start: 'top bottom',
-                    end: 'bottom center',
-                    toggleActions: "play resume resume reset",
-                    onEnter: () => gsap.set(char, {opacity: 0})
-                }
-            });
-
-        });
-        
-    });
-
-    fx9Titles.forEach(title => {
-
-        const words = title.querySelectorAll('.word');
-
-        for (const word of words) {
-
-            const chars = word.querySelectorAll('.char');
-
-            gsap.fromTo(chars,  { 
-                'will-change': 'transform', 
-                scaleX: 0,
-                x: (_, target) => window.innerWidth/2 - target.offsetLeft - target.offsetWidth/2
-            },
-            {
-                ease: 'power1.inOut',
-                scaleX: 1,
-                x: 0,
-                scrollTrigger: {
-                    trigger: word,
-                    start: 'top bottom',
-                    end: 'top top',
-                    scrub: true
-                }
-            });
-
-        }
-
-    });
-
-    fx10Titles.forEach(title => {
         
         const chars = title.querySelectorAll('.char');
 
@@ -341,15 +302,17 @@ function initTextEffects() {
             stagger: { each: 0.05, from: 'random'},
             scrollTrigger: {
                 trigger: title,
-                start: 'top bottom',
-                end: 'center center',
-                toggleActions: "play resume resume reset"
+                start: 'center bottom',
+                end: 'top center+=10%',
+                toggleActions: "play resume resume reset",
+                scrub: true,
+                once: getOnce(title),
             }
         });
 
     });
 
-    fx11Titles.forEach(title => {
+    fx9Titles.forEach(title => {
         
         const chars = title.querySelectorAll('.char');
         wrapElements(chars, 'span', 'char-wrap');
@@ -366,15 +329,17 @@ function initTextEffects() {
             stagger: 0.042,
             scrollTrigger: {
                 trigger: title,
-                start: 'top bottom',
-                end: 'top top+=10%',
+                start: 'center bottom',
+                end: 'top center+=10%',
                 toggleActions: "play resume resume reset",
+                scrub: true,
+                once: getOnce(title),
             }
         });
 
     });
 
-    fx12Titles.forEach(title => {
+    fx10Titles.forEach(title => {
         
         const chars = title.querySelectorAll('.char');
         wrapElements(chars, 'span', 'char-wrap');
@@ -395,15 +360,16 @@ function initTextEffects() {
             stagger: -0.06,
             scrollTrigger: {
                 trigger: title,
-                start: 'top bottom+=10%',
-                end: 'bottom top+=10%',
-                scrub: true
+                start: 'center bottom',
+                end: 'top center+=10%',
+                scrub: true,
+                once: getOnce(title),
             }
         });
     
     });
 
-    fx13Titles.forEach(title => {
+    fx11Titles.forEach(title => {
         
         const chars = title.querySelectorAll('.char');
         
@@ -429,96 +395,16 @@ function initTextEffects() {
             scrollTrigger: {
                 trigger: title,
                 start: 'center bottom',
-                end: 'bottom center-=30%',
-                scrub: 0.9
+                end: 'top center+=10%',
+                scrub: true,
+                once: getOnce(title),
             }
         });
 
     });
 
-    fx14Titles.forEach(title => {
-        
-        const chars = title.querySelectorAll('.char');
-        
-        gsap.timeline()
-        .fromTo(title, {
-            'will-change': 'transform', 
-            xPercent: 100
-        }, {
-            ease: 'none',
-            xPercent: 0,
-            scrollTrigger: {
-                trigger: title,
-                scrub: true,
-                start: 'center center',
-                end: '+=100%',
-                pin: title.parentNode,
-            }
-        })
-        .fromTo(chars, { 
-            'will-change': 'transform', 
-            scale: 3,
-            yPercent: -900
-        },
-        {
-            ease: 'back(2)',
-            scale: 1,
-            yPercent: 0,
-            stagger: 0.05,
-            scrollTrigger: {
-                trigger: title,
-                start: 'center center',
-                end: '+=100%',
-                scrub: 1.9,
-            }
-        }, 0);
-        
-    });
 
-    fx15Titles.forEach(title => {
-        
-        const chars = title.querySelectorAll('.char');
-        
-        chars.forEach(char => gsap.set(char.parentNode, { perspective: 2000 })); 
-        
-        gsap.timeline()
-        .fromTo(title, {
-            'will-change': 'transform', 
-            xPercent: -80
-        }, {
-            ease: 'none',
-            xPercent: 0,
-            scrollTrigger: {
-                trigger: title,
-                scrub: true,
-                start: 'center center',
-                end: '+=100%',
-                pin: title.parentNode,
-            }
-        })
-        .fromTo(chars, { 
-            'will-change': 'opacity, transform', 
-            transformOrigin: '50% 50% -200px',
-            rotationX: 380,
-            opacity: 0,
-        },
-        {
-            ease: 'expo.inOut',
-            rotationX: 0,
-            z: 0,
-            opacity: 1,
-            stagger: -0.03,
-            scrollTrigger: {
-                trigger: title,
-                start: 'center center',
-                end: '+=140%',
-                scrub: 1.2,
-            }
-        }, 0);
-
-    });
-
-    fx16Titles.forEach(title => {
+    fx12Titles.forEach(title => {
         
         gsap.fromTo(title, {
             transformOrigin: '0% 50%',
@@ -528,9 +414,10 @@ function initTextEffects() {
             rotate: 0,
             scrollTrigger: {
                 trigger: title,
-                start: 'top bottom',
-                end: 'top top',
+                start: 'center bottom',
+                end: 'top center+=10%',
                 scrub: true,
+                once: getOnce(title),
             }
         });
 
@@ -544,15 +431,16 @@ function initTextEffects() {
             stagger: 0.05,
             scrollTrigger: {
                 trigger: title,
-                start: 'top bottom-=20%',
-                end: 'center top+=20%',
+                start: 'center bottom',
+                end: 'top center+=10%',
                 scrub: true,
+                once: getOnce(title),
             }
         });
 
     });
 
-    fx17Titles.forEach(title => {
+    fx13Titles.forEach(title => {
         
         const chars = title.querySelectorAll('.char');
         
@@ -572,15 +460,16 @@ function initTextEffects() {
             stagger: 0.02,
             scrollTrigger: {
                 trigger: title,
-                start: 'top bottom',
-                end: 'bottom top',
+                start: 'center bottom',
+                end: 'top center+=10%',
                 scrub: true,
+                once: getOnce(title),
             }
         });
 
     });
 
-    fx18Titles.forEach(title => {
+    fx14Titles.forEach(title => {
         
         const chars = title.querySelectorAll('.char');
         
@@ -598,15 +487,16 @@ function initTextEffects() {
             stagger: 0.04,
             scrollTrigger: {
                 trigger: title,
-                start: 'top bottom',
-                end: 'bottom top',
+                start: 'center bottom',
+                end: 'top center+=10%',
                 scrub: true,
+                once: getOnce(title),
             }
         });
 
     });
 
-    fx19Titles.forEach(title => {
+    fx15Titles.forEach(title => {
         
         const chars = title.querySelectorAll('.char');
         
@@ -627,15 +517,16 @@ function initTextEffects() {
             z: 0,
             scrollTrigger: {
                 trigger: title,
-                start: 'center+=20% bottom',
-                end: '+=50%',
+                start: 'center bottom',
+                end: 'top center+=10%',
                 scrub: true,
+                once: getOnce(title),
             }
         });
         
     });
 
-    fx20Titles.forEach(title => {
+    fx16Titles.forEach(title => {
         
         const chars = title.querySelectorAll('.char');
         
@@ -658,14 +549,15 @@ function initTextEffects() {
             scrollTrigger: {
                 trigger: title,
                 start: 'center bottom',
-                end: 'bottom top+=20%',
+                end: 'top center+=10%',
                 scrub: true,
+                once: getOnce(title),
             }
         });
         
     });
 
-    fx21Titles.forEach(title => {
+    fx17Titles.forEach(title => {
         
         const words = [...title.querySelectorAll('.word')];
         
@@ -694,9 +586,10 @@ function initTextEffects() {
                 },
                 scrollTrigger: {
                     trigger: word,
-                    start: 'top bottom',
-                    end: 'top top+=15%',
+                    start: 'center bottom',
+                    end: 'top center+=10%',
                     scrub: true,
+                    once: getOnce(title),
                 }
             });
 
@@ -704,7 +597,7 @@ function initTextEffects() {
 
     });
 
-    fx22Titles.forEach(title => {
+    fx18Titles.forEach(title => {
         
         const words = [...title.querySelectorAll('.word')];
         
@@ -739,9 +632,10 @@ function initTextEffects() {
                 scale: 1,
                 scrollTrigger: {
                     trigger: word,
-                    start: 'top bottom+=40%',
-                    end: 'top top+=15%',
+                    start: 'center bottom',
+                    end: 'top center+=10%',
                     scrub: true,
+                    once: getOnce(title),
                 }
             });
 
@@ -749,7 +643,7 @@ function initTextEffects() {
 
     });
 
-    fx23Titles.forEach(title => {
+    fx19Titles.forEach(title => {
         
         const words = [...title.querySelectorAll('.word')];
         
@@ -769,8 +663,9 @@ function initTextEffects() {
                 scrollTrigger: {
                     trigger: word,
                     start: 'center bottom',
-                    end: 'bottom top-=40%',
+                    end: 'top center+=10%',
                     scrub: true,
+                    once: getOnce(title),
                 }
             });
             
@@ -778,7 +673,7 @@ function initTextEffects() {
         
     });
 
-    fx24Titles.forEach(title => {
+    fx20Titles.forEach(title => {
         
         const chars = title.querySelectorAll('.char');
         const charsTotal = chars.length;
@@ -799,106 +694,16 @@ function initTextEffects() {
             },
             scrollTrigger: {
                 trigger: title,
-                start: 'top bottom',
-                end: 'bottom top-=50%',
+                start: 'center bottom',
+                end: 'top center+=10%',
                 scrub: true,
+                once: getOnce(title),
             }
         });
 
     });
 
-    fx25Titles.forEach(title => {
-        
-        gsap.fromTo(title.querySelectorAll('.char'), {
-            'will-change': 'transform',
-            transformOrigin: '50% 100%',
-            scaleY: 0
-        }, 
-        {
-            ease: 'power3.in',
-            opacity: 1,
-            scaleY: 1,
-            stagger: 0.05,
-            scrollTrigger: {
-                trigger: title,
-                start: 'center center',
-                end: '+=500%',
-                scrub: true,
-                pin: title.parentNode,
-            }
-        });
-
-    });
-
-    fx26Titles.forEach(title => {
-        
-        const words = [...title.querySelectorAll('.word')];
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: title,
-                start: 'center center',
-                end: '+=100%',
-                scrub: true,
-                pin: title.parentNode,
-            }
-        });
-        for (const [wordPosition, word] of words.entries()) {
-            tl.fromTo(word.querySelectorAll('.char'), {
-                'will-change': 'transform', 
-                transformOrigin: () => !wordPosition%2 ? '50% 0%' : '50% 100%',
-                scaleY: 0
-            }, 
-            {
-                ease: 'power1.inOut',
-                scaleY: 1,
-                stagger: {
-                    amount: 0.3,
-                    from: 'center'
-                }
-            }, 0);
-            
-        }
-
-    });
-
-    fx27Titles.forEach(title => {
-        
-        const words = [...title.querySelectorAll('.word')];
-        
-        words.forEach(word => gsap.set(word.parentNode, { perspective: 1000 })); 
-
-        gsap.fromTo(words, {
-            'will-change': 'opacity, transform', 
-            z: () => gsap.utils.random(500,950),
-            opacity: 0,
-            xPercent: (pos) => gsap.utils.random(-100,100),
-            yPercent: (pos) => gsap.utils.random(-10,10),
-            rotationX: () => gsap.utils.random(-90,90)
-        }, 
-        {
-            ease: 'expo',
-            opacity: 1,
-            rotationX: 0,
-            rotationY: 0,
-            xPercent: 0,
-            yPercent: 0,
-            z: 0,
-            scrollTrigger: {
-                trigger: title,
-                start: 'center center',
-                end: '+=300%',
-                scrub: true,
-                pin: title.parentNode,
-            },
-            stagger: {
-                each: 0.006,
-                from: 'random'
-            }
-        });
-
-    });
-
-    fx28Titles.forEach(title => {
+    fx21Titles.forEach(title => {
         
         const words = [...title.querySelectorAll('.word')];
         
@@ -932,9 +737,10 @@ function initTextEffects() {
                 filter: 'blur(0px) opacity(1)',
                 scrollTrigger: {
                     trigger: word,
-                    start: 'top bottom+=40%',
-                    end: 'top top+=15%',
+                    start: 'center bottom',
+                    end: 'top center+=10%',
                     scrub: true,
+                    once: getOnce(title),
                 },
                 stagger: {
                     amount: 0.15,
@@ -946,7 +752,7 @@ function initTextEffects() {
 
     });
 
-    fx29Titles.forEach(title => {
+    fx22Titles.forEach(title => {
         
         const words = [...title.querySelectorAll('.word')];
         
@@ -968,9 +774,10 @@ function initTextEffects() {
                 },
                 scrollTrigger: {
                     trigger: word,
-                    start: 'top bottom-=10%',
-                    end: 'top top',
+                    start: 'center bottom',
+                    end: 'top center+=10%',
                     scrub: true,
+                    once: getOnce(title),
                 }
             });
         }
