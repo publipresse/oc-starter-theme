@@ -32,6 +32,8 @@
         [data-#{$attribute}~="inline-flex"] { display:inline-flex; }
         [data-#{$attribute}~="hide"] { display:none; }
         [data-#{$attribute}~="hidden"] { visibility:hidden; }
+        [data-#{$attribute}~="pointer"] { cursor:pointer; }
+        [data-#{$attribute}~="pe-none"] { pointer-events:none; }
     }
 }
 

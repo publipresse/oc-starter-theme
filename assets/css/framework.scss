@@ -90,6 +90,11 @@ html { scroll-padding-top:var(--header-h); }
 .hide { display:none; }
 .hidden { visibility:hidden; }
 
+// Cursor
+.pointer { cursor:pointer; }
+.pe-none { pointer-events:none; }
+
+// Images
 .w-100 > img { width:100%; }
 .h-100 > img { height:100%; }
 
