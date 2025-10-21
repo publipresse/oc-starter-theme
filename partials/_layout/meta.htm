@@ -33,7 +33,7 @@ logo = "assets/img/logo.svg"
 
 {# Metas #}
 <title>{{ meta_prefix }} {{ meta_title }} {{ meta_suffix }}</title>
-<link rel="icon" href="{{ favicon|default('assets/img/logo.svg') }}" {% if Agent.isSafari() %}rel="mask-icon" color="{{ theme_color }}"{% endif %}>
+<link rel="icon" href="{{ favicon|default('assets/img/logo.svg') }}" type="image/svg+xml" color="{{ theme_color }}">
 <link rel="canonical" href="{{ canonical_url }}">
 <meta name="description" content="{{ meta_description }}">
 <meta name="robots" content="{{ meta_robots }}">
