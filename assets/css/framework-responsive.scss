@@ -257,13 +257,13 @@
     @media (max-width: #{$size}) {
         @each $suffix, $value in $gaps {
             @for $i from 1 through $cols {
-                [data-#{$attribute}~="b-#{$suffix}"] { border-width: $i+'px'; border-style: solid; }
-                [data-#{$attribute}~="bt-#{$suffix}"] { border-top-width: $i+'px'; border-style: solid; }
-                [data-#{$attribute}~="br-#{$suffix}"] { border-right-width: $i+'px'; border-style: solid; }
-                [data-#{$attribute}~="bb-#{$suffix}"] { border-bottom-width: $i+'px'; border-style: solid; }
-                [data-#{$attribute}~="bl-#{$suffix}"] { border-left-width: $i+'px'; border-style: solid; }
-                [data-#{$attribute}~="bx-#{$suffix}"] { border-left-width: $i+'px'; border-right-width: $i; border-style: solid; }
-                [data-#{$attribute}~="by-#{$suffix}"] { border-top-width: $i+'px'; border-bottom-width: $i; border-style: solid; }
+                [data-#{$attribute}~="b-#{$i}"] { border-width: $i+'px'; border-style: solid; }
+                [data-#{$attribute}~="bt-#{$i}"] { border-top-width: $i+'px'; border-style: solid; }
+                [data-#{$attribute}~="br-#{$i}"] { border-right-width: $i+'px'; border-style: solid; }
+                [data-#{$attribute}~="bb-#{$i}"] { border-bottom-width: $i+'px'; border-style: solid; }
+                [data-#{$attribute}~="bl-#{$i}"] { border-left-width: $i+'px'; border-style: solid; }
+                [data-#{$attribute}~="bx-#{$i}"] { border-left-width: $i+'px'; border-right-width: $i; border-style: solid; }
+                [data-#{$attribute}~="by-#{$i}"] { border-top-width: $i+'px'; border-bottom-width: $i; border-style: solid; }
             }
         }
         [data-#{$attribute}~="b-0"] { border-width:0; }
@@ -288,4 +288,5 @@
         [data-#{$attribute}~="gx-0"] { column-gap:0; }
         [data-#{$attribute}~="gy-0"] { row-gap:0; }
     }
+
 }
