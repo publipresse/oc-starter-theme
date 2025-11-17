@@ -1,8 +1,10 @@
+{% set image = image|resize(width, height, mode|default('crop')) %}
 <img 
     {% if id %}id="{{ id }}"{% endif %}
     {% if class %}class="{{ class }}"{% endif %}
-    src="{{ image|resize(width, height, mode|default('crop')) }}" 
-    alt="{{ alt|default(image.title) }}" 
-    {{ image|resize(width, height, mode|default('crop'))|imagedimensions }} 
+    src="{{ image }}" 
+    alt="{{ alt|default(image.title) }}"
+    width="{{ image|imagewidth }}"
+    height="{{ image|imageheight }}"
     loading="{{ loading|default('lazy') }}"
 >
