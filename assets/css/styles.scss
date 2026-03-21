@@ -16,7 +16,7 @@
 body { font: var(--font-md); }
 
 // Wrappers
-#page { position:relative; width:100%; overflow:hidden; }
+#page { position:relative; width:100%; }
 #main { padding-top:var(--header-h); }
 
 // Header
@@ -39,8 +39,6 @@ body { font: var(--font-md); }
 
 // Forms
 .field { flex:1; }
-
-.oc-box { display:contents; }
 
 /**************
  * Utility, common classes

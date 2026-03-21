@@ -51,7 +51,7 @@
     return storage.getItem(key) !== null;
   }
   function storageGet(key, storage) {
-    let value = storage.getItem(key, storage);
+    let value = storage.getItem(key);
     if (value === void 0)
       return;
     return JSON.parse(value);

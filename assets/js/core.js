@@ -4,9 +4,7 @@ addEventListener('page:loaded', function() {
     initImages();
     initHeadroom();
     initFancybox();
-    initMarquee();
     initForm();
-    initBackToTop();
 });
 
 function initGsap() {
@@ -18,18 +16,16 @@ function initGsap() {
 }
 
 function initLenis() {
+
     // Init lenis
-    window.scroll = new Lenis()
-    window.scroll.on('scroll', (e) => {
-        //console.log(e)
-    })
-    window.scroll.on('scroll', ScrollTrigger.update)
-    gsap.ticker.add((time)=>{
-        window.scroll.raf(time * 1000)
-    })
+    window.scroll = new Lenis();
+    window.scroll.on('scroll', ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+        window.scroll.raf(time * 1000); // Convert time from seconds to milliseconds
+    });
     gsap.ticker.lagSmoothing(0);
 
-    // Handle anchors
+    // Gestion des ancres
     document.querySelectorAll('*[href*="#"]').forEach(function(el) {
         el.addEventListener('click', function(e) {
             const offset = parseInt(getComputedStyle(document.documentElement).getPropertyValue('--header-h'));
@@ -119,13 +115,6 @@ function initFancybox() {
     }
 }
 
-// Initialisation d'un marquee
-function initMarquee() {
-    if (typeof Marquee3k !== "undefined") {
-        Marquee3k.init();
-    }
-}
-
 // Gestion des classes sur un formulaire
 function initForm() {
 
@@ -173,22 +162,6 @@ function initForm() {
         if(typeof ScrollTrigger !== 'undefined') { ScrollTrigger.refresh() }
     });
 
-}
-
-// Affichage d'un lien vers le haut de page
-function initBackToTop() {
-    var offset = 1000;
-    var selector = document.getElementById('backtotop');
-    if(selector) {
-        window.addEventListener('scroll', function() {
-            scrollTop = window.scrollY;
-            if (scrollTop > offset) {
-                selector.classList.add('visible');
-            } else {
-                selector.classList.remove('visible');
-            }
-        });
-    }
 }
 
 // Fonction utilitaire pour calculer une valeur avec Gsap

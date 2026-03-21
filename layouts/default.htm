@@ -3,7 +3,7 @@
 [TinyMCE editor]
 
 [fancybox popup]
-handle = "Messages\Popup"
+handle = "Popups"
 cookie = 24
 ==
 <!DOCTYPE html>
@@ -12,12 +12,12 @@ cookie = 24
     {# Seo #}
     {% partial '_layout/meta' %}
     {# Css #}
-    <link href="{{ ['assets/vendor/hamburgers/hamburgers.min.css']|theme }}.css" rel="stylesheet">
+    <link href="{{ ['assets/vendor/lenis/lenis.min.css', 'assets/vendor/hamburgers/hamburgers.min.css']|theme }}.css" rel="stylesheet">
     {% styles %}
     <link href="{{ ['assets/css/reset.scss', 'assets/css/framework.scss', 'assets/css/styles.scss', 'assets/css/responsive.scss']|theme }}.css" rel="stylesheet">
     {# Js #}
     <script defer src="{{ ['@framework.bundle', 'assets/js/init.js']|theme }}.js"></script>
-    <script defer src="{{ ['assets/vendor/lenis/lenis.min.js', 'assets/vendor/gsap/minified/gsap.min.js', 'assets/vendor/gsap/minified/ScrollTrigger.min.js']|theme }}.js"></script>
+    <script defer src="{{ ['assets/vendor/lenis/lenis.min.js', 'assets/vendor/gsap/gsap.min.js', 'assets/vendor/gsap/ScrollTrigger.min.js']|theme }}.js"></script>
     <script defer src="{{ ['assets/vendor/alpine/collapse.min.js', 'assets/vendor/alpine/mask.min.js', 'assets/vendor/alpine/anchor.min.js', 'assets/vendor/alpine/alpine.min.js']|theme }}.js"></script>
     {% scripts %}
     <script defer src="{{ ['assets/js/core.js', 'assets/js/custom.js']|theme }}.js"></script>

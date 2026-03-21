@@ -77,10 +77,16 @@ html { scroll-padding-top:var(--header-h); }
 
 // Containers
 .container { width:100%; max-width:var(--container-w); margin-left:auto; margin-right:auto; padding-left:var(--gap-md); padding-right:var(--gap-md); }
-.container-sm { width:100%; max-width:var(--container-sm-w); margin-left:auto; margin-right:auto; padding-left:var(--gap-md); padding-right:var(--gap-md); }
 .container-fluid { padding-left:var(--gap-md); padding-right:var(--gap-md); margin-left:auto; margin-right:auto; }
 .container-left { margin-right:calc((100% - var(--container-w)) / 2); margin-left:auto; }
 .container-right { margin-left:calc((100% - var(--container-w)) / 2); margin-right:auto; }
+
+ // Base classes
+.row { display:flex; flex-direction:row; align-items:stretch; justify-content:flex-start; gap:var(--gap-md); min-width:0; }
+.col { display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:var(--gap-md); min-width:0; }
+.grid { display:grid; grid-template-rows:auto; grid-template-columns:auto; gap:var(--gap-md); align-items:center; }
+.flex-wrap { flex-wrap:wrap; }
+.flex-grow { flex-grow:1; }
 
 // Utility
 .relative { position:relative; }
@@ -171,13 +177,6 @@ html { scroll-padding-top:var(--header-h); }
 /**
  * Grid
  **/
-
- // Base classes
-.row { display:flex; flex-direction:row; align-items:stretch; justify-content:flex-start; gap:var(--gap-md); min-width:0; }
-.col { display:flex; flex-direction:column; align-items:stretch; justify-content:center; gap:var(--gap-md); min-width:0; }
-.grid { display:grid; grid-template-rows:auto; grid-template-columns:auto; gap:var(--gap-md); align-items:center; }
-.flex-wrap { flex-wrap:wrap; }
-.flex-grow { flex-grow:1; }
 
 // grid-x
 @for $i from 1 through $cols {
@@ -432,7 +431,7 @@ html { scroll-padding-top:var(--header-h); }
 .field-checkbox .field-label,
 .field-radio .field-label { display:flex; flex-direction:row; align-items:baseline; justify-content:flex-start; gap:var(--gap-sm); }
 .field-checkbox .field-label > span,
-.field-radio .field-label > span { position:relative; display: block; min-width:var(--checkbox-size); aspect-ratio:1; border: 1px solid var(--field-normal); }
+.field-radio .field-label > span { position:relative; display: block; min-width:var(--field-checkbox-size); aspect-ratio:1; border: 1px solid var(--field-normal); }
 .field-checkbox .field-input:checked + .field-label span,
 .field-radio .field-input:checked + .field-label span{ background-color: var(--field-active); border-color:var(--field-active); box-shadow: inset 0px 0px 0px 3px #ffff; }
 .field-radio .field-label span { border-radius:50%; }

@@ -2230,9 +2230,26 @@
   Sortable.mount(Remove, Revert);
   var sortable_esm_default = Sortable;
 
+  // packages/alpinejs/src/utils/walk.js
+  function walk(el, callback) {
+    if (typeof ShadowRoot === "function" && el instanceof ShadowRoot) {
+      Array.from(el.children).forEach((el2) => walk(el2, callback));
+      return;
+    }
+    let skip = false;
+    callback(el, () => skip = true);
+    if (skip)
+      return;
+    let node = el.firstElementChild;
+    while (node) {
+      walk(node, callback, false);
+      node = node.nextElementSibling;
+    }
+  }
+
   // packages/sort/src/index.js
-  function src_default(Alpine2) {
-    Alpine2.directive("sort", (el, { value, modifiers, expression }, { effect, evaluate, evaluateLater, cleanup }) => {
+  function src_default(Alpine) {
+    Alpine.directive("sort", (el, { value, modifiers, expression }, { effect, evaluate, cleanup }) => {
       if (value === "config") {
         return;
       }
@@ -2250,10 +2267,10 @@
       }
       let preferences = {
         hideGhost: !modifiers.includes("ghost"),
-        useHandles: !!el.querySelector("[x-sort\\:handle]"),
+        useHandles: !!el.querySelector("[x-sort\\:handle],[wire\\:sort\\:handle]"),
         group: getGroupName(el, modifiers)
       };
-      let handleSort = generateSortHandler(expression, evaluateLater);
+      let handleSort = generateSortHandler(expression, evaluate);
       let config = getConfigurationOverrides(el, modifiers, evaluate);
       let sortable = initSortable(el, config, preferences, (key, position) => {
         handleSort(key, position);
@@ -2261,43 +2278,50 @@
       cleanup(() => sortable.destroy());
     });
   }
-  function generateSortHandler(expression, evaluateLater) {
+  function generateSortHandler(expression, evaluate) {
     if ([void 0, null, ""].includes(expression))
       return () => {
       };
-    let handle = evaluateLater(expression);
     return (key, position) => {
-      Alpine.dontAutoEvaluateFunctions(() => {
-        handle(
-          // If a function is returned, call it with the key/position params...
-          (received) => {
-            if (typeof received === "function")
-              received(key, position);
-          },
-          // Provide $key and $position to the scope in case they want to call their own function...
-          { scope: {
-            // Supporting both `$item` AND `$key` ($key for BC)...
-            $key: key,
-            $item: key,
-            $position: position
-          } }
-        );
-      });
+      evaluate(expression, { scope: {
+        // Supporting both `$item` AND `$key` ($key for BC)...
+        $key: key,
+        $item: key,
+        $position: position
+      }, params: [
+        key,
+        position
+      ] });
     };
   }
   function getConfigurationOverrides(el, modifiers, evaluate) {
-    return el.hasAttribute("x-sort:config") ? evaluate(el.getAttribute("x-sort:config")) : {};
+    if (el.hasAttribute("x-sort:config")) {
+      return evaluate(el.getAttribute("x-sort:config"));
+    }
+    if (el.hasAttribute("wire:sort:config")) {
+      return evaluate(el.getAttribute("wire:sort:config"));
+    }
+    return {};
   }
   function initSortable(el, config, preferences, handle) {
     let ghostRef;
     let options = {
       animation: 150,
-      handle: preferences.useHandles ? "[x-sort\\:handle]" : null,
+      handle: preferences.useHandles ? "[x-sort\\:handle],[wire\\:sort\\:handle]" : null,
       group: preferences.group,
+      scroll: true,
+      forceAutoScrollFallback: true,
+      scrollSensitivity: 50,
+      // This is here so that if a div containing inputs or buttons has x-sort:ignore, it will not prevent interaction...
+      preventOnFilter: false,
       filter(e) {
-        if (!el.querySelector("[x-sort\\:item]"))
+        if (e.target.hasAttribute("x-sort:ignore") || e.target.hasAttribute("wire:sort:ignore"))
+          return true;
+        if (e.target.closest("[x-sort\\:ignore]") || e.target.closest("[wire\\:sort\\:ignore]"))
+          return true;
+        if (!el.querySelector("[x-sort\\:item],[wire\\:sort\\:item]"))
           return false;
-        let itemHasAttribute = e.target.closest("[x-sort\\:item]");
+        let itemHasAttribute = e.target.closest("[x-sort\\:item],[wire\\:sort\\:item]");
         return itemHasAttribute ? false : true;
       },
       onSort(e) {
@@ -2306,7 +2330,15 @@
             return;
           }
         }
-        let key = e.item._x_sort_key;
+        let key = void 0;
+        walk(e.item, (el2, skip) => {
+          if (key !== void 0)
+            return;
+          if (el2._x_sort_key) {
+            key = el2._x_sort_key;
+            skip();
+          }
+        });
         let position = e.newIndex;
         if (key !== void 0 || key !== null) {
           handle(key, position);
@@ -2341,6 +2373,9 @@
   function getGroupName(el, modifiers) {
     if (el.hasAttribute("x-sort:group")) {
       return el.getAttribute("x-sort:group");
+    }
+    if (el.hasAttribute("wire:sort:group")) {
+      return el.getAttribute("wire:sort:group");
     }
     return modifiers.indexOf("group") !== -1 ? modifiers[modifiers.indexOf("group") + 1] : null;
   }

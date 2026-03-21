@@ -26,8 +26,13 @@
         } else {
           processInputValue(el, false);
         }
-        if (el._x_model)
+        if (el._x_model) {
+          if (el._x_model.get() === el.value)
+            return;
+          if (el._x_model.get() === null && el.value === "")
+            return;
           el._x_model.set(el.value);
+        }
       });
       const controller = new AbortController();
       cleanup(() => {
