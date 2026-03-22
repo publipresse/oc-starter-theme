@@ -31,20 +31,6 @@ fields:
         validation: 'required_if:suffix,prefix,suffix'
         tab: Métas
         translatable: true
-    meta_description:
-        label: Meta description
-        comment: Meta description qui sera utilisée par défaut pour les pages qui n'en possèdent pas
-        type: textarea
-        size: tiny
-        tab: Métas
-        translatable: true
-    head_code:
-        label: Code additionnel
-        type: codeeditor
-        language: html
-        comment: Code additionnel qui sera ajouté dans la balise <head>
-        size: huge
-        tab: Métas
     turbo_routing:
         label: Turbo routing
         type: dropdown
